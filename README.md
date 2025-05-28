@@ -25,8 +25,11 @@ Download one or more of the following datasets from Hugging Face and place them 
 Example folder structure:
 
 datasets/
+
 ├── ChatDoctor-HealthCareMagic-100k.json
+
 ├── HarryPotterQA.json
+
 ├── PokemonQA.json
 
 **Note:** Ensure each dataset is saved in a valid JSON format, i.e., a list of objects with {"input": ..., "output": ...} structure.
