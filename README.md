@@ -1,6 +1,8 @@
-**IKEA Pipeline**
+# IKEA (**I**mplicit **K**nowledge **E**xtraction **A**ttack)
+The code of the following paper will be released in this repository:
 
-This repository implements IKEA pipeline designed for evaluating and attacking RAG (Retrieval-Augmented Generation) systems using adaptive query strategies.
+[**Silent Leaks: Implicit Knowledge Extraction Attack on RAG Systems through Benign Queries**](https://arxiv.org/pdf/2505.15420) .
+
 
 📦 **Setup Instructions**
 
