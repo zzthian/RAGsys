@@ -21,13 +21,21 @@ import numpy as np
 from tqdm import tqdm
 from datetime import datetime
 
+load_dotenv()
+
 
 def init_rag(dataset_path):
     embedding_model_name = "BAAI/bge-base-en"
-    embedding_model = SentenceTransformer(embedding_model_name, device="cuda")
+    embedding_model = SentenceTransformer(embedding_model_name, device="cpu")
     reranker_model_name = "BAAI/bge-reranker-v2-m3"
-    reranker = FlagEmbedding.FlagReranker(reranker_model_name, device="cuda")
-    llm = HfWrapper("Llama-3.1-8B-Instruct")
+    reranker = FlagEmbedding.FlagReranker(reranker_model_name, device="cpu")
+    from src.rag_framework import OpenAiWrapper
+
+    llm = OpenAiWrapper(
+        api_key=os.getenv("OPENAI_KEY"),
+        model_name="gpt-4",
+        api_url="https://api.openai.com/v1",
+    )
 
     """build rag system"""
     defaul_rag_save_name = (
