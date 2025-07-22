@@ -1,5 +1,5 @@
 import json
-from config.config import *
+from simulator.config.config import *
 from langchain_core.prompts import PromptTemplate
 from openai import OpenAI
 import httpx

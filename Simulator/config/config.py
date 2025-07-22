@@ -14,7 +14,7 @@ def get_project_root(search_file=".git"):
     return None
 
 
-ROOT_PATH = get_project_root()
+ROOT_PATH = os.path.join(get_project_root(), "simulator")
 DATA_PATH = os.path.join(ROOT_PATH, "data", "tasks.json")
 
 # --- openai ---

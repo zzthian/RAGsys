@@ -1,4 +1,4 @@
-from agent.state import *
+from simulator.agent.state import *
 
 MAX_TURNS = 5
 

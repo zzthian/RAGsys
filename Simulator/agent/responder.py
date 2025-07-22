@@ -5,7 +5,7 @@ import httpx
 
 
 class Responder:
-    def __init__(self, prompt):
+    def __init__(self, prompt, rag_system):
         self.prompt = prompt
         self.client = OpenAI(
             base_url=API_BASE,
