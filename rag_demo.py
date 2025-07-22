@@ -33,7 +33,7 @@ def init_rag(dataset_path):
 
     llm = OpenAiWrapper(
         api_key=os.getenv("OPENAI_KEY"),
-        model_name="gpt-4",
+        model_name="gpt-4o",
         api_url="https://api.openai.com/v1",
     )
 
