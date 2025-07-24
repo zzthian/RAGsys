@@ -32,9 +32,9 @@ def init_rag(dataset_path):
     from src.rag_framework import OpenAiWrapper
 
     llm = OpenAiWrapper(
-        api_key=os.getenv("OPENAI_KEY"),
-        model_name="gpt-4",
-        api_url="https://api.openai.com/v1",
+        model_name="deepseek-chat",
+        api_url="https://api.deepseek.com/v1",
+        api_key=os.getenv("DEEPSEEK_KEY"),
     )
 
     """build rag system"""
