@@ -1,7 +1,7 @@
-from simulator.config.config import *
-from simulator.agent.agent import Agent
+from Simulator.config.config import *
+from Simulator.agent.agent import Agent
 from abc import ABC, abstractmethod
-from simulator.prompt.task_description import *
+from Simulator.prompt.task_description import *
 from src.agent.rag_system import RagSystem, reranker_RagSystem
 from src.rag_framework import (
     RagDatabase,

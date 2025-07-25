@@ -1,7 +1,7 @@
 import json
 import os
-from simulator.agent.state import *
-from simulator.agent.task import Task
+from Simulator.agent.state import *
+from Simulator.agent.task import Task
 
 
 class Simulator:
