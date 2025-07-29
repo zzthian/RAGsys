@@ -1,6 +1,6 @@
 from Simulator.agent.state import *
 
-MAX_TURNS = 5
+MAX_TURNS = 8
 
 
 class Task:
