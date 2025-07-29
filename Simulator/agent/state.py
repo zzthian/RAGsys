@@ -1,7 +1,7 @@
 from Simulator.config.config import *
 from Simulator.agent.agent import Agent
 from abc import ABC, abstractmethod
-from Simulator.prompt.task_description import *
+# from Simulator.prompt.task_description import *
 from src.agent.rag_system import RagSystem, reranker_RagSystem
 from src.rag_framework import (
     RagDatabase,
@@ -71,6 +71,8 @@ class StateBase(ABC):
     dataset_label = dataset_path.split("/")[-1].split(".")[-2]
     load_dotenv()
     rag_system = init_rag(dataset_path)
+    with open(DATA_PATH, "r", encoding="utf-8") as f:
+        tasks = json.load(f)
 
     def __init__(self, task, guiding_questions=None):
         self.task = task
@@ -109,7 +111,7 @@ class Guide(StateBase):
     def __init__(self, task, guiding_questions=None):
         super().__init__(task)
         self.prompt_variables = {
-            "task_description": task_description[self.task.task_id]
+            "task_description": StateBase.tasks[self.task.task_id]
         }
 
     def enter(self):
@@ -129,7 +131,7 @@ class Search(StateBase):
         self.model = None
         self.history = history
         self.prompt_variables = {
-            "task_description": task_description[self.task.task_id],
+            "task_description": StateBase.tasks[self.task.task_id],
             "history": self.history,
             "guiding_questions": self.guiding_questions,
         }
@@ -189,7 +191,7 @@ class Stop(StateBase):
         self.guiding_questions = guiding_questions
         self.history = history
         self.prompt_variables = {
-            "task_description": task_description[self.task.task_id],
+            "task_description": StateBase.tasks[self.task.task_id],
             "history": self.history,
             "guiding_questions": self.guiding_questions,
         }
