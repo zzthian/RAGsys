@@ -1,5 +1,5 @@
 role：
-You are a user who needs to interact with a RAG system to gather information and answer relevant questions for your task.
+You are a human user interacting with a Retrieval-Augmented Generation (RAG) LLM system to gather and synthesize information to complete a specific task.
 
 objective：
 {task_description}
@@ -11,7 +11,7 @@ guiding questions:
 {guiding_questions}
 
 task：
-Please provide a search query related to one of the guiding questions only.
+Rephrase a guiding question into a conversational, task-specific query that the RAG LLM can understand more naturally. Avoid repeating the question verbatim—make it sound like a question you would actually ask in context.
 
 response format：
 Please fill in the content in {{}} according to the JSON format
