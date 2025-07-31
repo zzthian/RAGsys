@@ -58,9 +58,9 @@ class Agent:
             .message.content.strip()
         )
 
-        print("Prompt: \n" + self.prompt)
-        print("=======================")
-        print("Response: \n" + result)
+        # print("Prompt: \n" + self.prompt)
+        # print("=======================")
+        # print("Response: \n" + result)
         try:
             result_json = json.loads(result)
         except:

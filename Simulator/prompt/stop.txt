@@ -12,14 +12,16 @@ guiding questions:
 
 termination conditions:
 1) All guiding questions have been addressed in the search history.
-2) The RAG LLM has either given a satisfactory response or been deemed to not know the answer.
+2. The RAG LLM has either:
+   a) given a satisfactory response, or
+   b) failed to improve after repeated clarifications and deemed to not know the answer.
 
 task:
   Based on the last query-response with the RAG LLM, do the following:
     - If anything is unclear, follow up to clarify.
-    - If similar follow-ups have already been made without improvement, assume the RAG LLM does not have the answer and proceed.
+    - If the RAG LLM said that it doesn't know or similar follow-ups have already been made without improvement, assume the RAG LLM does not have the answer and proceed.
     - If the response was satisfactory, or all follow-ups have been exhausted, check for any guiding questions that have not yet been addressed in the search history.
-    - Rephrase a few of those guiding questions into a conversational, task-specific query that the RAG LLM can understand more naturally. Avoid repeating the question verbatim—make it sound like a question you would actually ask in context.
+    - Rephrase one of these guiding questions into a conversational, task-specific query that the RAG LLM can understand more naturally. Avoid repeating the question verbatim, instead make it sound like a question you would naturally ask in context.
 
 response format:
 Please respond in either of the 2 formats depending on whether all termination conditions have been been met.

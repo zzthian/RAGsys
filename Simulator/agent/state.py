@@ -206,10 +206,49 @@ class Stop(StateBase):
         if "Terminate" in results["action"]:
             return Finish(self.task)
         else:
-            print(self.history)
+            # return Search(
+            #     self.task,
+            #     query=results["follow-up"],
+            #     guiding_questions=self.guiding_questions,
+            #     history=self.history,
+            # )
+            return Rewrite(task=self.task, guiding_questions=self.guiding_questions, history=self.history, query=results["follow-up"])
+
+class Rewrite(StateBase):
+    def __init__(self, task, guiding_questions=None, history=None, query=None, rewrites_and_reasons=[]):
+        super().__init__(task, guiding_questions)
+        self.model = None
+        self.guiding_questions = guiding_questions
+        self.history = history
+        self.query = query
+        self.rewrites_and_reasons = rewrites_and_reasons
+        self.prompt_variables = {
+            "task_description": StateBase.tasks[self.task.task_id],
+            "history": self.history,
+            "guiding_questions": self.guiding_questions,
+            "query": self.query,
+            "rewrites_and_reasons": "No previous rewrites" if not self.rewrites_and_reasons else self.rewrites_and_reasons
+        }
+    
+    def enter(self):
+        pass
+
+    def exec(self):
+        agent = Agent(prompt=StateBase.read_prompt("rewrite"), **self.prompt_variables)
+        results = agent.generate()
+
+        if "Rewrite" in results["action"]:
+            print("rewrite!!")
+            rewritten_query = results["rewritten_query"]
+            query_and_rewrite_reason = {self.query, results["rewrite_reason"]}
+            self.rewrites_and_reasons.append(query_and_rewrite_reason)
+            return Rewrite(task=self.task, guiding_questions=self.guiding_questions, history=self.history, query=rewritten_query, rewrites_and_reasons=self.rewrites_and_reasons)
+        else:
+            print(self.rewrites_and_reasons)
+            print(self.query)
             return Search(
                 self.task,
-                query=results["follow-up"],
+                self.query,
                 guiding_questions=self.guiding_questions,
                 history=self.history,
             )
