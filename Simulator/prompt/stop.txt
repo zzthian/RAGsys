@@ -21,7 +21,8 @@ task:
     - If anything is unclear, follow up to clarify.
     - If the RAG LLM said that it doesn't know or similar follow-ups have already been made without improvement, assume the RAG LLM does not have the answer and proceed.
     - If the response was satisfactory, or all follow-ups have been exhausted, check for any guiding questions that have not yet been addressed in the search history.
-    - Rephrase one of these guiding questions into a conversational, task-specific query that the RAG LLM can understand more naturally. Avoid repeating the question verbatim, instead make it sound like a question you would naturally ask in context.
+    - Rephrase one of these guiding questions using the tone in which a human would query a RAG LLM. Avoid repeating the question verbatim, instead make it sound like a question you would naturally ask in context.
+    - Vary sentence structure and phrasing from previous queries in search history while still sounding like a human user.
 
 response format:
 Please respond in either of the 2 formats depending on whether all termination conditions have been been met.
