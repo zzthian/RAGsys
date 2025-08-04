@@ -59,6 +59,16 @@ def init_rag(dataset_path):
         rag_database.save(defaul_rag_save_name)
     else:
         rag_database = RagDatabase.load(defaul_rag_save_name, embedding_model)
+        ################################################################################
+        # Only do this on first run to extend database
+        # pokemon_dataset = transpose_json("datasets/pokemon_database.json", "input", "output")
+        # rag_database.append(
+        #     pokemon_dataset["input"],
+        #     {"question": pokemon_dataset["input"], "answer": pokemon_dataset["output"]},
+        #     batch_size=4,
+        # )
+        # rag_database.save(defaul_rag_save_name)
+        ################################################################################
 
     Rag_system = reranker_RagSystem(rag_database, embedding_model, llm, reranker)
 
@@ -238,14 +248,16 @@ class Rewrite(StateBase):
         results = agent.generate()
 
         if "Rewrite" in results["action"]:
-            print("rewrite!!")
             rewritten_query = results["rewritten_query"]
             query_and_rewrite_reason = {self.query, results["rewrite_reason"]}
             self.rewrites_and_reasons.append(query_and_rewrite_reason)
+            print("Unaccepted query: " + self.query)
+            print(results["rewrite_reason"])
             return Rewrite(task=self.task, guiding_questions=self.guiding_questions, history=self.history, query=rewritten_query, rewrites_and_reasons=self.rewrites_and_reasons)
         else:
-            print(self.rewrites_and_reasons)
-            print(self.query)
+            print("Accepted query: " + self.query)
+            print("====================================================================================================")
+            print("")
             return Search(
                 self.task,
                 self.query,
