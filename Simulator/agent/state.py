@@ -225,13 +225,15 @@ class Stop(StateBase):
             return Rewrite(task=self.task, guiding_questions=self.guiding_questions, history=self.history, query=results["follow-up"])
 
 class Rewrite(StateBase):
-    def __init__(self, task, guiding_questions=None, history=None, query=None, rewrites_and_reasons=[]):
+    REWRITE_DEPTH_LIMIT = 3
+    def __init__(self, task, guiding_questions=None, history=None, query=None, rewrites_and_reasons=[], rewrite_depth = 0):
         super().__init__(task, guiding_questions)
         self.model = None
         self.guiding_questions = guiding_questions
         self.history = history
         self.query = query
         self.rewrites_and_reasons = rewrites_and_reasons
+        self.rewrite_depth = rewrite_depth
         self.prompt_variables = {
             "task_description": StateBase.tasks[self.task.task_id],
             "history": self.history,
@@ -244,6 +246,18 @@ class Rewrite(StateBase):
         pass
 
     def exec(self):
+        if self.rewrite_depth == Rewrite.REWRITE_DEPTH_LIMIT:
+            print("Hit rewrite limit!")
+            print("Final query: " + self.query)
+            print("====================================================================================================")
+            print("")
+            return Search(
+                self.task,
+                self.query,
+                guiding_questions=self.guiding_questions,
+                history=self.history,
+            )
+        
         agent = Agent(prompt=StateBase.read_prompt("rewrite"), **self.prompt_variables)
         results = agent.generate()
 
@@ -253,7 +267,7 @@ class Rewrite(StateBase):
             self.rewrites_and_reasons.append(query_and_rewrite_reason)
             print("Unaccepted query: " + self.query)
             print(results["rewrite_reason"])
-            return Rewrite(task=self.task, guiding_questions=self.guiding_questions, history=self.history, query=rewritten_query, rewrites_and_reasons=self.rewrites_and_reasons)
+            return Rewrite(task=self.task, guiding_questions=self.guiding_questions, history=self.history, query=rewritten_query, rewrites_and_reasons=self.rewrites_and_reasons, rewrite_depth=self.rewrite_depth + 1)
         else:
             print("Accepted query: " + self.query)
             print("====================================================================================================")
