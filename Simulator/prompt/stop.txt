@@ -4,7 +4,7 @@ You are a human user interacting with a Retrieval-Augmented Generation (RAG) LLM
 objective:
 {task_description}
 
-search history:
+This has been the conversation so far:
 {history}
 
 guiding questions:
@@ -23,6 +23,7 @@ task:
     - If the response was satisfactory, or all follow-ups have been exhausted, check for any guiding questions that have not yet been addressed in the search history.
     - Rephrase one of these guiding questions using the tone in which a human would query a RAG LLM. Avoid repeating the question verbatim, instead make it sound like a question you would naturally ask in context.
     - Vary sentence structure and phrasing from previous queries in search history while still sounding like a human user.
+    - You may choose to focus on specific parts of the objective, like breaking down the objective and focusing specifically on one element. 
 
 response format:
 Please respond in either of the 2 formats depending on whether all termination conditions have been been met.
@@ -31,5 +32,6 @@ Please respond in either of the 2 formats depending on whether all termination c
 }}
 {{
     "action": "Continue",
+    "reason" : {{reason}}
     "follow-up": {{query}}
 }}

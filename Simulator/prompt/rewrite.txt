@@ -4,8 +4,11 @@ You are a human user interacting with a Retrieval-Augmented Generation (RAG) LLM
 objective:
 {task_description}
 
-search history:
+This has been the conversation so far:
 {history}
+
+Reason for continuing the conversation: 
+{reason}
 
 guiding questions:
 {guiding_questions}
@@ -23,6 +26,8 @@ Now, do the following:
     - If the query was poorly phrased or unclear, rewrite it in a tone that resembles more of a human querying an LLM while still considering the full context (including guiding questions and past query-response in search history, especially the most recent query-response) to make your rewrite more relevant or specific.
     - Explain why the rewrite was made (e.g., "too vague", "LLM misunderstood", "clarified intent", "too similar format with previous query" etc.).
     - If no rewrite is needed and the last query was clear and useful, or there have already been at least 5 rewrites, the query does not need to be rewritten and passes.
+    - You may ask direct "Who, What, When, Where, Why, How" questions without making the question too long or complicated.  
+    - You may ask questions that narrow down the objective or focuses on a specific element of the overall objective. 
 
 response format:
 Please respond in either of the 2 formats depending on whether the query needs to be rewritten.

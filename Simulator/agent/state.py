@@ -1,6 +1,7 @@
 from Simulator.config.config import *
 from Simulator.agent.agent import Agent
 from abc import ABC, abstractmethod
+
 # from Simulator.prompt.task_description import *
 from src.agent.rag_system import RagSystem, reranker_RagSystem
 from src.rag_framework import (
@@ -61,7 +62,9 @@ def init_rag(dataset_path):
         rag_database = RagDatabase.load(defaul_rag_save_name, embedding_model)
         ################################################################################
         # Only do this on first run to extend database
-        # pokemon_dataset = transpose_json("datasets/pokemon_database.json", "input", "output")
+        # pokemon_dataset = transpose_json(
+        #     "datasets/pokemon_database.json", "input", "output"
+        # )
         # rag_database.append(
         #     pokemon_dataset["input"],
         #     {"question": pokemon_dataset["input"], "answer": pokemon_dataset["output"]},
@@ -120,9 +123,7 @@ class Init(StateBase):
 class Guide(StateBase):
     def __init__(self, task, guiding_questions=None):
         super().__init__(task)
-        self.prompt_variables = {
-            "task_description": StateBase.tasks[self.task.task_id]
-        }
+        self.prompt_variables = {"task_description": StateBase.tasks[self.task.task_id]}
 
     def enter(self):
         pass
@@ -130,6 +131,7 @@ class Guide(StateBase):
     def exec(self):
         agent = Agent(prompt=StateBase.read_prompt("guide"), **self.prompt_variables)
         guiding_questions = agent.generate()["guiding_questions"]
+        print(guiding_questions)
         self.guiding_questions = guiding_questions
         return Search(self.task, guiding_questions=self.guiding_questions)
 
@@ -222,11 +224,29 @@ class Stop(StateBase):
             #     guiding_questions=self.guiding_questions,
             #     history=self.history,
             # )
-            return Rewrite(task=self.task, guiding_questions=self.guiding_questions, history=self.history, query=results["follow-up"])
+            print(f"Continuing conversation because: {results['reason']}")
+            return Rewrite(
+                task=self.task,
+                guiding_questions=self.guiding_questions,
+                history=self.history,
+                reason=results["reason"],
+                query=results["follow-up"],
+            )
+
 
 class Rewrite(StateBase):
-    REWRITE_DEPTH_LIMIT = 3
-    def __init__(self, task, guiding_questions=None, history=None, query=None, rewrites_and_reasons=[], rewrite_depth = 0):
+    REWRITE_DEPTH_LIMIT = 1
+
+    def __init__(
+        self,
+        task,
+        guiding_questions=None,
+        history=None,
+        query=None,
+        rewrites_and_reasons=[],
+        rewrite_depth=0,
+        reason=None,
+    ):
         super().__init__(task, guiding_questions)
         self.model = None
         self.guiding_questions = guiding_questions
@@ -234,30 +254,36 @@ class Rewrite(StateBase):
         self.query = query
         self.rewrites_and_reasons = rewrites_and_reasons
         self.rewrite_depth = rewrite_depth
+        self.reason = reason
         self.prompt_variables = {
             "task_description": StateBase.tasks[self.task.task_id],
             "history": self.history,
             "guiding_questions": self.guiding_questions,
             "query": self.query,
-            "rewrites_and_reasons": "No previous rewrites" if not self.rewrites_and_reasons else self.rewrites_and_reasons
+            "rewrites_and_reasons": (
+                "No previous rewrites"
+                if not self.rewrites_and_reasons
+                else self.rewrites_and_reasons
+            ),
+            "reason": self.reason,
         }
-    
+
     def enter(self):
         pass
 
     def exec(self):
         if self.rewrite_depth == Rewrite.REWRITE_DEPTH_LIMIT:
-            print("Hit rewrite limit!")
-            print("Final query: " + self.query)
-            print("====================================================================================================")
-            print("")
+            # print("Hit rewrite limit!")
+            # print("Final query: " + self.query)
+            # print("====================================================================================================")
+            # print("")
             return Search(
                 self.task,
                 self.query,
                 guiding_questions=self.guiding_questions,
                 history=self.history,
             )
-        
+
         agent = Agent(prompt=StateBase.read_prompt("rewrite"), **self.prompt_variables)
         results = agent.generate()
 
@@ -265,13 +291,20 @@ class Rewrite(StateBase):
             rewritten_query = results["rewritten_query"]
             query_and_rewrite_reason = {self.query, results["rewrite_reason"]}
             self.rewrites_and_reasons.append(query_and_rewrite_reason)
-            print("Unaccepted query: " + self.query)
-            print(results["rewrite_reason"])
-            return Rewrite(task=self.task, guiding_questions=self.guiding_questions, history=self.history, query=rewritten_query, rewrites_and_reasons=self.rewrites_and_reasons, rewrite_depth=self.rewrite_depth + 1)
+            # print("Unaccepted query: " + self.query)
+            # print(results["rewrite_reason"])
+            return Rewrite(
+                task=self.task,
+                guiding_questions=self.guiding_questions,
+                history=self.history,
+                query=rewritten_query,
+                rewrites_and_reasons=self.rewrites_and_reasons,
+                rewrite_depth=self.rewrite_depth + 1,
+            )
         else:
-            print("Accepted query: " + self.query)
-            print("====================================================================================================")
-            print("")
+            # print("Accepted query: " + self.query)
+            # print("====================================================================================================")
+            # print("")
             return Search(
                 self.task,
                 self.query,
