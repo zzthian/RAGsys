@@ -1,4 +1,4 @@
 .env
 venv/
 datasets/
-/rag_database_bge-base-en_HealthCareMagic-100k/
+/rag_database_bge-base-en/
