@@ -1,7 +1,22 @@
 {
-    "1": "You have a fever",
-    "2": "I have had phlegm for the past 1 week.",
-    "3": "I feel that there is a hard spot underneath my belly. When I press down, I can feel something below.",
-    "4": "There has been an acne breakout on my face for some time now.",
-    "5": "My rival has a team consisting of dragonite, altaria, salamence, flygon, kingdra, and hydreigon."
+    "1": {
+        "description": "I have a fever",
+        "persona": "You are a 30 year old working adult with a history of diabetes."
+    },
+    "2": {
+        "description": "I have had phlegm for the past 1 week.", 
+        "persona": "You are a Year 2 nursing student who has just started clinicals."
+    },
+    "3": {
+        "description": "I feel that there is a hard spot underneath my belly. When I press down, I can feel something below.",
+        "persona": "You are a 60 year old retiree with no medical history just coming back from a trip to New Zealand."
+    },
+    "4": {
+        "description": "There has been an acne breakout on my face for some time now.",
+        "persona": "You are a 13 year old girl with self-image issues."
+    },
+    "5": {
+        "description": "My rival has a team consisting of dragonite, altaria, salamence, flygon, kingdra, and hydreigon.",
+        "persona": "You are a 10 year old boy who recently started playing Pokemon Black and White."
+    }
 }
