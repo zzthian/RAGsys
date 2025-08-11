@@ -44,8 +44,6 @@ def init_rag(dataset_path):
     defaul_rag_save_name = (
         "rag_database_"
         + embedding_model_name.split("/")[-1]
-        + "_"
-        + ".".join(dataset_path.split("/")[-1].split(".")[:-1])
     )
 
     print("Start building RAG system...\n")
@@ -123,7 +121,10 @@ class Init(StateBase):
 class Guide(StateBase):
     def __init__(self, task, guiding_questions=None):
         super().__init__(task)
-        self.prompt_variables = {"task_description": StateBase.tasks[self.task.task_id]}
+        self.prompt_variables = {
+            "persona": StateBase.tasks[self.task.task_id]["persona"],
+            "task_description": StateBase.tasks[self.task.task_id]["description"]
+        }
 
     def enter(self):
         pass
@@ -143,7 +144,8 @@ class Search(StateBase):
         self.model = None
         self.history = history
         self.prompt_variables = {
-            "task_description": StateBase.tasks[self.task.task_id],
+            "persona": StateBase.tasks[self.task.task_id]["persona"],
+            "task_description": StateBase.tasks[self.task.task_id]["description"],
             "history": self.history,
             "guiding_questions": self.guiding_questions,
         }
@@ -203,7 +205,8 @@ class Stop(StateBase):
         self.guiding_questions = guiding_questions
         self.history = history
         self.prompt_variables = {
-            "task_description": StateBase.tasks[self.task.task_id],
+            "persona": StateBase.tasks[self.task.task_id]["persona"],
+            "task_description": StateBase.tasks[self.task.task_id]["description"],
             "history": self.history,
             "guiding_questions": self.guiding_questions,
         }
@@ -235,7 +238,7 @@ class Stop(StateBase):
 
 
 class Rewrite(StateBase):
-    REWRITE_DEPTH_LIMIT = 1
+    REWRITE_DEPTH_LIMIT = 3
 
     def __init__(
         self,
@@ -256,7 +259,8 @@ class Rewrite(StateBase):
         self.rewrite_depth = rewrite_depth
         self.reason = reason
         self.prompt_variables = {
-            "task_description": StateBase.tasks[self.task.task_id],
+            "persona": StateBase.tasks[self.task.task_id]["persona"],
+            "task_description": StateBase.tasks[self.task.task_id]["description"],
             "history": self.history,
             "guiding_questions": self.guiding_questions,
             "query": self.query,
