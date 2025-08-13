@@ -134,15 +134,16 @@ class Guide(StateBase):
         guiding_questions = agent.generate()["guiding_questions"]
         print(guiding_questions)
         self.guiding_questions = guiding_questions
-        return Search(self.task, guiding_questions=self.guiding_questions)
+        return Search(self.task, guiding_questions=self.guiding_questions, new=True)
 
 
 class Search(StateBase):
-    def __init__(self, task, query=None, guiding_questions=None, history=None):
+    def __init__(self, task, query=None, guiding_questions=None, history=None, new=False):
         super().__init__(task, guiding_questions)
         self.query = query
         self.model = None
         self.history = history
+        self.new = new
         self.prompt_variables = {
             "persona": StateBase.tasks[self.task.task_id]["persona"],
             "task_description": StateBase.tasks[self.task.task_id]["description"],
@@ -168,6 +169,10 @@ class Search(StateBase):
             self.query = agent.generate()["query"]
 
         query = self.query
+        if self.new:
+            StateBase.rag_system.clear_ask_history()
+            StateBase.rag_system.clear_conversation_history()
+
         response, similarity_list, retrieval = StateBase.rag_system.ask(
             query, n_retrieval=8, n_rerank=4, return_retrieval=True
         )

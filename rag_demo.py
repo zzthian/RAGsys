@@ -41,8 +41,6 @@ def init_rag(dataset_path):
     defaul_rag_save_name = (
         "rag_database_"
         + embedding_model_name.split("/")[-1]
-        + "_"
-        + ".".join(dataset_path.split("/")[-1].split(".")[:-1])
     )
 
     print("Start building RAG system...\n")
@@ -83,7 +81,7 @@ def main():
             for x, y in zip(similarity_list, retrieval)
         ]
         print("# Answer:\n", answer, "\n")
-        print("# Retrieval:\n\n", "\n\n".join(retrieval_list))
+        # print("# Retrieval:\n\n", "\n\n".join(retrieval_list))
 
 
 if __name__ == "__main__":

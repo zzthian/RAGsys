@@ -57,6 +57,7 @@ class reranker_RagSystem(rag_framework.RagSystem):
         self.retrieval_efficiency = None
         self.column_lengths = None
         self.max_length = None
+        self.conversation_history = []
     
     def ask(self, query:str, n_retrieval:int=16, n_rerank:int=4, stream:bool=False, template_mode:str = "default",  return_retrieval=False) -> Union[Iterator[str], Tuple[str, List[Dict[str, float]], List[str]]]:
         """Ask the RAG system a question and get the answer
@@ -70,19 +71,30 @@ class reranker_RagSystem(rag_framework.RagSystem):
         """
         # assert template_mode in ['default', 'multi_choice', 'TF_answer', 'multi_choice_explain', 'single_choice', 'ask', 'defense'], 'Error: template_mode should be default, multi-choice or TF-answer, single_choice, ask, defense.'
         retrieval, scores, indices = self.fetch(query, n_retrieval, n_rerank, return_index=True)
-        # update the ask history
-        indices = [i for i in indices]
+    
+        # update ask_history
         for i in indices:
             self.ask_history[i] = self.ask_history.get(i, 0) + 1
-        # concatenate and ask
+        
+        # format retrieved docs
         docs = self.format_retrieval(retrieval)
-        if stream:
-            return self.stream(docs, query, template_mode)
+        
+        # Build chat context from history
+        # chat_template = self.conversation_history + [
+        #     {"role": "user", "content": query + "\n\nRelevant info:\n" + "\n".join(docs)}
+        # ]
+        
+        # Generate answer
+        answer = self.generate(docs, query, template_mode, conversation_history=self.conversation_history) if not stream else self.stream(docs, query, template_mode)
+        
+        # Save interaction to history
+        self.conversation_history.append({"role": "user", "content": query})
+        self.conversation_history.append({"role": "system", "content": answer if isinstance(answer, str) else "".join(answer)})
+        
+        if not return_retrieval:
+            return answer, [{"similarity": float(s), "indices": indices} for s in scores]
         else:
-            if not return_retrieval:
-                return self.generate(docs, query, template_mode), [{"similarity":float(s), "indices":indices} for s in scores]
-            else:
-                return self.generate(docs, query, template_mode), [{"similarity":float(s), "indices":indices} for s in scores], docs
+            return answer, [{"similarity": float(s), "indices": indices} for s in scores], docs
         
         
     def get_column_lengths(self):
@@ -105,6 +117,9 @@ class reranker_RagSystem(rag_framework.RagSystem):
     
     def clear_ask_history(self):
         self.ask_history = dict()
+    
+    def clear_conversation_history(self):
+        self.conversation_history = []
 
 class DPRerankerRagSystem(rag_framework.DPRagSystem):
     def __init__(self, database:RagDatabase, embedding_model, llm:HfWrapper, reranker: Optional[FlagReranker] = None, 
