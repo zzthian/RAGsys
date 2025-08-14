@@ -41,8 +41,6 @@ def init_rag(dataset_path):
     defaul_rag_save_name = (
         "rag_database_"
         + embedding_model_name.split("/")[-1]
-        + "_"
-        + ".".join(dataset_path.split("/")[-1].split(".")[:-1])
     )
 
     print("Start building RAG system...\n")
@@ -71,32 +69,31 @@ def main():
     load_dotenv()
     rag_system = init_rag(dataset_path)
     overall_convo = {}
-    for convo in range(1):
+    for convo in range(4):
         curr_convo = []
-        curr_convo_json = {}
         for round in range(5):
-            curr_convo_json[convo] = curr_convo
             question = input("# Ask something (or type 'exit' to quit): ")
             if question.lower() == "exit":
                 print("Exiting...")
+                rag_system.clear_ask_history()
+                rag_system.clear_conversation_history()
                 break
-            history = json.dumps(curr_convo_json)
-            full_question = (
-                "This is the conversation so far: "
-                + history
-                + "\n"
-                + "Question: "
-                + question
-            )
-            print(full_question)
             answer, similarity_list, retrieval = rag_system.ask(
-                full_question, n_retrieval=8, n_rerank=4, return_retrieval=True
+                question, n_retrieval=8, n_rerank=4, return_retrieval=True
             )
             print("RAG response: " + answer)
             qn_answer = {"step": round, "query": question, "response": answer}
-
             curr_convo.append(qn_answer)
         overall_convo[convo] = curr_convo
+
+    with open("samples.json", "w", encoding="utf-8") as f:
+        json.dump(
+            overall_convo, 
+            f, 
+            default=lambda o: o.__dict__,
+            indent=4,
+            ensure_ascii=False,
+        )
 
 
 if __name__ == "__main__":

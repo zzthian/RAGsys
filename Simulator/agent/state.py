@@ -61,7 +61,7 @@ def init_rag(dataset_path):
         ################################################################################
         # Only do this on first run to extend database
         # pokemon_dataset = transpose_json(
-        #     "datasets/pokemon_database.json", "input", "output"
+        #     "datasets/PokemonInfo.json", "input", "output"
         # )
         # rag_database.append(
         #     pokemon_dataset["input"],

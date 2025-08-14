@@ -99,7 +99,7 @@ def rag_chat_template(retrievals:List[str], question:str, prompt_mode='default',
                 # "content": question
             }
     ]
-    print(conversation_history)
+    # print(conversation_history)
     return [
         {
             "role": "system",
