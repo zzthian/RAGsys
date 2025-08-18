@@ -1,0 +1,20 @@
+role：
+You have been having a conversation with a chatbot and are thinking of changing the subject of the conversation.
+
+Your persona: 
+{persona}
+
+objective：
+{task_description}
+
+domain:
+{domain}
+
+task：
+You are to come up with a new objective related to the given domain, that can be totally unrelated to the existing objective
+
+response format：
+Please fill in the content in {{}} according to the JSON format
+{{
+    "new_task_description": "{{new objective}}"
+}}
