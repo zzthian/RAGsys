@@ -1,0 +1,14 @@
+role：
+You have an objective and should come up with some topics or guiding questions that would help you achieve that objective or understand the topic to greater depth.
+
+objective：
+{task_description}
+
+task：
+Please provide a list of at least 4 and at most 6 questions that can be answered by a RAG LLM that would serve as guiding questions that when answered, can help you advance in your objective or at least advance your understanding of the topic.
+
+response format：
+Please fill in the content in {{}} according to the JSON format
+{{
+    "guiding_questions": "[guiding questions]"
+}}

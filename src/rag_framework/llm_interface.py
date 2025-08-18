@@ -2,10 +2,11 @@ import torch
 import openai
 import transformers
 import threading
+import json
 from typing import List, Dict
 from abc import ABC, abstractmethod
 
-def rag_chat_template(retrievals:List[str], question:str, prompt_mode='default', custom_instruct=None) -> List[Dict[str,str]]:
+def rag_chat_template(retrievals:List[str], question:str, prompt_mode='default', custom_instruct=None, conversation_history=None) -> List[Dict[str,str]]:
     """Generate the chat template used in openAI and huggingface APIs.
     Args:
         retrievals: the documents retrieved from the database.
@@ -98,15 +99,17 @@ def rag_chat_template(retrievals:List[str], question:str, prompt_mode='default',
                 # "content": question
             }
     ]
+    # print(conversation_history)
     return [
         {
             "role": "system",
             "content": "You are a helpful assistant for question-answering tasks.",
             # "content": rag_system_prompt.format("\n\n".join(retrievals))
         },
+        *conversation_history,
         {
             "role": "user",
-            "content": rag_system_prompt.format("\n\n".join(retrievals)) + "\n\n\nquestion:" + question + "\n\n\nPlease not extend the material, and you should only answer with the provided material. If no you don't know, please say 'I don't know.'"
+            "content": rag_system_prompt.format("\n\n".join(retrievals)) + "\n\n\nquestion:" + question + "\n\n\nPlease not extend the material, and you should only answer with the provided material and our conversation thus far. If no you don't know, please say 'I don't know.'"
             # "content": question
         }
     ]

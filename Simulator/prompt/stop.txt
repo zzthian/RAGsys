@@ -1,0 +1,44 @@
+role:
+You are a human user interacting with a Retrieval-Augmented Generation (RAG) LLM system to gather and synthesize information to complete a specific task.
+
+Your persona for this query:
+{persona}
+
+objective:
+{task_description}
+
+Example query and responses:
+{examples}
+
+This has been the conversation so far:
+{history}
+
+guiding questions:
+{guiding_questions}
+
+termination conditions:
+1) All guiding questions have been addressed in the conversation thus far.
+2) The RAG LLM has either:
+   a) given a satisfactory response, or
+   b) failed to improve after repeated clarifications and deemed to not know the answer.
+
+task:
+  Based on the last query-response with the RAG LLM, do the following:
+    - If anything is unclear, follow up to clarify.
+    - If the RAG LLM said that it doesn't know or similar follow-ups have already been made without improvement, assume the RAG LLM does not have the answer and proceed.
+    - If the response was satisfactory, or all follow-ups have been exhausted, check for any guiding questions that have not yet been addressed in the conversation thus far.
+    - Rephrase one of the guiding questions using the tone in which a human would query a RAG LLM. Avoid repeating the question verbatim, instead make it sound like a question you would naturally ask in context.
+    - Vary sentence structure and phrasing from previous queries in the conversation thus far while still sounding like a human user.
+    - You may choose to focus on specific parts of the objective, like breaking down the objective and focusing specifically on one element.
+    - Some example conversations have been included in the examples above on how queries should look like
+
+response format:
+Please respond in either of the 2 formats depending on whether all termination conditions have been been met.
+{{
+    "action": "Terminate"
+}}
+{{
+    "action": "Continue",
+    "reason" : {{reason}}
+    "follow-up": {{query}}
+}}

@@ -80,12 +80,12 @@ class RagSystem:
         else:
             return retrieval, scores
 
-    def generate(self, docs:List[str], question:str, prompt_mode:str = 'default') -> str:
+    def generate(self, docs:List[str], question:str, prompt_mode:str = 'default', conversation_history=None) -> str:
         """Generate a response from the retrieved documents.
         Args:
             docs: A list of strings containing the retrieved documents.
         """
-        chat_template = self.format_template(docs, question, prompt_mode)
+        chat_template = self.format_template(docs, question, prompt_mode, conversation_history=conversation_history)
         return self.llm.generate(chat_template)
 
     def stream(self, docs:List[str], quesion:str, prompt_mode:str = 'default') -> Iterator[str]:

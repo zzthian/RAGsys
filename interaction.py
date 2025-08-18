@@ -68,20 +68,32 @@ def main():
     custom_label = now.strftime("%Y-%m-%d %H:%M:%S")
     load_dotenv()
     rag_system = init_rag(dataset_path)
-    while True:
-        question = input("# Ask something (or type 'exit' to quit): ")
-        if question.lower() == "exit":
-            print("Exiting...")
-            break
-        answer, similarity_list, retrieval = rag_system.ask(
-            question, n_retrieval=8, n_rerank=4, return_retrieval=True
+    overall_convo = {}
+    for convo in range(4):
+        curr_convo = []
+        for round in range(5):
+            question = input("# Ask something (or type 'exit' to quit): ")
+            if question.lower() == "exit":
+                print("Exiting...")
+                rag_system.clear_ask_history()
+                rag_system.clear_conversation_history()
+                break
+            answer, similarity_list, retrieval = rag_system.ask(
+                question, n_retrieval=8, n_rerank=4, return_retrieval=True
+            )
+            print("RAG response: " + answer)
+            qn_answer = {"step": round, "query": question, "response": answer}
+            curr_convo.append(qn_answer)
+        overall_convo[convo] = curr_convo
+
+    with open("samples.json", "w", encoding="utf-8") as f:
+        json.dump(
+            overall_convo, 
+            f, 
+            default=lambda o: o.__dict__,
+            indent=4,
+            ensure_ascii=False,
         )
-        retrieval_list = [
-            f"Similarity: {x}\nContent:\n{y}"
-            for x, y in zip(similarity_list, retrieval)
-        ]
-        print("# Answer:\n", answer, "\n")
-        # print("# Retrieval:\n\n", "\n\n".join(retrieval_list))
 
 
 if __name__ == "__main__":
