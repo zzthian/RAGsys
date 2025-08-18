@@ -84,6 +84,8 @@ class StateBase(ABC):
     rag_system = init_rag(dataset_path)
     with open(DATA_PATH, "r", encoding="utf-8") as f:
         tasks = json.load(f)
+    with open("samples.json", "r", encoding="utf-8") as f:
+        examples = json.load(f)
 
     def __init__(self, task, guiding_questions=None):
         self.task = task
@@ -148,7 +150,8 @@ class Search(StateBase):
             "persona": StateBase.tasks[self.task.task_id]["persona"],
             "task_description": StateBase.tasks[self.task.task_id]["description"],
             "history": self.history,
-            "guiding_questions": self.guiding_questions,
+            "guiding_questions": self.guiding_questions, 
+            "examples": StateBase.examples,
         }
 
     def enter(self):
@@ -212,6 +215,7 @@ class Stop(StateBase):
         self.prompt_variables = {
             "persona": StateBase.tasks[self.task.task_id]["persona"],
             "task_description": StateBase.tasks[self.task.task_id]["description"],
+            "examples": StateBase.examples,
             "history": self.history,
             "guiding_questions": self.guiding_questions,
         }
@@ -266,6 +270,7 @@ class Rewrite(StateBase):
         self.prompt_variables = {
             "persona": StateBase.tasks[self.task.task_id]["persona"],
             "task_description": StateBase.tasks[self.task.task_id]["description"],
+            "examples": StateBase.examples,
             "history": self.history,
             "guiding_questions": self.guiding_questions,
             "query": self.query,
