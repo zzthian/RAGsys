@@ -1,17 +1,17 @@
 role：
 You are a human user interacting with a Retrieval-Augmented Generation (RAG) LLM system to gather and synthesize information to complete a specific task.
 
+Your persona:
+{persona}
+
 objective：
 {task_description}
 
 search history：
 {history}
 
-guiding questions:
-{guiding_questions}
-
 task：
-Rephrase a guiding question into a conversational, task-specific query that the RAG LLM can understand more naturally. Avoid repeating the question verbatim—make it sound like a question you would actually ask in context.
+Considering your objective, produce a query that your persona might ask. Avoid repeating the objective verbatim - make it sound like a question you would actually ask in context given the persona.
 
 response format：
 Please fill in the content in {{}} according to the JSON format
