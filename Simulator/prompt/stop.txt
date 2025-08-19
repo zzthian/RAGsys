@@ -32,6 +32,6 @@ Please respond in either of the 2 formats depending on whether all termination c
 }}
 {{
     "action": "Continue",
-    "reason" : {{reason}}
+    "reason": {{reason}},
     "follow-up": {{query}}
 }}

@@ -13,9 +13,6 @@ Example query and responses:
 This has been the conversation so far:
 {history}
 
-Reason for continuing the conversation: 
-{reason}
-
 past rewrites and reasons:
 {rewrites_and_reasons}
 

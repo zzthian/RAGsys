@@ -1,5 +1,5 @@
 role：
-You have been having a conversation with a chatbot and are thinking of changing the subject of the conversation.
+You have been having a conversation with a Retrieval-Augmented Generation (RAG) LLM system and are thinking of changing the subject of the conversation.
 
 Your persona: 
 {persona}

@@ -117,7 +117,7 @@ class Init(StateBase):
 
     def exec(self):
         task_description = StateBase.tasks[self.task.task_id]["description"]
-        return Search(self.task, new=True)
+        return Search(self.task, current_task_description=task_description, new=True)
 
 
 class Search(StateBase):
@@ -186,8 +186,6 @@ class Search(StateBase):
         return Stop(self.task, self.current_task_description, self.task_descriptions, history=self.history)
 
 class Stop(StateBase):
-    PIVOT_PROBABILITY = 0.2
-
     def __init__(self, task, current_task_description, task_descriptions, history=None):
         super().__init__(task)
         self.model = None # Remove together with 2 other instances?
@@ -216,7 +214,6 @@ class Stop(StateBase):
         #         task=self.task,
         #         guiding_question=self.guiding_question,
         #         history=self.history,
-        #         reason=results["reason"],
         #         query=results["follow-up"],
         #     )
         if self.task.step == self.task.n_rounds:
@@ -224,9 +221,9 @@ class Stop(StateBase):
 
         pivot = random.random()
         
-        if pivot < Stop.PIVOT_PROBABILITY:
+        if pivot < Pivot.PIVOT_PROBABILITY:
             # pivot
-            return Pivot()
+            return Pivot(self.task, self.current_task_description, self.task_descriptions)
         else:
             # don't pivot
             return Rewrite(
@@ -234,7 +231,6 @@ class Stop(StateBase):
                 current_task_description=self.current_task_description,
                 task_descriptions=self.task_descriptions,
                 history=self.history,
-                reason=results["reason"],
                 query=results["follow-up"],
             )
 
@@ -251,7 +247,6 @@ class Rewrite(StateBase):
         query=None,
         rewrites_and_reasons=[],
         rewrite_depth=0,
-        reason=None,
     ):
         super().__init__(task)
         self.model = None # Remove together with 2 other instances
@@ -261,7 +256,6 @@ class Rewrite(StateBase):
         self.task_descriptions = task_descriptions
         self.rewrites_and_reasons = rewrites_and_reasons
         self.rewrite_depth = rewrite_depth
-        self.reason = reason
         self.prompt_variables = {
             "persona": StateBase.tasks[self.task.task_id]["persona"],
             "task_description": self.current_task_description,
@@ -273,7 +267,6 @@ class Rewrite(StateBase):
                 if not self.rewrites_and_reasons
                 else self.rewrites_and_reasons
             ),
-            "reason": self.reason,
         }
 
     def enter(self):
@@ -302,6 +295,8 @@ class Rewrite(StateBase):
             # print(results["rewrite_reason"])
             return Rewrite(
                 task=self.task,
+                current_task_description=self.current_task_description,
+                task_descriptions=self.task_descriptions,
                 history=self.history,
                 query=rewritten_query,
                 rewrites_and_reasons=self.rewrites_and_reasons,
@@ -318,6 +313,8 @@ class Rewrite(StateBase):
             )
 
 class Pivot(StateBase):
+    PIVOT_PROBABILITY = 0.5
+
     def __init__(self, task, current_task_description, task_descriptions):
         super().__init__(task)
         self.current_task_description = current_task_description
@@ -335,6 +332,7 @@ class Pivot(StateBase):
     def exec(self):
         agent = Agent(prompt=StateBase.read_prompt("pivot"), **self.prompt_variables)
         new_task_description = agent.generate()["new_task_description"]
+        print("Pivot!!!!")
         print(new_task_description)
         self.task_descriptions.append(new_task_description)
         return Search(self.task, current_task_description=new_task_description, task_descriptions=self.task_descriptions)
