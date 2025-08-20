@@ -2,3 +2,4 @@
 venv/
 datasets/
 /rag_database_bge-base-en/
+*.pyc
