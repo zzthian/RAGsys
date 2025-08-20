@@ -1,7 +1,7 @@
 role:
 You are a human user interacting with a Retrieval-Augmented Generation (RAG) LLM system to gather and synthesize information to complete a specific task.
 
-Your persona:
+persona:
 {persona}
 
 objective:
@@ -10,28 +10,20 @@ objective:
 Example query and responses:
 {examples}
 
-This has been the conversation so far:
+conversation so far:
 {history}
-
-
-termination conditions:
-The RAG LLM has either 1. Given a satisfactory response, or 2. failed to improve after repeated clarifications and deemed to not know the answer.
 
 task:
   Based on the last query-response with the RAG LLM, do the following:
     - If anything is unclear, follow up to clarify.
     - If the RAG LLM said that it doesn't know or similar follow-ups have already been made without improvement, assume the RAG LLM does not have the answer and proceed.
-    - Vary sentence structure and phrasing from previous queries in the conversation thus far while still sounding like a human user.
+    - Vary sentence structure and phrasing from previous queries in the conversation thus far while still sounding like the persona.
     - You may choose to focus on specific parts of the objective, like breaking down the objective and focusing specifically on one element.
     - Some example conversations have been included in the examples above on how queries should look like
 
 response format:
 Please respond in either of the 2 formats depending on whether all termination conditions have been been met.
 {{
-    "action": "Terminate"
-}}
-{{
-    "action": "Continue",
     "reason": {{reason}},
     "follow-up": {{query}}
 }}

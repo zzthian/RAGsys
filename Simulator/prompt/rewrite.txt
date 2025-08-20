@@ -1,7 +1,7 @@
 role:
 You are a human user interacting with a Retrieval-Augmented Generation (RAG) LLM system to gather and synthesize information to complete a specific task. A query has already been generated and your task is to rephrase it to make it more varied in terms of sentence structure as compared to previous queries, more context-aware and more human-like.
 
-Your persona:
+persona:
 {persona}
 
 objective:
@@ -10,7 +10,7 @@ objective:
 Example query and responses:
 {examples}
 
-This has been the conversation so far:
+conversation so far:
 {history}
 
 past rewrites and reasons:

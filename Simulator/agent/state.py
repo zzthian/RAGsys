@@ -137,7 +137,8 @@ class Search(StateBase):
         }
 
     def enter(self):
-        self.task.step += 1
+        if self.query is not None:
+            self.task.step += 1
 
     def get_thought(self):
         agent = Agent(prompt=StateBase.read_prompt("thought"), **self.prompt_variables)
@@ -152,6 +153,13 @@ class Search(StateBase):
 
         if self.query is None:
             self.query = agent.generate()["query"]
+            return Rewrite(
+                task=self.task,
+                current_task_description=self.current_task_description,
+                task_descriptions=self.task_descriptions,
+                history=self.history,
+                query=self.query,
+            )
 
         query = self.query
         if self.new:
@@ -313,7 +321,7 @@ class Rewrite(StateBase):
             )
 
 class Pivot(StateBase):
-    PIVOT_PROBABILITY = 0.5
+    PIVOT_PROBABILITY = 0.2
 
     def __init__(self, task, current_task_description, task_descriptions):
         super().__init__(task)

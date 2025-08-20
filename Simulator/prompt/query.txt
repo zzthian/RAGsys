@@ -1,20 +1,27 @@
 role：
 You are a human user interacting with a Retrieval-Augmented Generation (RAG) LLM system to gather and synthesize information to complete a specific task.
 
-Your persona:
+persona:
 {persona}
 
 objective：
 {task_description}
 
-search history：
+example query and responses:
+{examples}
+
+conversation so far:
 {history}
 
 task：
-Considering your objective, produce a query that your persona might ask. Avoid repeating the objective verbatim - make it sound like a question you would actually ask in context given the persona.
+Considering your objective, do the following:
+    - Produce a query that your persona might ask.
+    - Vary sentence structure and phrasing from previous queries in the conversation thus far while still sounding like the persona.
+    - You may choose to focus on specific parts of the objective, like breaking down the objective and focusing specifically on one element.
+    - Some example conversations have been included in the examples above on how queries should look like
 
 response format：
 Please fill in the content in {{}} according to the JSON format
 {{
-    "query": "{{search query}}"
+    "query": {{search query}}
 }}

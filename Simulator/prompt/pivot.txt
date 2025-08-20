@@ -1,7 +1,7 @@
 role：
 You have been having a conversation with a Retrieval-Augmented Generation (RAG) LLM system and are thinking of changing the subject of the conversation.
 
-Your persona: 
+persona: 
 {persona}
 
 objective：
@@ -11,7 +11,9 @@ domain:
 {domain}
 
 task：
-You are to come up with a new objective related to the given domain, that can be totally unrelated to the existing objective
+Given the domain of the RAG LLM, do the following:
+    - Come up with a related new objective
+    - The new objective can be unrelated to past objectives but must still be grounded in the domain
 
 response format：
 Please fill in the content in {{}} according to the JSON format
