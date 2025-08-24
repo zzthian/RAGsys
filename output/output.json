@@ -2,43 +2,23 @@
     "1": [
         {
             "step": 0,
-            "query": "My friend's team is all dragons, and he's super tough! He's got a Dragonite, a Salamence, and a bunch of others. I really, really want to beat him with my Zygarde because it's my favorite. How can I make Zygarde super strong against all his dragons?",
-            "response": "Based on the provided context, Zygarde has the Dragon/Ground type combination. Its \"against_dragon\" value is 2, meaning it takes super effective damage from Dragon-type moves. To make it strong against Dragon-types, you could utilize its Ground-type moves, but the context does not specify its moveset or how to enhance its strength beyond its base stats and type advantages. I don't know."
+            "query": "Hey, I've had a fever since last night and I'm a bit worried because of my diabetes. With a newborn at home and my wife recovering from a C-section, I really can't afford to get seriously sick. What usually causes a fever in someone like me?",
+            "response": "Based on the retrievals, fever in someone with diabetes is often related to an infection, as diabetes can increase the risk of infections. Common causes include viral or bacterial infections, such as pneumonia or other respiratory issues, and it's important to monitor for additional symptoms. Given your diabetes and the concerns about your newborn and wife, it is advisable to consult a healthcare provider promptly for evaluation, accurate diagnosis, and appropriate treatment to ensure your and your family's well-being. If symptoms worsen or persist, seek medical attention."
         },
         {
             "step": 1,
-            "query": "For my last Pokemon in Kalos, I'm stuck! I love Dragon types, but I can't figure out which one to pick. Who is the absolute strongest Dragon-type here that can win a battle? And which one is the cutest? I need to know both to make my final choice!",
-            "response": "I don't know."
+            "query": "Okay, so I'm keeping an eye on this fever like you said. With my diabetes, are there any specific red flags I should be looking for that would mean I need to drop everything and head straight to the emergency room?",
+            "response": "Based on the retrievals, here are specific red flags for a person with diabetes and a fever that warrant immediate emergency care:\n\n-   **Unusually high blood sugar numbers** that you cannot get down (e.g., persistently above 200)\n-   **Profuse sweating and lightheadedness**\n-   **Severe pain**, especially in the upper abdominal area, or intense body aches, particularly if concentrated in the neck\n-   **Nausea** and loss of appetite, especially if prolonged\n-   **Symptoms of severe infection**, such as a sudden high fever with intense body aches, which could indicate conditions like dengue (especially if in an endemic area) or other serious infections\n-   **Low energy levels** and persistent fever that does not resolve, as this could point to underlying issues like typhoid or tuberculosis, which require urgent medical investigation\n\nIf you experience any of these symptoms, it is advisable to seek emergency medical attention promptly due to the increased risks associated with diabetes and potential infections."
         },
         {
             "step": 2,
-            "query": "Okay, so I'm trying to find some Dragon Pokémon for my team. I want ones that are really strong, but also kinda cute and not just big and scary. Zygarde is the coolest, but I need more! Who are the best ones like that in Kalos, and where are their hiding spots?",
-            "response": "I don't know."
+            "query": "My main worry right now is my baby girl. With this fever and my diabetes, what's the actual risk of me passing an illness to her, and what are the most important things I should be doing at home to keep her safe?",
+            "response": "Based on the retrieved context, which focuses on infant care during viral illness, I do not have specific information about the risk of transmission from a parent with diabetes or the additional precautions needed in that specific situation.\n\nTo get accurate advice on the risk of passing an illness to your baby and the most important precautions to take at home, given your diabetes and fever, it is best to consult directly with a healthcare provider who can assess your individual health circumstances."
         },
         {
             "step": 3,
-            "query": "Okay, so I was looking through my Pokedex and saw Zygarde has like, three different forms! I know there's the 10% dog form and the 50% snake form, but how do I get that super cool 100% complete form in Pokemon X? What do I need to do to make it transform?",
-            "response": "I don't know."
-        },
-        {
-            "step": 4,
-            "query": "Ugh, I've been running all over Kalos grabbing those green Cells for my Zygarde, but it's still just the big snake! How many more do I have to collect to see it become the giant robot one?",
-            "response": "I don't know."
-        },
-        {
-            "step": 5,
-            "query": "Ugh, this is taking forever! My Zygarde is still just the giant snake and I'm getting tired of running around. What are the best moves I can give it right now so it can actually win some fights for me while I keep looking?",
-            "response": "I don't know."
-        },
-        {
-            "step": 6,
-            "query": "I'm so tired of looking for those Cells! My Zygarde is still just the snake and I need a different Dragon pokemon RIGHT NOW that can help me beat the Elite Four. Which ones in Kalos are super powerful but also not super hard to find and catch?",
-            "response": "I don't know."
-        },
-        {
-            "step": 7,
-            "query": "My friend's Garchomp is so strong and I want one too! Where exactly in Kalos do I go to catch a Gible? I need to find one fast.",
-            "response": "I don't know."
+            "query": "I'm at the pharmacy looking at the fever meds, but I'm really nervous about how they might affect my diabetes. Can you tell me which ones are generally safe for my blood sugar and which ones I should definitely not take?",
+            "response": "Based on the retrieved context, I do not have specific information about which fever medications are safe or unsafe for individuals with diabetes. The provided context discusses various diabetes medications and general management advice but does not address over-the-counter fever reducers or their interactions with diabetes.\n\nFor accurate guidance on selecting a fever medication that is safe for your diabetes, I recommend consulting your pharmacist or healthcare provider directly. They can consider your full medical history and current medications to provide personalized advice."
         }
     ]
 }

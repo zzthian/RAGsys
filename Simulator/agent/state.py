@@ -134,13 +134,10 @@ class Guide(StateBase):
             prompt=StateBase.read_prompt("guide"),
             **self.prompt_variables,
         )
-        guiding_qns = agent.generate()["guiding_questions"]
+        focus_qns = agent.generate()["focus_list"]
 
-        guiding_qn_json_list = map(
-            lambda x: {"question": x, "status": "pending"}, guiding_qns
-        )
-        # Pass guiding qns as part of task so that arguments are not too messy
-        self.task.focus_list = list(guiding_qn_json_list)
+        focus_list = map(lambda x: {"question": x, "status": "pending"}, focus_qns)
+        self.task.focus_list = list(focus_list)
 
         return Search(
             task=self.task, current_focus=self.task.focus_list[0]["question"], new=True
@@ -236,6 +233,7 @@ class Stop(StateBase):
         self.prompt_variables = {
             "persona": StateBase.tasks[self.task.task_id]["persona"],
             "task_description": self.task.task_description,
+            "focus_list": self.task.focus_list,
             "current_focus": self.current_focus,
             "examples": StateBase.examples,
             "history": self.history,
@@ -245,23 +243,42 @@ class Stop(StateBase):
         pass
 
     def exec(self):
-        agent = Agent(prompt=StateBase.read_prompt("stop"), **self.prompt_variables)
-        results = agent.generate()
+
         if self.task.step == self.task.n_rounds:
             return Finish(self.task)
+
+        agent = Agent(prompt=StateBase.read_prompt("stop"), **self.prompt_variables)
+        results = agent.generate()
+        updated_focus_list = results["updated_focus_list"]
+        all_answered = True
+        curr_answered = False
+        for focus in updated_focus_list:
+            if (
+                focus["question"] == self.current_focus
+                and focus["status"] == "answered"
+            ):
+                curr_answered = True
+            if focus["status"] == "pending":
+                all_answered = False
+                break
+        if all_answered:
+            # All boundary completed, can end convo
+            return Finish(self.task)
+
+        if curr_answered:
+            # Not all boundary answered, but current one is completely answered, pivot
+            return Pivot(self.task)
+
+        self.task.focus_list = updated_focus_list
+        # RNG either pivot or continue on same focus
 
         pivot = random.random()
 
         if pivot < Pivot.PIVOT_PROBABILITY:
-            # pivot
             return Pivot(self.task)
         else:
-            # don't pivot
-            return Rewrite(
-                task=self.task,
-                history=self.history,
-                current_focus=self.current_focus,
-                query=results["follow-up"],
+            return Search(
+                self.task, history=self.history, current_focus=self.current_focus
             )
 
 
@@ -311,6 +328,7 @@ class Rewrite(StateBase):
                 self.task,
                 self.query,
                 history=self.history,
+                current_focus=self.current_focus,
             )
 
         agent = Agent(prompt=StateBase.read_prompt("rewrite"), **self.prompt_variables)
@@ -327,6 +345,7 @@ class Rewrite(StateBase):
                 history=self.history,
                 query=rewritten_query,
                 rewrites_and_reasons=self.rewrites_and_reasons,
+                current_focus=self.current_focus,
                 rewrite_depth=self.rewrite_depth + 1,
             )
         else:
@@ -337,6 +356,7 @@ class Rewrite(StateBase):
                 self.task,
                 self.query,
                 history=self.history,
+                current_focus=self.current_focus,
             )
 
 
@@ -345,18 +365,15 @@ class Pivot(StateBase):
 
     def __init__(self, task):
         super().__init__(task)
-        self.prompt_variables = {
-            "persona": StateBase.tasks[self.task.task_id]["persona"],
-            "task_description": self.task.task_description,
-            "guiding_questions": self.task.focus_list,
-        }
 
     def enter(self):
         pass
 
     def exec(self):
-        agent = Agent(prompt=StateBase.read_prompt("pivot"), **self.prompt_variables)
-        new_focus = agent.generate()["new_focus"]
+        candidates = list(
+            filter(lambda x: x["status"] == "pending", self.task.focus_list)
+        )
+        new_focus = candidates[random.randint(0, len(candidates) - 1)]
         print("Pivot!!!!")
         print(new_focus)
         return Search(self.task, current_focus=new_focus)

@@ -10,12 +10,12 @@ overall objective：
 focus:
 {current_focus}
 
-guiding questions:
-{guiding_questions}
+focus list:
+{focus_list}
 
 
 task：
-Given the list of guiding questions, choose one of those that have state: "pending", to be the new focus of the conversation.
+Given the list of focus questions, choose one of those that have state: "pending", to be the new focus of the conversation.
 
 response format：
 Please fill in the content in {{}} according to the JSON format

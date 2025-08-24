@@ -7,8 +7,8 @@ persona:
 objective:
 {task_description}
 
-focus:
-{current_focus}
+focus list:
+{focus_list}
 
 Example query and responses:
 {examples}
@@ -17,16 +17,17 @@ conversation so far:
 {history}
 
 task:
-  Based on the last query-response with the RAG LLM, do the following:
-    - If anything is unclear, follow up to clarify.
-    - If the RAG LLM said that it doesn't know or similar follow-ups have already been made without improvement, assume the RAG LLM does not have the answer and proceed.
-    - Vary sentence structure and phrasing from previous queries in the conversation thus far while still sounding like the persona.
-    - You may choose to focus on specific parts of the objective, like breaking down the objective and focusing specifically on one element.
-    - Some example conversations have been included in the examples above on how queries should look like
+  Based on the entire conversation with the RAG LLM so far, do the following:
+    - Label the status of all questions in the focus list
+      - If the question has been satisfactorily answered, label "answered".
+      - If the RAG has indicated that it does not know the answer, or similar follow ups have been made with no improvement to the quality of the responses, label "RAG doesn't know".
+      - Else label as "pending".
+    - DO NOT CHANGE THE QUESTIONS
+
 
 response format:
-Please respond in either of the 2 formats depending on whether all termination conditions have been been met.
+Please respond in the following format, ensuring that the [updated_focus_list] can be parsed into a list.
 {{
-    "reason": {{reason}},
-    "follow-up": {{query}}
+  "updated_focus_list": [updated_focus_list]
+    
 }}
