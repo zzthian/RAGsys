@@ -112,15 +112,48 @@ class Init(StateBase):
 
     def enter(self):
         self.task.step = -1
+        self.task.guiding_qns = []
 
     def exec(self):
-        task_description = StateBase.tasks[self.task.task_id]["description"]
-        self.task.task_description = task_description
-        return Search(self.task, new=True)
+        return Guide(self.task)
+
+
+class Guide(StateBase):
+    def __init__(self, task):
+        super().__init__(task)
+        self.task_description = StateBase.tasks[self.task.task_id]["description"]
+        self.prompt_variables = {
+            "persona": StateBase.tasks[self.task.task_id]["persona"],
+            "task_description": self.task_description,
+        }
+
+    def enter(self):
+        pass
+
+    def exec(self):
+        agent = Agent(
+            prompt=StateBase.read_prompt("guide"),
+            **self.prompt_variables,
+        )
+        guiding_qns = agent.generate()["guiding_questions"]
+
+        guiding_qn_json_list = map(
+            lambda x: {"question": x, "status": "pending"}, guiding_qns
+        )
+        # Pass guiding qns as part of task so that arguments are not too messy
+        self.task.guiding_qns = list(guiding_qn_json_list)
+
+        return Search(task=self.task, new=True)
 
 
 class Search(StateBase):
-    def __init__(self, task, query=None, history=None, new=False):
+    def __init__(
+        self,
+        task,
+        query=None,
+        history=None,
+        new=False,
+    ):
         super().__init__(task)
         self.query = query
         self.model = None  # Remove together with 2 other instances?
