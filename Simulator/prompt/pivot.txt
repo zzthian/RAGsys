@@ -4,19 +4,21 @@ You have been having a conversation with a Retrieval-Augmented Generation (RAG) 
 persona: 
 {persona}
 
-objective：
+overall objective：
 {task_description}
 
-domain:
-{domain}
+focus:
+{current_focus}
+
+guiding questions:
+{guiding_questions}
+
 
 task：
-Given the domain of the RAG LLM, do the following:
-    - Come up with a related new objective
-    - The new objective can be unrelated to past objectives but must still be grounded in the domain
+Given the list of guiding questions, choose one of those that have state: "pending", to be the new focus of the conversation.
 
 response format：
 Please fill in the content in {{}} according to the JSON format
 {{
-    "new_task_description": "{{new objective}}"
+    "new_focus": "{{new focus}}"
 }}

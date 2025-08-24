@@ -12,6 +12,7 @@ class Task:
         self.real_task = kwargs.get("real_task")
         self.generate_task = []
         self.n_rounds = random.randint(3, 8)
+        self.task_description = None
 
     def get_history_query(self, step):
         history = ""

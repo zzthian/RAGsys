@@ -27,6 +27,7 @@ from tqdm import tqdm
 from datetime import datetime
 import random
 
+
 def init_rag(dataset_path):
     embedding_model_name = "BAAI/bge-base-en"
     embedding_model = SentenceTransformer(embedding_model_name, device="cpu")
@@ -41,10 +42,7 @@ def init_rag(dataset_path):
     )
 
     """build rag system"""
-    defaul_rag_save_name = (
-        "rag_database_"
-        + embedding_model_name.split("/")[-1]
-    )
+    defaul_rag_save_name = "rag_database_" + embedding_model_name.split("/")[-1]
 
     print("Start building RAG system...\n")
     if not os.path.exists(defaul_rag_save_name):
@@ -117,22 +115,21 @@ class Init(StateBase):
 
     def exec(self):
         task_description = StateBase.tasks[self.task.task_id]["description"]
-        return Search(self.task, current_task_description=task_description, new=True)
+        self.task.task_description = task_description
+        return Search(self.task, new=True)
 
 
 class Search(StateBase):
-    def __init__(self, task, query=None, current_task_description=None, task_descriptions=[], history=None, new=False):
+    def __init__(self, task, query=None, history=None, new=False):
         super().__init__(task)
         self.query = query
-        self.model = None # Remove together with 2 other instances?
-        self.current_task_description = current_task_description
-        self.task_descriptions = task_descriptions
+        self.model = None  # Remove together with 2 other instances?
         self.history = history
         self.new = new
         self.prompt_variables = {
             "persona": StateBase.tasks[self.task.task_id]["persona"],
-            "task_description": self.current_task_description,
-            "history": self.history, 
+            "task_description": self.task.task_description,
+            "history": self.history,
             "examples": StateBase.examples,
         }
 
@@ -155,8 +152,6 @@ class Search(StateBase):
             self.query = agent.generate()["query"]
             return Rewrite(
                 task=self.task,
-                current_task_description=self.current_task_description,
-                task_descriptions=self.task_descriptions,
                 history=self.history,
                 query=self.query,
             )
@@ -191,18 +186,20 @@ class Search(StateBase):
             }
         )
 
-        return Stop(self.task, self.current_task_description, self.task_descriptions, history=self.history)
+        return Stop(
+            self.task,
+            history=self.history,
+        )
+
 
 class Stop(StateBase):
-    def __init__(self, task, current_task_description, task_descriptions, history=None):
+    def __init__(self, task, history=None):
         super().__init__(task)
-        self.model = None # Remove together with 2 other instances?
-        self.current_task_description = current_task_description
-        self.task_descriptions = task_descriptions
+        self.model = None  # Remove together with 2 other instances?
         self.history = history
         self.prompt_variables = {
             "persona": StateBase.tasks[self.task.task_id]["persona"],
-            "task_description": self.current_task_description,
+            "task_description": self.task.task_description,
             "examples": StateBase.examples,
             "history": self.history,
         }
@@ -213,31 +210,18 @@ class Stop(StateBase):
     def exec(self):
         agent = Agent(prompt=StateBase.read_prompt("stop"), **self.prompt_variables)
         results = agent.generate()
-
-        # if "Terminate" in results["action"]:
-        #     return Finish(self.task)
-        # else:
-        #     print(f"Continuing conversation because: {results['reason']}")
-        #     return Rewrite(
-        #         task=self.task,
-        #         guiding_question=self.guiding_question,
-        #         history=self.history,
-        #         query=results["follow-up"],
-        #     )
         if self.task.step == self.task.n_rounds:
             return Finish(self.task)
 
         pivot = random.random()
-        
+
         if pivot < Pivot.PIVOT_PROBABILITY:
             # pivot
-            return Pivot(self.task, self.current_task_description, self.task_descriptions)
+            return Pivot(self.task)
         else:
             # don't pivot
             return Rewrite(
                 task=self.task,
-                current_task_description=self.current_task_description,
-                task_descriptions=self.task_descriptions,
                 history=self.history,
                 query=results["follow-up"],
             )
@@ -249,24 +233,20 @@ class Rewrite(StateBase):
     def __init__(
         self,
         task,
-        current_task_description,
-        task_descriptions,
         history=None,
         query=None,
         rewrites_and_reasons=[],
         rewrite_depth=0,
     ):
         super().__init__(task)
-        self.model = None # Remove together with 2 other instances
+        self.model = None  # Remove together with 2 other instances
         self.history = history
         self.query = query
-        self.current_task_description = current_task_description
-        self.task_descriptions = task_descriptions
         self.rewrites_and_reasons = rewrites_and_reasons
         self.rewrite_depth = rewrite_depth
         self.prompt_variables = {
             "persona": StateBase.tasks[self.task.task_id]["persona"],
-            "task_description": self.current_task_description,
+            "task_description": self.task.task_description,
             "examples": StateBase.examples,
             "history": self.history,
             "query": self.query,
@@ -303,8 +283,6 @@ class Rewrite(StateBase):
             # print(results["rewrite_reason"])
             return Rewrite(
                 task=self.task,
-                current_task_description=self.current_task_description,
-                task_descriptions=self.task_descriptions,
                 history=self.history,
                 query=rewritten_query,
                 rewrites_and_reasons=self.rewrites_and_reasons,
@@ -320,18 +298,16 @@ class Rewrite(StateBase):
                 history=self.history,
             )
 
+
 class Pivot(StateBase):
     PIVOT_PROBABILITY = 0.2
 
-    def __init__(self, task, current_task_description, task_descriptions):
+    def __init__(self, task):
         super().__init__(task)
-        self.current_task_description = current_task_description
-        self.task_descriptions = task_descriptions
         self.prompt_variables = {
-            "persona": StateBase.tasks[self.task.task_id]["persona"], 
-            "task_description": self.current_task_description,
-            "domain": StateBase.tasks[self.task.task_id]["domain"]
-            # "task_description": StateBase.tasks[self.task.task_id]["description"]
+            "persona": StateBase.tasks[self.task.task_id]["persona"],
+            "task_description": self.task.task_description,
+            "domain": StateBase.tasks[self.task.task_id]["domain"],
         }
 
     def enter(self):
@@ -339,11 +315,10 @@ class Pivot(StateBase):
 
     def exec(self):
         agent = Agent(prompt=StateBase.read_prompt("pivot"), **self.prompt_variables)
-        new_task_description = agent.generate()["new_task_description"]
+        new_focus = agent.generate()["new_focus"]
         print("Pivot!!!!")
-        print(new_task_description)
-        self.task_descriptions.append(new_task_description)
-        return Search(self.task, current_task_description=new_task_description, task_descriptions=self.task_descriptions)
+        print(new_focus)
+        return Search(self.task, current_focus=new_focus)
 
 
 class Finish(StateBase):

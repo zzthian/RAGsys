@@ -7,6 +7,9 @@ persona:
 objective:
 {task_description}
 
+focus:
+{current_focus}
+
 Example query and responses:
 {examples}
 

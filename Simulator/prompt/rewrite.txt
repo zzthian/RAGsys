@@ -4,8 +4,11 @@ You are a human user interacting with a Retrieval-Augmented Generation (RAG) LLM
 persona:
 {persona}
 
-objective:
+overall objective:
 {task_description}
+
+focus:
+{current_focus}
 
 Example query and responses:
 {examples}
