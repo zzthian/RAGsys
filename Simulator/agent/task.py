@@ -13,6 +13,7 @@ class Task:
         self.generate_task = []
         self.n_rounds = random.randint(3, 8)
         self.task_description = None
+        self.focus_list = []
 
     def get_history_query(self, step):
         history = ""

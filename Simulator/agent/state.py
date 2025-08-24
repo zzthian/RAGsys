@@ -112,7 +112,7 @@ class Init(StateBase):
 
     def enter(self):
         self.task.step = -1
-        self.task.guiding_qns = []
+        self.task.task_description = StateBase.tasks[self.task.task_id]["description"]
 
     def exec(self):
         return Guide(self.task)
@@ -121,10 +121,9 @@ class Init(StateBase):
 class Guide(StateBase):
     def __init__(self, task):
         super().__init__(task)
-        self.task_description = StateBase.tasks[self.task.task_id]["description"]
         self.prompt_variables = {
             "persona": StateBase.tasks[self.task.task_id]["persona"],
-            "task_description": self.task_description,
+            "task_description": self.task.task_description,
         }
 
     def enter(self):
@@ -141,9 +140,11 @@ class Guide(StateBase):
             lambda x: {"question": x, "status": "pending"}, guiding_qns
         )
         # Pass guiding qns as part of task so that arguments are not too messy
-        self.task.guiding_qns = list(guiding_qn_json_list)
+        self.task.focus_list = list(guiding_qn_json_list)
 
-        return Search(task=self.task, new=True)
+        return Search(
+            task=self.task, current_focus=self.task.focus_list[0]["question"], new=True
+        )
 
 
 class Search(StateBase):
@@ -152,16 +153,19 @@ class Search(StateBase):
         task,
         query=None,
         history=None,
+        current_focus=None,
         new=False,
     ):
         super().__init__(task)
         self.query = query
         self.model = None  # Remove together with 2 other instances?
         self.history = history
+        self.current_focus = current_focus
         self.new = new
         self.prompt_variables = {
             "persona": StateBase.tasks[self.task.task_id]["persona"],
             "task_description": self.task.task_description,
+            "current_focus": self.current_focus,
             "history": self.history,
             "examples": StateBase.examples,
         }
@@ -219,20 +223,20 @@ class Search(StateBase):
             }
         )
 
-        return Stop(
-            self.task,
-            history=self.history,
-        )
+        return Stop(self.task, history=self.history, current_focus=self.current_focus)
 
 
 class Stop(StateBase):
-    def __init__(self, task, history=None):
+    def __init__(self, task, current_focus=None, history=None):
         super().__init__(task)
         self.model = None  # Remove together with 2 other instances?
         self.history = history
+        self.current_focus = current_focus
+
         self.prompt_variables = {
             "persona": StateBase.tasks[self.task.task_id]["persona"],
             "task_description": self.task.task_description,
+            "current_focus": self.current_focus,
             "examples": StateBase.examples,
             "history": self.history,
         }
@@ -256,6 +260,7 @@ class Stop(StateBase):
             return Rewrite(
                 task=self.task,
                 history=self.history,
+                current_focus=self.current_focus,
                 query=results["follow-up"],
             )
 
@@ -270,6 +275,7 @@ class Rewrite(StateBase):
         query=None,
         rewrites_and_reasons=[],
         rewrite_depth=0,
+        current_focus=None,
     ):
         super().__init__(task)
         self.model = None  # Remove together with 2 other instances
@@ -277,11 +283,13 @@ class Rewrite(StateBase):
         self.query = query
         self.rewrites_and_reasons = rewrites_and_reasons
         self.rewrite_depth = rewrite_depth
+        self.current_focus = current_focus
         self.prompt_variables = {
             "persona": StateBase.tasks[self.task.task_id]["persona"],
             "task_description": self.task.task_description,
             "examples": StateBase.examples,
             "history": self.history,
+            "current_focus": self.current_focus,
             "query": self.query,
             "rewrites_and_reasons": (
                 "No previous rewrites"
@@ -340,7 +348,7 @@ class Pivot(StateBase):
         self.prompt_variables = {
             "persona": StateBase.tasks[self.task.task_id]["persona"],
             "task_description": self.task.task_description,
-            "domain": StateBase.tasks[self.task.task_id]["domain"],
+            "guiding_questions": self.task.focus_list,
         }
 
     def enter(self):
