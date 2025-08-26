@@ -34,6 +34,9 @@ response format:
 Please fill in the content in {{}} according to the JSON format,
 {{
   "answered": [list of indexes],
+  "answered_reasons": [list of reasons for answered],
   "unknown": [list of indexes],
-  "pending": [list of indexes]
+  "unknown_reasons": [list of reasons for unknown],
+  "pending": [list of indexes],
+  "pending_reasons": [list of reasons for pending],
 }}
