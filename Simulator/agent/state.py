@@ -138,6 +138,7 @@ class Guide(StateBase):
 
         focus_list = map(lambda x: {"question": x, "status": "pending"}, focus_qns)
         self.task.focus_list = list(focus_list)
+        self.task.current_focus_idx = 0
         print("In Guide")
         print()
         for foc in self.task.focus_list:
@@ -261,32 +262,23 @@ class Stop(StateBase):
 
         agent = Agent(prompt=StateBase.read_prompt("stop"), **self.prompt_variables)
         results = agent.generate()
-        all_answered = True
         curr_answered = False
+
         answered = results["answered"]
         unknown = results["unknown"]
         pending = results["pending"]
+
+        if self.task.current_focus_idx not in pending:
+            curr_answered = True
         print("In Stop")
         print(f"Answered questions: {answered}")
         print(f"Unknown questions: {unknown}")
         print(f"Pending questions: {pending}")
 
-        for i in answered:
-            self.task.focus_list[i]["status"] = "answered"
-        for i in unknown:
-            self.task.focus_list[i]["status"] = "unknown"
-        for i in pending:
-            self.task.focus_list[i]["status"] = "pending"
+        updated_focus_list = [self.task.focus_list[i] for i in pending]
+        self.task.focus_list = updated_focus_list
 
-        num_answered = len(
-            list(filter(lambda x: x["status"] != "pending", self.task.focus_list))
-        )
-        for focus in self.task.focus_list:
-            if focus["question"] == self.current_focus and focus["status"] != "pending":
-                curr_answered = True
-            if focus["status"] == "pending":
-                all_answered = False
-        if all_answered:
+        if len(pending) > 0:
             # All boundary completed, can end convo
             return Finish(self.task)
 
@@ -399,14 +391,12 @@ class Pivot(StateBase):
 
     def exec(self):
 
-        candidates = list(
-            filter(lambda x: x["status"] == "pending", self.task.focus_list)
-        )
         print("In Pivot")
         print("Candidates to pivot to:")
-        print(candidates)
         print()
-        new_focus = candidates[random.randint(0, len(candidates) - 1)]["question"]
+        new_focus_idx = random.randint(0, len(self.task.focus_list) - 1)
+        self.task.current_focus_idx = new_focus_idx
+        new_focus = self.task.focus_list[new_focus_idx]["question"]
         print("new_focus:")
         print(new_focus)
         print()
