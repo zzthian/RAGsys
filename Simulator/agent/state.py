@@ -267,13 +267,24 @@ class Stop(StateBase):
         answered = results["answered"]
         unknown = results["unknown"]
         pending = results["pending"]
+        answered_reasons = results["answered_reasons"]
+        unknown_reasons = results["unknown_reasons"]
+        pending_reasons = results["pending_reasons"]
 
         if self.task.current_focus_idx not in pending:
             curr_answered = True
         print("In Stop")
-        print(f"Answered questions: {answered}")
+        print(f"Answered questions:")
+        print()
+        print(f"{x} : {y}" for (x, y) in zip(answered, answered_reasons))
+        print()
         print(f"Unknown questions: {unknown}")
+        print()
+        print(f"{x} : {y}" for (x, y) in zip(unknown, unknown_reasons))
         print(f"Pending questions: {pending}")
+        print()
+        print(f"{x} : {y}" for (x, y) in zip(pending, pending_reasons))
+        print()
 
         updated_focus_list = [self.task.focus_list[i] for i in pending]
         self.task.focus_list = updated_focus_list
@@ -391,9 +402,6 @@ class Pivot(StateBase):
 
     def exec(self):
 
-        print("In Pivot")
-        print("Candidates to pivot to:")
-        print()
         new_focus_idx = random.randint(0, len(self.task.focus_list) - 1)
         self.task.current_focus_idx = new_focus_idx
         new_focus = self.task.focus_list[new_focus_idx]["question"]
