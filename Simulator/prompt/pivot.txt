@@ -20,5 +20,5 @@ Given the list of focus questions, choose one of those that have state: "pending
 response format：
 Please fill in the content in {{}} according to the JSON format
 {{
-    "new_focus": "{{new focus}}"
+    "new_focus": index of new focus
 }}

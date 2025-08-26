@@ -12,7 +12,7 @@ class Task:
         self.real_task = kwargs.get("real_task")
         self.generate_task = []
         # self.n_rounds = random.randint(3, 8)
-        self.n_rounds = 3
+        self.n_rounds = 6
         self.task_description = None
         self.focus_list = []
 

@@ -18,16 +18,22 @@ conversation so far:
 
 task:
   Based on the entire conversation with the RAG LLM so far, do the following:
-    - Label the status of all questions in the focus list
-      - If the question has been satisfactorily answered, label "answered".
-      - If the RAG has indicated that it does not know the answer, or similar follow ups have been made with no improvement to the quality of the responses, label "RAG doesn't know".
-      - Else label as "pending".
-    - DO NOT CHANGE THE QUESTIONS
+    - Group each question from the focus list into one of three categories:
+      1. answered: 
+        - The question has been satisfactorily answered based on past responses.
+        - OR it already has the status "answered".
+      2. unknown: 
+        - The RAG explicitly stated it does not know the answer.
+        - OR repeated follow-ups failed to improve the quality of the response.
+        - OR it already has the status "unknown".
+      3. pending:
+        - All other questions not in the above two categories.
 
 
 response format:
-Please respond in the following format, ensuring that the [updated_focus_list] can be parsed into a list.
+Please fill in the content in {{}} according to the JSON format,
 {{
-  "updated_focus_list": [updated_focus_list]
-    
+  "answered": [list of indexes],
+  "unknown": [list of indexes],
+  "pending": [list of indexes]
 }}

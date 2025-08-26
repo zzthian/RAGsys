@@ -19,8 +19,8 @@ conversation so far:
 task：
 Considering your objective, do the following:
     - Produce a query that your persona might ask.
+    - The query should be directed towards the focus. 
     - Vary sentence structure and phrasing from previous queries in the conversation thus far while still sounding like the persona.
-    - You may choose to focus on specific parts of the objective, like breaking down the objective and focusing specifically on one element.
     - Some example conversations have been included in the examples above on how queries should look like
 
 response format：

@@ -138,6 +138,10 @@ class Guide(StateBase):
 
         focus_list = map(lambda x: {"question": x, "status": "pending"}, focus_qns)
         self.task.focus_list = list(focus_list)
+        print("In Guide")
+        print()
+        for foc in self.task.focus_list:
+            print(json.dumps(foc, indent=4))
 
         return Search(
             task=self.task, current_focus=self.task.focus_list[0]["question"], new=True
@@ -158,6 +162,7 @@ class Search(StateBase):
         self.model = None  # Remove together with 2 other instances?
         self.history = history
         self.current_focus = current_focus
+
         self.new = new
         self.prompt_variables = {
             "persona": StateBase.tasks[self.task.task_id]["persona"],
@@ -188,6 +193,7 @@ class Search(StateBase):
                 task=self.task,
                 history=self.history,
                 query=self.query,
+                current_focus=self.current_focus,
             )
 
         query = self.query
@@ -219,6 +225,12 @@ class Search(StateBase):
                 "response": response,
             }
         )
+        for focus in self.task.focus_list:
+            print(json.dumps(focus, indent=4))
+        print(f"Executing search, step {self.task.step}")
+        print()
+        print("Current focus: " + self.current_focus)
+        print()
 
         return Stop(self.task, history=self.history, current_focus=self.current_focus)
 
@@ -249,33 +261,48 @@ class Stop(StateBase):
 
         agent = Agent(prompt=StateBase.read_prompt("stop"), **self.prompt_variables)
         results = agent.generate()
-        updated_focus_list = results["updated_focus_list"]
         all_answered = True
         curr_answered = False
-        for focus in updated_focus_list:
-            if (
-                focus["question"] == self.current_focus
-                and focus["status"] == "answered"
-            ):
+        answered = results["answered"]
+        unknown = results["unknown"]
+        pending = results["pending"]
+        print("In Stop")
+        print(f"Answered questions: {answered}")
+        print(f"Unknown questions: {unknown}")
+        print(f"Pending questions: {pending}")
+
+        for i in answered:
+            self.task.focus_list[i]["status"] = "answered"
+        for i in unknown:
+            self.task.focus_list[i]["status"] = "unknown"
+        for i in pending:
+            self.task.focus_list[i]["status"] = "pending"
+
+        num_answered = len(
+            list(filter(lambda x: x["status"] != "pending", self.task.focus_list))
+        )
+        for focus in self.task.focus_list:
+            if focus["question"] == self.current_focus and focus["status"] != "pending":
                 curr_answered = True
             if focus["status"] == "pending":
                 all_answered = False
-                break
         if all_answered:
             # All boundary completed, can end convo
             return Finish(self.task)
 
         if curr_answered:
             # Not all boundary answered, but current one is completely answered, pivot
-            return Pivot(self.task)
+            print("Pivoting as current focus question is answered")
+            print()
+            return Pivot(self.task, self.history)
 
-        self.task.focus_list = updated_focus_list
         # RNG either pivot or continue on same focus
-
         pivot = random.random()
 
         if pivot < Pivot.PIVOT_PROBABILITY:
-            return Pivot(self.task)
+            print("RNG pivot")
+            print()
+            return Pivot(self.task, self.history)
         else:
             return Search(
                 self.task, history=self.history, current_focus=self.current_focus
@@ -363,20 +390,27 @@ class Rewrite(StateBase):
 class Pivot(StateBase):
     PIVOT_PROBABILITY = 0.2
 
-    def __init__(self, task):
+    def __init__(self, task, history=None):
         super().__init__(task)
+        self.history = history
 
     def enter(self):
         pass
 
     def exec(self):
+
         candidates = list(
             filter(lambda x: x["status"] == "pending", self.task.focus_list)
         )
-        new_focus = candidates[random.randint(0, len(candidates) - 1)]
-        print("Pivot!!!!")
+        print("In Pivot")
+        print("Candidates to pivot to:")
+        print(candidates)
+        print()
+        new_focus = candidates[random.randint(0, len(candidates) - 1)]["question"]
+        print("new_focus:")
         print(new_focus)
-        return Search(self.task, current_focus=new_focus)
+        print()
+        return Search(self.task, history=self.history, current_focus=new_focus)
 
 
 class Finish(StateBase):

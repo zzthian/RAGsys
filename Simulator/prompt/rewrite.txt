@@ -34,7 +34,7 @@ Now, do the following:
     - Some example conversations have been included in the examples above on how queries should look like
 
 response format:
-Please respond in either of the 2 formats depending on whether the query needs to be rewritten.
+Please fill in the content in either one of the two {{}} according to the JSON format depending on whether the query needs to be rewritten or not.
 {{
     "action": "Pass"
 }}
