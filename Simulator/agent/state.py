@@ -274,22 +274,22 @@ class Stop(StateBase):
         if self.task.current_focus_idx not in pending:
             curr_answered = True
         print("In Stop")
-        print(f"Answered questions:")
+        print(f"Answered questions: {answered}")
         print()
-        print(f"{x} : {y}" for (x, y) in zip(answered, answered_reasons))
+        print("\n".join(f"{x} : {y}" for (x, y) in zip(answered, answered_reasons)))
         print()
         print(f"Unknown questions: {unknown}")
         print()
-        print(f"{x} : {y}" for (x, y) in zip(unknown, unknown_reasons))
+        print("\n".join(f"{x} : {y}" for (x, y) in zip(unknown, unknown_reasons)))
         print(f"Pending questions: {pending}")
         print()
-        print(f"{x} : {y}" for (x, y) in zip(pending, pending_reasons))
+        print("\n".join(f"{x} : {y}" for (x, y) in zip(pending, pending_reasons)))
         print()
 
         updated_focus_list = [self.task.focus_list[i] for i in pending]
         self.task.focus_list = updated_focus_list
 
-        if len(pending) > 0:
+        if len(pending) == 0:
             # All boundary completed, can end convo
             return Finish(self.task)
 
