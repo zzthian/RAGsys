@@ -8,7 +8,7 @@ persona:
 {persona}
 
 task：
-Please provide a list of at least 4 and at most 6 questions that:
+Please provide a list of at least 4 and at most 10 questions that:
     - Can be answered by a RAG LLM that would serve as guiding questions that when answered
     - Can help you advance in your objective or at least advance your understanding of the topic
     - Focus more on your objective with a lesser emphasis on your persona and what your persona might be concerned with regarding the objective

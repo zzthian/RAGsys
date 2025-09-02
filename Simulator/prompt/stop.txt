@@ -28,6 +28,7 @@ task:
         - OR it already has the status "unknown".
       3. pending:
         - All other questions not in the above two categories.
+  No question should appear in more than one category.
 
 
 response format:
