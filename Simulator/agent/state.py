@@ -230,8 +230,6 @@ class Search(StateBase):
             print(json.dumps(focus, indent=4))
         print(f"Executing search, step {self.task.step}")
         print()
-        print("Current focus: " + self.current_focus)
-        print()
 
         return Stop(self.task, history=self.history, current_focus=self.current_focus)
 
@@ -313,7 +311,7 @@ class Stop(StateBase):
 
 
 class Rewrite(StateBase):
-    REWRITE_DEPTH_LIMIT = 3
+    REWRITE_DEPTH_LIMIT = 2
 
     def __init__(
         self,
