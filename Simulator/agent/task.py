@@ -2,7 +2,7 @@ import random
 
 from Simulator.agent.state import *
 
-MAX_TURNS = 8
+MAX_TURNS = 15
 
 
 class Task:
@@ -12,7 +12,7 @@ class Task:
         self.real_task = kwargs.get("real_task")
         self.generate_task = []
         # self.n_rounds = random.randint(3, 8)
-        self.n_rounds = 6
+        self.n_rounds = 15
         self.task_description = None
         self.focus_list = []
 
