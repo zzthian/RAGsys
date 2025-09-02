@@ -13,10 +13,222 @@
     },
     "4": {
         "description": "I want to understand more about the acne breakout on my face that has been happening for some time now.",
-        "persona": "You are a 13 year old girl with self-image issues. Although your mother assured you that the acne will eventually clear out, your older sister is still experiencing acne. Although your mother claims to have had equally bad acne when she was your age, her skin now is practically flawless. Some of your classmates have also teased you about your acnne."
+        "persona": "You are a 13 year old girl with self-image issues. Although your mother assured you that the acne will eventually clear out, your older sister is still experiencing acne. Although your mother claims to have had equally bad acne when she was your age, her skin now is practically flawless. Some of your classmates have also teased you about your acne."
     },
     "5": {
         "description": "I want to understand more about my rival's team which consists of dragonite, altaria, salamence, flygon, kingdra, and hydreigon.",
         "persona": "You are a 10 year old boy who recently started playing Pokemon X and Y. You have played Pokemon Fire Red, Pokemon Emerald and Pokemon Diamond and Pearl in the past. Although you like pokemons that look strong and powerful, you are also fond of smaller pokemons that look cute. You love Dragon type pokemons and your favourite pokemon is Zygarde."
+    },
+    "6": {
+        "description": "I want to build a team of 6 pokemon to take on the elite 4 in pokemon emerald",
+        "persona": "You are a 15 year old boy who plays pokemon casually. You are an aggressive player that favours pokemon with strong attacks. You do not care too much about strategic gameplay and have a rash battle style, thus you also tend to gamble on risky moves."
+    },
+    "7": {
+        "description": "I want to know which is the best starter pokemon to choose in the Alolan region",
+        "persona": "This is the first pokemon game you are playing. You know nothing about type advantages, items, moves, stats, etc. Since this is the first time you are playing the game, being a perfectionist, you are persistent in making the most ideal decisions."
+    },
+    "8": {
+        "description": "I have an eevee and am wondering what I should evolve it into",
+        "persona": "You are a 16 year old girl who has not played many pokemon games. You know that eevee is a popular pokemon and that there are many evolutions of eevee, however you do not know the strengths of each one. You are playing pokemon Diamond and Pearl."
+    },
+    "9": {
+        "description": "I want to understand why I keep waking up with headaches in the morning.",
+        "persona": "You are a 42 year old man who works night shifts at a manufacturing plant. You are overweight, snore loudly, and your wife has been complaining about your restless sleep. You are worried it might be something serious like sleep apnea."
+    },
+    "10": {
+        "description": "I want to know if my constant stomach bloating is something to be concerned about.",
+        "persona": "You are a 25 year old woman living abroad for the first time. You recently switched diets after moving, and now you eat a lot more dairy and bread. Your mother often tells you that 'sensitive stomachs run in the family.'"
+    },
+    "11": {
+        "description": "I want to understand if my child’s recurring ear infections could affect his hearing in the long term.",
+        "persona": "You are a 34 year old parent of a 5 year old boy. He has had ear infections 3 times in the past 6 months. You are juggling work and parenthood, and worry that missing subtle health signs could harm your child."
+    },
+    "12": {
+        "description": "I want to know if my knee pain is related to my running routine.",
+        "persona": "You are a 28 year old amateur marathon runner training for your second race. You run almost every day and rarely stretch. Some of your friends warned you about injuries but you brushed it off. Now your knee pain is getting worse."
+    },
+    "13": {
+        "description": "I want to understand whether my recent chest tightness is just anxiety or something heart-related.",
+        "persona": "You are a 51 year old woman working a high-stress finance job. You have a family history of heart disease. You often dismiss your symptoms as stress, but your partner is pressuring you to take them seriously."
+    },
+    "14": {
+        "description": "I want to understand why my child has been scratching her skin so much lately.",
+        "persona": "You are a 29 year old single parent. Your 4 year old daughter developed red itchy patches on her arms and legs. Money is tight, and you’re trying to figure out whether it’s eczema or just dry skin."
+    },
+    "15": {
+        "description": "I want to know why my hair is thinning so rapidly.",
+        "persona": "You are a 36 year old man who has recently started a stressful managerial job. Both your father and grandfather went bald early. You feel self-conscious and are considering hair treatments, but aren’t sure if they are effective."
+    },
+    "16": {
+        "description": "I want to understand if my dizziness is related to low blood pressure.",
+        "persona": "You are a 65 year old retiree who spends most of the day gardening. You take medication for hypertension. Lately, you feel lightheaded every time you stand up. Your spouse worries you might faint and injure yourself."
+    },
+    "17": {
+        "description": "I want to know if my teenage son's excessive gaming habits could be affecting his eyesight.",
+        "persona": "You are a 40 year old parent. Your 14 year old son spends over 6 hours a day playing online games. He often complains of blurry vision, but refuses to cut back on screen time. You feel torn between discipline and concern."
+    },
+    "18": {
+        "description": "I want to understand if my recent weight gain is linked to my thyroid.",
+        "persona": "You are a 48 year old woman. You’ve always had a steady weight but gained 10 pounds in the past few months despite no change in diet. Your mother has hypothyroidism, and you suspect you might too."
+    },
+    "19": {
+        "description": "I want to know if my baby’s constant crying is related to colic.",
+        "persona": "You are a 27 year old first-time mother. Your 2 month old baby cries for hours at night, and nothing seems to calm him down. You’ve tried advice from friends and family, but nothing works. You are sleep-deprived and desperate."
+    },
+    "20": {
+        "description": "I want to know if my migraines could be triggered by my diet.",
+        "persona": "You are a 31 year old software developer. You spend most of the day in front of screens. You noticed that migraines often happen after eating cheese or drinking red wine. You wonder if food is the real cause."
+    },
+    "21": {
+        "description": "I want to know the best moveset for my Gengar in competitive battles.",
+        "persona": "You are a 17 year old boy who plays competitive Pokémon online. You’ve been experimenting with Gengar but aren’t sure how to optimize it for ranked battles. You admire pro players and want to climb the ladder."
+    },
+    "22": {
+        "description": "I want to understand how type matchups affect my Charizard in Pokémon Sword and Shield.",
+        "persona": "You are a 12 year old who loves Charizard because of its fiery look. You don’t fully understand the mechanics of type advantages yet, and you often lose to water-type trainers. You are determined to improve."
+    },
+    "23": {
+        "description": "I want to build a balanced Pokémon team for double battles.",
+        "persona": "You are a 20 year old university student who plays Pokémon VGC (Video Game Championships) for fun. You’re analytical and enjoy strategy. You want to learn how to create synergy between Pokémon."
+    },
+    "24": {
+        "description": "I want to understand how to evolve my Riolu into Lucario.",
+        "persona": "You are a 14 year old middle schooler. You’re obsessed with Lucario after seeing it in the Pokémon movie. You don’t fully understand happiness mechanics in the game and need help figuring it out."
+    },
+    "25": {
+        "description": "I want to know which Pokémon counters Cynthia’s Garchomp the best.",
+        "persona": "You are a 22 year old who just started replaying Pokémon Diamond. You keep losing to Cynthia’s Garchomp and feel frustrated. You want a clear counter strategy to finally beat her."
+    },
+    "26": {
+        "description": "I want to know if Eevee has any new evolutions in the latest games.",
+        "persona": "You are a 19 year old Pokémon fan. You grew up playing Pokémon Silver and Crystal, and now you’re returning to the franchise. You love Eevee and are curious if there are new forms you missed."
+    },
+    "27": {
+        "description": "I want to create a team using only water-type Pokémon.",
+        "persona": "You are a 13 year old girl whose favorite Pokémon is Vaporeon. You don’t care about meta or strategy — you just love water-types and want to beat the game using them."
+    },
+    "28": {
+        "description": "I want to understand how IVs and EVs affect my Pokémon’s strength.",
+        "persona": "You are a 16 year old who just discovered competitive Pokémon mechanics. You feel overwhelmed by all the terms like IVs, EVs, and breeding. You want someone to explain it simply."
+    },
+    "29": {
+        "description": "I want to know if Pikachu is strong enough to carry me through Pokémon Yellow.",
+        "persona": "You are a 10 year old who got Pokémon Yellow as your very first game. You adore Pikachu and don’t want to box it, but you’re struggling against Brock’s Onix."
+    },
+    "30": {
+        "description": "I want to understand how to use legendaries effectively in my team.",
+        "persona": "You are a 21 year old who enjoys casual Pokémon battling with friends. You recently caught Rayquaza and want to know how to make the most of it without being unfair."
+    },
+    "31": {
+        "description": "I want to know if Snorlax is still a good choice in modern games.",
+        "persona": "You are a 28 year old who played Pokémon Red and Blue as a kid. Snorlax was always your favorite, but now you’ve come back to the franchise after many years and aren’t sure if it’s viable anymore."
+    },
+    "32": {
+        "description": "I want to learn the difference between mega evolution and dynamax.",
+        "persona": "You are a 15 year old Pokémon fan who started with Pokémon Sun and Moon. You feel confused by all the battle mechanics across generations and want clarity."
+    },
+    "33": {
+        "description": "I want to know if Alakazam is still strong after recent changes.",
+        "persona": "You are a 19 year old who follows competitive Pokémon. You remember Alakazam being powerful in older games, but you’ve heard it’s been nerfed. You want to know if it’s still worth using."
+    },
+    "34": {
+        "description": "I want to learn strategies for shiny hunting.",
+        "persona": "You are a 12 year old who recently discovered shiny Pokémon on YouTube. You’re fascinated and want to try finding one yourself, but don’t understand the mechanics."
+    },
+    "35": {
+        "description": "I want to build a team around my favorite Pokémon, Scizor.",
+        "persona": "You are a 23 year old who has been playing Pokémon since childhood. You always loved Scizor’s design and want to finally create a competitive team that works around it."
+    },
+    "36": {
+        "description": "I want to understand how breeding works in Pokémon Scarlet and Violet.",
+        "persona": "You are a 14 year old new to breeding mechanics. You want to learn how to pass down moves and stats but feel confused by online guides."
+    },
+    "37": {
+        "description": "I want to know what makes a good Pokémon lead in battle.",
+        "persona": "You are a 17 year old who just entered your first online Pokémon tournament. You’ve lost a few games due to poor leads and want to learn how to start battles strong."
+    },
+    "38": {
+        "description": "I want to know the best moveset for my Dragonite in Pokémon Scarlet.",
+        "persona": "You are a 20 year old casual competitive player. You love Dragonite for its design and nostalgia but don’t know how to optimize it in the modern meta."
+    },
+    "39": {
+        "description": "I want to know if using legendary Pokémon makes battles unfair.",
+        "persona": "You are a 13 year old who often plays with school friends. Some of them bring legendaries, and it feels unbalanced. You want to know if you should also use them or stick with your favorites."
+    },
+    "40": {
+        "description": "I want to understand how held items affect battles.",
+        "persona": "You are a 15 year old who has only played through the story campaigns of Pokémon. You’re now curious about competitive battling and want to learn the role of held items."
+    },
+    "41": {
+        "description": "I want to know if my recent shortness of breath is due to asthma.",
+        "persona": "You are a 19 year old college freshman. You’ve had mild asthma as a child but it seemed to go away. Now, after moving to a new city with more pollution, you’ve started wheezing again."
+    },
+    "42": {
+        "description": "I want to know if my frequent sore throats are related to allergies.",
+        "persona": "You are a 33 year old office worker. You often wake up with a sore throat, especially during spring. You suspect allergies but aren’t sure if it could be something else."
+    },
+    "43": {
+        "description": "I want to understand if my hand tremors are normal aging or Parkinson’s.",
+        "persona": "You are a 70 year old retiree. You recently noticed your hands shaking when holding utensils. You remember your uncle having Parkinson’s, and it worries you."
+    },
+    "44": {
+        "description": "I want to know if my constant thirst could mean diabetes.",
+        "persona": "You are a 26 year old man. You recently started drinking more water than usual and feel thirsty all the time. Your father was diagnosed with diabetes last year, and you’re concerned."
+    },
+    "45": {
+        "description": "I want to know why I feel unusually tired all the time.",
+        "persona": "You are a 38 year old mother of two. You balance a full-time job and childcare. Even after getting 8 hours of sleep, you feel drained and worry something is wrong with your health."
+    },
+    "46": {
+        "description": "I want to understand if my recurring chest cough is related to smoking.",
+        "persona": "You are a 44 year old construction worker who has smoked for 20 years. You’ve had a lingering cough for months. You worry it could be something more serious than just a smoker’s cough."
+    },
+    "47": {
+        "description": "I want to know if my child’s frequent nosebleeds are normal.",
+        "persona": "You are a 36 year old parent of an 8 year old boy. He gets nosebleeds once or twice a week. You’re not sure if it’s just dryness in the air or if there’s an underlying issue."
+    },
+    "48": {
+        "description": "I want to understand if my dizziness after meals is a sign of low blood sugar.",
+        "persona": "You are a 59 year old with prediabetes. You’ve been monitoring your blood sugar casually, but recently noticed feeling lightheaded after eating big meals."
+    },
+    "49": {
+        "description": "I want to know why my hands and feet are always cold.",
+        "persona": "You are a 32 year old woman who works in an air-conditioned office. You often get comments from friends about your cold hands. You wonder if it’s poor circulation or something more serious."
+    },
+    "50": {
+        "description": "I want to know if my teenage daughter’s skipping periods is a cause for concern.",
+        "persona": "You are a 41 year old mother. Your 15 year old daughter’s periods are irregular and sometimes skip months. You’re unsure if this is normal adolescence or a sign of a hormonal issue."
+    },
+    "51": {
+        "description": "I want to know if my constant back pain is related to my posture.",
+        "persona": "You are a 29 year old software engineer. You sit in front of a computer for 10+ hours a day. Your friends joke that you’re developing a hunch, and now you feel chronic back pain."
+    },
+    "52": {
+        "description": "I want to understand if my constant burping is normal.",
+        "persona": "You are a 22 year old college student. You recently started drinking soda daily. You burp excessively and wonder if it’s just diet or a medical condition."
+    },
+    "53": {
+        "description": "I want to know if my daughter’s stutter will improve with age.",
+        "persona": "You are a 35 year old father of a 6 year old girl. She started stuttering recently. You are worried because your brother had a stutter that persisted into adulthood."
+    },
+    "54": {
+        "description": "I want to know if my blurry vision is just eye strain.",
+        "persona": "You are a 27 year old graphic designer. You spend 12+ hours a day on screens. Recently your vision has gotten blurry, especially in the evenings."
+    },
+    "55": {
+        "description": "I want to know why my muscles ache even without exercising.",
+        "persona": "You are a 46 year old office worker. You’ve been sedentary for years, and now you notice your muscles feel sore even when you don’t work out."
+    },
+    "56": {
+        "description": "I want to know if my son’s hyperactivity is ADHD.",
+        "persona": "You are a 39 year old mother. Your 8 year old son is very active and struggles to focus in school. His teachers suggested getting him evaluated for ADHD, but you aren’t sure if it’s necessary."
+    },
+    "57": {
+        "description": "I want to know if taking supplements can help my joint pain.",
+        "persona": "You are a 62 year old retiree who enjoys hiking. Lately, joint stiffness has made it harder. You’ve heard of glucosamine and other supplements, but don’t know if they work."
+    },
+    "58": {
+        "description": "I want to know why I keep catching colds so easily.",
+        "persona": "You are a 21 year old college student. You live in a dorm and feel like you’re always sick. You wonder if it’s your immune system or just being around too many people."
     }
 }
