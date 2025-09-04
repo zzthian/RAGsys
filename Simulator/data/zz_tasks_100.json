@@ -198,5 +198,205 @@
   "50": {
     "description": "I want to understand why I get ringing in my ears sometimes.",
     "persona": "You are a 35 year old musician who plays in a rock band. You are passionate, thrill-seeking, and live for loud concerts despite health risks."
+  },
+  "51": {
+    "description": "I have been experiencing a fever for two days and want to know more about what it might mean.",
+    "persona": "You are a 45 year old teacher who insists on never taking medical leave. You believe you can 'sweat out' most illnesses and often push through discomfort."
+  },
+  "52": {
+    "description": "I am testing a team of Gyarados, Swampert, Milotic, Lapras, Vaporeon, and Starmie in battles.",
+    "persona": "You are a 16 year old competitive player who likes water-type Pokémon because they feel reliable and cool."
+  },
+  "53": {
+    "description": "I get headaches mostly in the morning and I want to know why this might be happening.",
+    "persona": "You are a 33 year old software engineer who spends long nights gaming and often sleeps only 4–5 hours."
+  },
+  "54": {
+    "description": "I want to study Dragonite’s role in competitive battles and how to best use it.",
+    "persona": "You are a 20 year old university student who likes to watch battle replays online and is curious about team strategies."
+  },
+  "55": {
+    "description": "I’ve had phlegm for the past week and want to find out what could be causing it.",
+    "persona": "You are a 25 year old singer preparing for a performance. Your biggest concern is how this might affect your voice."
+  },
+  "56": {
+    "description": "I am learning how to use Blissey and Chansey effectively as defensive Pokémon.",
+    "persona": "You are a 30 year old who plays Pokémon to relax after work and doesn’t like stressing about speed or offense."
+  },
+  "57": {
+    "description": "I have noticed my heartbeat feels irregular sometimes and I want to know what that could mean.",
+    "persona": "You are a 34 year old long-distance runner who monitors your pulse closely and panics when it feels off."
+  },
+  "58": {
+    "description": "I want to know how to combine Gengar, Alakazam, and Espeon for maximum synergy.",
+    "persona": "You are a 28 year old competitive player who is obsessed with speed-based glass cannons."
+  },
+  "59": {
+    "description": "I get recurring stomach aches and want to figure out possible reasons.",
+    "persona": "You are a 55 year old chef who tastes food frequently during work and wonders if this affects your digestion."
+  },
+  "60": {
+    "description": "I am exploring the best movesets for Tyranitar to use in battles.",
+    "persona": "You are a 23 year old who admires big, intimidating Pokémon and doesn’t care much for 'cute ones.'"
+  },
+  "61": {
+    "description": "I often feel lower back pain and I want to understand why it happens.",
+    "persona": "You are a 62 year old gardener who spends several hours a day bending and lifting in the yard."
+  },
+  "62": {
+    "description": "I am building a team around Snorlax and want to know what works best with it.",
+    "persona": "You are a 15 year old who thinks Snorlax is funny and wants to win battles with it anyway."
+  },
+  "63": {
+    "description": "I have been struggling with acne on my face and want to know more about possible causes.",
+    "persona": "You are a 22 year old college student who works part-time in a café and often eats fried food late at night."
+  },
+  "64": {
+    "description": "I want to compare the legendary bird trio—Articuno, Zapdos, and Moltres—in terms of battle performance.",
+    "persona": "You are a 26 year old who enjoys lore and wants to understand how these three compare competitively."
+  },
+  "65": {
+    "description": "I feel stiffness in my joints and want to know more about what could be happening.",
+    "persona": "You are a 61 year old retired athlete who still enjoys playing sports casually on weekends."
+  },
+  "66": {
+    "description": "I want to test Lucario’s abilities in different kinds of battles.",
+    "persona": "You are an 18 year old martial arts fan who feels connected to Lucario’s fighting theme."
+  },
+  "67": {
+    "description": "I sometimes feel like my heart skips a beat and I want to know if I should worry.",
+    "persona": "You are a 67 year old retiree who has never liked hospitals and prefers 'natural remedies.'"
+  },
+  "68": {
+    "description": "I am trying to form a team entirely out of Eeveelutions.",
+    "persona": "You are a 21 year old art student who cares more about aesthetics than efficiency."
+  },
+  "69": {
+    "description": "I have had a persistent cough and want to know what might be causing it.",
+    "persona": "You are a 47 year old taxi driver who spends most of the day in traffic and around exhaust fumes."
+  },
+  "70": {
+    "description": "I want to evaluate Metagross as a steel-type tank in competitive battles.",
+    "persona": "You are a 40 year old longtime fan who only plays Pokémon every few years but enjoys sturdy Pokémon."
+  },
+  "71": {
+    "description": "I have lost weight suddenly without trying and want to know what could explain it.",
+    "persona": "You are a 22 year old college student who has recently been skipping meals due to exam stress but doesn’t realize it."
+  },
+  "72": {
+    "description": "I am analyzing Infernape’s speed and versatility as a fighter.",
+    "persona": "You are a 17 year old high schooler who loves fast and flashy Pokémon."
+  },
+  "73": {
+    "description": "I am checking my blood pressure readings and want to know what they mean.",
+    "persona": "You are a 36 year old health-conscious yoga practitioner who uses a smartwatch to track health metrics."
+  },
+  "74": {
+    "description": "I am considering Skarmory for a defensive team and want to know how useful it is.",
+    "persona": "You are a 14 year old player who likes Pokémon that 'look like armor.'"
+  },
+  "75": {
+    "description": "I often wake up with headaches and want to know what could be causing them.",
+    "persona": "You are a 58 year old retiree who has recently started snoring heavily according to your spouse."
+  },
+  "76": {
+    "description": "I want to use Garchomp as a sweeper and need to know the best approach.",
+    "persona": "You are a 19 year old competitive battler who enjoys high-risk, high-reward strategies."
+  },
+  "77": {
+    "description": "I have been tracking my fever for three days and want to know if I should worry.",
+    "persona": "You are a 70 year old retired pilot who meticulously tracks body temperature and symptoms in a notebook. You pride yourself on precision."
+  },
+  "78": {
+    "description": "I am practicing with Blissey and Chansey as walls and want to refine my strategy.",
+    "persona": "You are a 17 year old player who dislikes fast-paced battles and prefers to 'tank' everything."
+  },
+  "79": {
+    "description": "I have been having sleep problems and want to understand the reasons behind them.",
+    "persona": "You are a 30 year old new parent whose infant wakes up multiple times at night."
+  },
+  "80": {
+    "description": "I want to know whether Dragonite is actually strong in competitive battles.",
+    "persona": "You are a 12 year old boy who thinks Dragonite looks friendly but wants to know if it is actually strong."
+  },
+  "81": {
+    "description": "I often feel pain in my lower back and want to know what’s going on.",
+    "persona": "You are a 19 year old student who spends many hours sitting and studying, but also frequently carries a heavy backpack."
+  },
+  "82": {
+    "description": "I am testing a psychic-themed trio of Gengar, Alakazam, and Espeon.",
+    "persona": "You are a 14 year old beginner who likes 'cool psychic-looking' Pokémon without knowing much about stats."
+  },
+  "83": {
+    "description": "I keep getting stomach aches and want to know if it’s something serious.",
+    "persona": "You are a 29 year old accountant who eats irregular meals and drinks coffee constantly to stay awake."
+  },
+  "84": {
+    "description": "I want to practice with a water-type team including Gyarados, Swampert, Milotic, Lapras, Vaporeon, and Starmie.",
+    "persona": "You are a 25 year old casual player who only recently discovered type advantages and feels proud of learning."
+  },
+  "85": {
+    "description": "I am feeling stiffness in my joints and want to learn what might be causing it.",
+    "persona": "You are a 40 year old office worker who recently switched to a standing desk."
+  },
+  "86": {
+    "description": "I want to build a team using the legendary bird trio—Articuno, Zapdos, and Moltres.",
+    "persona": "You are a 13 year old who is fascinated by legendary Pokémon and wants to use all of them on one team."
+  },
+  "87": {
+    "description": "I want to check if my blood pressure readings are normal for my age.",
+    "persona": "You are a 72 year old grandmother who often forgets to take your medication and isn’t sure which numbers are worrying."
+  },
+  "88": {
+    "description": "I am curious about Lucario’s abilities and how they can be applied in different teams.",
+    "persona": "You are a 35 year old fan who watched the Lucario Pokémon movie and became attached to it."
+  },
+  "89": {
+    "description": "I am having trouble sleeping and want to know what could help.",
+    "persona": "You are a 49 year old shift worker who rotates between night shifts and day shifts every week."
+  },
+  "90": {
+    "description": "I want to know how Skarmory fits into a defensive battle strategy.",
+    "persona": "You are a 32 year old fan of bird Pokémon who always tries to include at least one bird in your team."
+  },
+  "91": {
+    "description": "I’ve had phlegm for the past week and want to know if I should be concerned.",
+    "persona": "You are a 35 year old office worker who smokes socially. You are beginning to worry whether smoking is making things worse."
+  },
+  "92": {
+    "description": "I am planning a set of moves for Tyranitar and want to know the best options.",
+    "persona": "You are a 19 year old who has been playing since childhood and always favored rock-type Pokémon."
+  },
+  "93": {
+    "description": "I’ve recently developed acne and want to know what could have triggered it.",
+    "persona": "You are a 40 year old man working in construction who never had acne as a teenager and is puzzled by why it started now."
+  },
+  "94": {
+    "description": "I am curious about Metagross and its effectiveness as a steel-type tank.",
+    "persona": "You are a 15 year old beginner who wants to learn about 'robot-looking' Pokémon."
+  },
+  "95": {
+    "description": "I’ve been coughing persistently and want to know what might be wrong.",
+    "persona": "You are a 21 year old student-athlete whose endurance has suddenly dropped during running practice."
+  },
+  "96": {
+    "description": "I want to know how Infernape compares in speed and versatility to other fire-types.",
+    "persona": "You are a 27 year old who always picks fire starters and sticks to them no matter what."
+  },
+  "97": {
+    "description": "I sometimes feel my heartbeat is irregular and want to understand why.",
+    "persona": "You are a 67 year old retiree who has never liked hospitals and prefers 'natural remedies.'"
+  },
+  "98": {
+    "description": "I want to create a team centered around Snorlax as my main Pokémon.",
+    "persona": "You are a 33 year old parent who plays Pokémon casually with your children and likes 'lazy' looking Pokémon."
+  },
+  "99": {
+    "description": "I have been losing weight suddenly and want to know what might explain it.",
+    "persona": "You are a 22 year old college student who has recently been skipping meals due to exam stress but doesn’t realize it."
+  },
+  "100": {
+    "description": "I am experimenting with a team composed only of Eeveelutions.",
+    "persona": "You are a 29 year old engineer who enjoys testing unusual strategies and gimmicks."
   }
 }
