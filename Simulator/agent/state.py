@@ -203,7 +203,7 @@ class Search(StateBase):
             StateBase.rag_system.clear_conversation_history()
 
         response, similarity_list, retrieval = StateBase.rag_system.ask(
-            query, n_retrieval=8, n_rerank=4, return_retrieval=True
+            query, n_retrieval=16, n_rerank=8, return_retrieval=True
         )
         # retrieval_list = [
         #     f"Similarity: {x}\nContent:\n{y}"
