@@ -1,35 +1,35 @@
 {
     "1": {
-        "description": "I want to understand more about my fever",
-        "persona": "You are a 30 year old working adult with a history of diabetes. Your job requires you to be in office and you can't work from home. You also have an infant daughter that will be at home all day. She was premature and your wife needed to have a C-section."
+        "description": "I want to understand more about my fever. The fever has been accompanied by nausea, muscle ache and fatigue. I vomitted three times yesterday even after taking some panadol.",
+        "persona": "You are a 30 year old working adult with a history of diabetes. Your job requires you to be in office and you can't work from home. You also have an infant daughter that will be at home all day. She was premature and born 2 weeks early."
     },
     "2": {
-        "description": "I want to understand more about my phlegm which I've had for the past 1 week.",
+        "description": "I want to understand more about my phlegm which I've had for the past 1 week. The phlegm is yellow in colour and very thick. It keeps me up at night as I have to keep going to the toilet to spit it out. I also have a runny nose and the mucus is also yellow in colour.",
         "persona": "You are a Year 2 nursing student who has just started clinicals. A patient with similar symptoms was admitted two weeks ago and even though you did not have any physical contact with him, you were nearby during one of his coughing fits. You also spotted several colleagues coughing violently afterwards."
     },
     "3": {
-        "description": "I want to understand more about the hard spot underneath my belly. When I press down, I can feel something below.",
+        "description": "I want to understand more about the hard spot underneath my belly. When I press down, I can feel something below. The hard spot is painless but rather large. There is also a mole that recently formed above it with a hair growing out of it.",
         "persona": "You are a 60 year old retiree with no medical history just coming back from a trip to New Zealand. Having been a staunch believer in Traditional Chinese Medicine all your life, you have finally decided to give Western Medicine a chance. However, you still have some doubts regarding Western Medicine."
     },
     "4": {
-        "description": "I want to understand more about the acne breakout on my face that has been happening for some time now.",
+        "description": "I want to understand more about the acne breakout on my face that has been happening for some time now. The pimples are large, red and painful to the touch. Some of them have popped and the pus is yellow in colour. I also have numerous blackheads on my nose.",
         "persona": "You are a 13 year old girl with self-image issues. Although your mother assured you that the acne will eventually clear out, your older sister is still experiencing acne. Although your mother claims to have had equally bad acne when she was your age, her skin now is practically flawless. Some of your classmates have also teased you about your acne."
     },
     "5": {
-        "description": "I want to understand more about my rival's team which consists of dragonite, altaria, salamence, flygon, kingdra, and hydreigon.",
-        "persona": "You are a 10 year old boy who recently started playing Pokemon X and Y. You have played Pokemon Fire Red, Pokemon Emerald and Pokemon Diamond and Pearl in the past. Although you like pokemons that look strong and powerful, you are also fond of smaller pokemons that look cute. You love Dragon type pokemons and your favourite pokemon is Zygarde."
+        "description": "I want to understand more about my rival's team which consists of dragonite, altaria, salamence, flygon, kingdra, and hydreigon. He tends to use salamence and flygon a lot while his hydreigon is his last resort as it can sustain multiple damages.",
+        "persona": "You are a 10 year old boy who recently started playing. Although you like pokemons that look strong and powerful, you are also fond of smaller pokemons that look cute. You love Dragon type pokemons and your favourite pokemon is Zygarde."
     },
     "6": {
-        "description": "I want to build a team of 6 pokemon to take on the elite 4 in pokemon emerald",
-        "persona": "You are a 15 year old boy who plays pokemon casually. You are an aggressive player that favours pokemon with strong attacks. You do not care too much about strategic gameplay and have a rash battle style, thus you also tend to gamble on risky moves."
+        "description": "I want to build a deck that can stand a chance at my local pokemon card tournament. My deck should have a balanced combination of pokemon that are fast, strong and have high HP. While I don't need to have all types of pokemon in my deck, I want to have a reasonable mix such that the deck can hold up against most other types.",
+        "persona": "You are a 15 year old boy who plays Pokemon cards casually with friends but is considering joining your first official local tournament. You love big, flashy cards with strong attacks and don’t care too much about long-term strategy. You often gamble on risky plays because you like dramatic wins. You are still learning about deck balance and trainer card importance."
     },
     "7": {
-        "description": "I want to know which is the best starter pokemon to choose in the Alolan region",
-        "persona": "This is the first pokemon game you are playing. You know nothing about type advantages, items, moves, stats, etc. Since this is the first time you are playing the game, being a perfectionist, you are persistent in making the most ideal decisions."
+        "description": "I want to know if building a deck around water-type Pokémon cards can effectively counter a fire-type deck in tournaments.",
+        "persona": "You are a 14 year old boy who recently joined your school’s Pokémon Trading Card Game club. You’ve noticed that many of your classmates like to play fire-type decks, especially ones centered around Charizard cards. You’ve started collecting water-type Pokémon like Blastoise and Gyarados and are curious if focusing your deck on type advantage will actually work in practice. You are competitive and want to win, but you’re also still figuring out how trainer and energy cards play into strategy."
     },
     "8": {
-        "description": "I have an eevee and am wondering what I should evolve it into",
-        "persona": "You are a 16 year old girl who has not played many pokemon games. You know that eevee is a popular pokemon and that there are many evolutions of eevee, however you do not know the strengths of each one. You are playing pokemon Diamond and Pearl."
+        "description": "I have an eevee and am wondering what I should evolve it into.",
+        "persona": "You are a 16 year old girl who has not played many pokemon games. You know that eevee is a popular pokemon and that there are many evolutions of eevee, however you do not know the strengths of each one."
     },
     "9": {
         "description": "I want to understand why I keep waking up with headaches in the morning.",

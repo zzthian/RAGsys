@@ -160,7 +160,6 @@ class Search(StateBase):
     ):
         super().__init__(task)
         self.query = query
-        self.model = None  # Remove together with 2 other instances?
         self.history = history
         self.current_focus = current_focus
 
@@ -183,12 +182,11 @@ class Search(StateBase):
         return thought
 
     def exec(self):
-        agent = Agent(
-            prompt=StateBase.read_prompt("query"),
-            **self.prompt_variables,
-        )
-
         if self.query is None:
+            agent = Agent(
+                prompt=StateBase.read_prompt("query"),
+                **self.prompt_variables,
+            )
             self.query = agent.generate()["query"]
             return Rewrite(
                 task=self.task,
@@ -197,13 +195,12 @@ class Search(StateBase):
                 current_focus=self.current_focus,
             )
 
-        query = self.query
         if self.new:
             StateBase.rag_system.clear_ask_history()
             StateBase.rag_system.clear_conversation_history()
 
         response, similarity_list, retrieval = StateBase.rag_system.ask(
-            query, n_retrieval=16, n_rerank=8, return_retrieval=True
+            self.query, n_retrieval=16, n_rerank=8, return_retrieval=True
         )
         # retrieval_list = [
         #     f"Similarity: {x}\nContent:\n{y}"
@@ -212,7 +209,7 @@ class Search(StateBase):
         # print("# Response:\n", response, "\n")
         # print("# Retrieval:\n\n", "\n\n".join(retrieval_list))
 
-        query_response = {"query": query, "response": response}
+        query_response = {"query": self.query, "response": response}
 
         if self.history is None:
             self.history = [query_response]
@@ -222,7 +219,7 @@ class Search(StateBase):
         self.task.generate_task.append(
             {
                 "step": self.task.step,
-                "query": query,
+                "query": self.query,
                 "response": response,
             }
         )
@@ -237,7 +234,6 @@ class Search(StateBase):
 class Stop(StateBase):
     def __init__(self, task, current_focus=None, history=None):
         super().__init__(task)
-        self.model = None  # Remove together with 2 other instances?
         self.history = history
         self.current_focus = current_focus
 
@@ -293,9 +289,15 @@ class Stop(StateBase):
 
         if curr_answered:
             # Not all boundary answered, but current one is completely answered, pivot
-            print("Pivoting as current focus question is answered")
-            print()
-            return Pivot(self.task, self.history)
+            # print("Pivoting as current focus question is answered")
+            # print()
+            clarify = random.random()
+            if clarify < Clarify.CLARIFY_PROBABILITY:
+                print("Clarify!")
+                return Clarify(task=self.task, current_focus=self.current_focus, history=self.history)
+            else:
+                print("Pivot!")
+                return Pivot(self.task, self.history)
 
         # RNG either pivot or continue on same focus
         pivot = random.random()
@@ -309,6 +311,64 @@ class Stop(StateBase):
                 self.task, history=self.history, current_focus=self.current_focus
             )
 
+class Clarify(StateBase):
+    CLARIFY_PROBABILITY = 0.5
+
+    def __init__(self, task, query=None, current_focus=None, history=None):
+        super().__init__(task)
+        self.query = query
+        self.history = history
+        self.current_focus = current_focus
+        self.prompt_variables = {
+            "persona": StateBase.tasks[self.task.task_id]["persona"],
+            "task_description": self.task.task_description,
+            "current_focus": self.current_focus,
+            "examples": StateBase.examples,
+            "history": self.history,
+        }
+
+    def enter(self):
+        if self.query is not None:
+            self.task.step += 1
+    
+    def exec(self):
+        if self.query is None:
+            agent = Agent(prompt=StateBase.read_prompt("clarify"), **self.prompt_variables)
+            self.query = agent.generate()["query"]
+            return Rewrite(
+                task=self.task,
+                history=self.history,
+                query=self.query,
+                current_focus=self.current_focus,
+                clarify=True
+            )
+        response, similarity_list, retrieval = StateBase.rag_system.ask(
+            self.query, n_retrieval=16, n_rerank=8, return_retrieval=True
+        )
+
+        query_response = {"query": self.query, "response": response}
+        self.history.append(query_response)
+
+        self.task.generate_task.append(
+            {
+                "step": self.task.step,
+                "query": self.query,
+                "response": response,
+            }
+        )
+
+        for focus in self.task.focus_list:
+            print(json.dumps(focus, indent=4))
+        print(f"Executing clarification, step {self.task.step}")
+        print()
+
+        clarify = random.random()
+        if clarify < Clarify.CLARIFY_PROBABILITY:
+            print("Clarify!")
+            return Clarify(task=self.task, current_focus=self.current_focus, history=self.history)
+        else:
+            print("Pivot!")
+            return Pivot(self.task, self.history)
 
 class Rewrite(StateBase):
     REWRITE_DEPTH_LIMIT = 2
@@ -321,14 +381,15 @@ class Rewrite(StateBase):
         rewrites_and_reasons=[],
         rewrite_depth=0,
         current_focus=None,
+        clarify=False
     ):
         super().__init__(task)
-        self.model = None  # Remove together with 2 other instances
         self.history = history
         self.query = query
         self.rewrites_and_reasons = rewrites_and_reasons
         self.rewrite_depth = rewrite_depth
         self.current_focus = current_focus
+        self.clarify = clarify
         self.prompt_variables = {
             "persona": StateBase.tasks[self.task.task_id]["persona"],
             "task_description": self.task.task_description,
@@ -376,10 +437,12 @@ class Rewrite(StateBase):
                 current_focus=self.current_focus,
                 rewrite_depth=self.rewrite_depth + 1,
             )
-        else:
+        elif self.clarify:
             # print("Accepted query: " + self.query)
             # print("====================================================================================================")
             # print("")
+            return Clarify(task=self.task, query=self.query, current_focus=self.current_focus, history=self.history)
+        else:
             return Search(
                 self.task,
                 self.query,

@@ -18,7 +18,7 @@ conversation so far:
 
 task:
   Based on the entire conversation with the RAG LLM so far, do the following:
-    - Group each question from the focus list into one of three categories:
+    - Group each question from the zero-indexed focus list into one of three categories:
       1. answered: 
         - The question has been satisfactorily answered based on past responses.
         - OR it already has the status "answered".
@@ -28,7 +28,8 @@ task:
         - OR it already has the status "unknown".
       3. pending:
         - All other questions not in the above two categories.
-  No question should appear in more than one category.
+    - No question should appear in more than one category
+    - Use the zero-indexed indexes
 
 
 response format:

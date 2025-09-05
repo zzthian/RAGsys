@@ -24,7 +24,8 @@ class Simulator:
 
             # task_id = "1", real_task = "Xiao Ming...."
             task = Task(task_id=task_id, real_task=self.data[task_id])
-            results[task_id] = task.run()
+            conversation = task.run()
+            results[task_id] = {"length": task.step + 1, "conversation": conversation}
 
             with open(output_path, "w", encoding="utf-8") as f:
                 json.dump(
