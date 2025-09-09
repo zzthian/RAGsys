@@ -1,0 +1,202 @@
+{
+    "1": {
+        "description": "I want to understand more about the frequent stomach cramps and bloating that happen after meals, especially in the evenings.",
+        "persona": "You are a 26-year-old software developer who works long hours sitting at a desk and often skips proper meals. You recently started a high-protein diet and occasionally consume fast food due to work deadlines. The discomfort is affecting your sleep and focus, and you are concerned about digestive issues such as IBS or food intolerances."
+    },
+    "2": {
+        "description": "I want to understand more about the persistent fatigue and lack of energy that I feel despite getting 7–8 hours of sleep each night.",
+        "persona": "You are a 39-year-old teacher balancing a heavy workload with family responsibilities. You have a history of mild anemia and often skip breakfast. The constant tiredness is affecting your ability to engage with students and manage household duties, and you are worried about potential nutritional deficiencies or thyroid problems."
+    },
+    "3": {
+        "description": "I want to understand more about the recurring chest tightness and mild shortness of breath I experience during physical activity.",
+        "persona": "You are a 44-year-old sales manager who has recently started jogging and doing light workouts. You have a family history of heart disease and occasionally smoke socially. The symptoms are alarming and interfere with your exercise routine, making you concerned about possible cardiac issues or asthma."
+    },
+    "4": {
+        "description": "I want to understand more about my muffled hearing. There seems to be more earwax than usual in my ears. I tried using a cotton bud to clear it but to no avail and there is a sight sting in my ears now.",
+        "persona": "You are a 31-year-old musician and audio engineer exposed to high volumes of music daily. You also use headphones for long periods while editing audio tracks. You hearing is affecting your concentration and work quality, and you are worried about early hearing damage."
+    },
+    "5": {
+        "description": "I want to understand more about my persistent cough. I’ve had it for almost three weeks now, and it’s especially bad at night. Sometimes I feel a sharp pain in my chest when I cough.",
+        "persona": "You are a 45-year-old male smoker who has been smoking for over 20 years. You work as a construction foreman and are often exposed to dust and other airborne particles on site. You are aware of the risks of long-term smoking but have not been able to quit. Your spouse has started urging you to see a doctor because of the duration of your cough, and you are beginning to worry whether it’s something more serious than just a seasonal infection."
+    },
+    "6": {
+        "description": "I want to understand more about the headaches I’ve been getting lately. They come almost every afternoon and are concentrated around my temples. Over-the-counter painkillers only help temporarily.",
+        "persona": "You are a 27-year-old graduate student pursuing a master’s degree. You spend long hours in front of your laptop working on research, and you barely sleep more than five hours a night. You have a habit of skipping meals when stressed and drink at least three cups of coffee daily. You worry that your lifestyle might be catching up with you, but you’re unsure whether these headaches are due to stress, vision problems, or something more serious."
+    },
+    "7": {
+        "description": "I want to understand more about my sudden weight loss. I lost 6 kilograms in the past two months without trying, even though my diet and activity level have not changed.",
+        "persona": "You are a 52-year-old woman with a family history of thyroid issues. You’ve always been careful about your diet and consider yourself fairly healthy, though you do not exercise regularly. You are now concerned that this unintentional weight loss could be a symptom of something serious. You are also worried about how this might impact your energy levels, as you are the primary caregiver for your elderly mother."
+    },
+    "8": {
+        "description": "I want to understand more about the sharp knee pain I’ve been experiencing after jogging. It usually starts halfway through my run and gets worse when I climb stairs afterwards.",
+        "persona": "You are a 34-year-old recreational runner who has been training for your first half marathon. You’ve never had any major knee injuries before, but this pain has become a consistent issue over the past two weeks. You’re worried that pushing through might worsen the condition, but at the same time, you don’t want to give up your training plan. You wonder if this is just overuse or an early sign of something like runner’s knee or ligament damage."
+    },
+    "9": {
+        "description": "I want to understand more about the tingling sensation in my fingers and toes. It happens mostly at night and sometimes wakes me up.",
+        "persona": "You are a 41-year-old office worker with type 2 diabetes diagnosed five years ago. You manage it with medication but are not always consistent with your diet. Recently, you’ve been feeling more fatigued than usual, and this tingling sensation has added to your concerns. You are worried that it could be nerve damage caused by diabetes, but you’re also hoping it might just be temporary numbness."
+    },
+    "10": {
+        "description": "I want to understand more about the ringing sound in my ears. It has been constant for about two weeks and doesn’t go away even in silence.",
+        "persona": "You are a 22-year-old university student and part-time musician who plays in a local band. You spend hours practicing in loud environments without using ear protection. At first, you thought the ringing was temporary, but now it has persisted, and you are starting to worry that you might have permanent hearing damage. You are hesitant to tell your bandmates because you fear it might affect your performance opportunities."
+    },
+    "11": {
+        "description": "I want to understand more about the shortness of breath I’ve been experiencing. It happens even when I walk up a single flight of stairs and I feel my chest tightening.",
+        "persona": "You are a 55-year-old man with a history of high blood pressure. You’ve been sedentary for many years due to your desk job and rarely exercise. Your family has a history of heart disease, which makes you anxious about your symptoms. You have also noticed swelling in your ankles recently, which makes you worry even more about your heart health."
+    },
+    "12": {
+        "description": "I want to understand more about the stomach cramps I get after meals. The cramps usually start 30 minutes after eating and are accompanied by bloating and occasional diarrhea.",
+        "persona": "You are a 29-year-old female office worker who frequently eats takeout food because of your busy schedule. You have mild lactose intolerance but often ignore it and still consume dairy products like coffee with milk or cheese. Lately, you’ve been noticing your stomach cramps are becoming more frequent and severe, and it has started to interfere with your work productivity."
+    },
+    "13": {
+        "description": "I want to understand more about the chest discomfort I get when exercising. It feels like pressure or heaviness and improves when I rest.",
+        "persona": "You are a 61-year-old retired accountant with a history of high cholesterol. You’ve recently joined a walking group in your neighborhood to stay active, but during longer walks you feel chest discomfort that worries you. You’ve brushed it off as aging, but your spouse insists you check it out because your brother had a heart attack at 58."
+    },
+    "14": {
+        "description": "I want to understand more about the constant fatigue I feel. No matter how much I sleep, I wake up tired and struggle to get through the day.",
+        "persona": "You are a 36-year-old single parent juggling a full-time job and caring for your two children. You’ve assumed your exhaustion is due to stress and overwork, but now even weekends and holidays don’t seem to help. You drink energy drinks to stay awake at work, but they only give temporary relief. You are starting to worry if this is a health issue rather than just being overworked."
+    },
+    "15": {
+        "description": "I want to understand more about the persistent sore throat I have. It feels scratchy most of the day and hasn’t improved even after a week of home remedies.",
+        "persona": "You are a 20-year-old university student living in a shared dorm. You often stay up late, eat instant noodles, and drink little water. You recently attended several crowded events where many people were coughing. You are concerned that your sore throat might be something contagious, especially since your roommate has also started coughing."
+    },
+    "16": {
+        "description": "I want to understand more about the swelling in my ankles and feet. By evening, they feel tight and uncomfortable, and I have trouble fitting into my shoes.",
+        "persona": "You are a 48-year-old office manager who spends long hours sitting at your desk. You are slightly overweight and have borderline hypertension. You’ve noticed this swelling getting worse over the past month, especially after long workdays. You’re concerned it could be linked to circulation problems or something more serious like kidney or heart issues."
+    },
+    "17": {
+        "description": "I want to understand more about the recurring dizziness I experience. It happens when I stand up quickly and sometimes even when I am just sitting at my desk.",
+        "persona": "You are a 32-year-old software engineer working from home. You often forget to drink enough water and usually survive on coffee and energy drinks throughout the day. You are under heavy work stress due to tight project deadlines and spend more than 12 hours a day on your laptop. The dizziness worries you because it has started to interfere with your concentration and work performance."
+    },
+    "18": {
+        "description": "I want to understand more about the rash that appeared on my arms and legs. The red patches are itchy and seem to spread when I scratch them.",
+        "persona": "You are a 26-year-old kindergarten teacher. You have sensitive skin and a history of mild eczema during childhood. Recently, you introduced new cleaning products at home and started noticing the rash after that. You are concerned about whether it’s an allergic reaction or something contagious that might affect the children in your class."
+    },
+    "19": {
+        "description": "I want to understand more about the occasional blood in my stool. It has happened three times in the past month and worries me a lot.",
+        "persona": "You are a 43-year-old office worker who spends most of the day sitting. You have a low-fiber diet consisting mostly of processed foods, and you rarely drink water. You assumed it was just hemorrhoids, but since it has happened multiple times, you are beginning to worry about something more serious. You haven’t told anyone yet out of embarrassment."
+    },
+    "20": {
+        "description": "I want to understand more about the constant back pain I’ve been experiencing. It’s worse in the morning when I wake up and after long hours of sitting at work.",
+        "persona": "You are a 39-year-old office administrator who works at a computer all day. You recently bought a cheap office chair, and you suspect your posture may be causing the problem. You used to play sports but have become inactive since having kids. The back pain is starting to affect your ability to concentrate at work and participate in family activities."
+    },
+    "21": {
+        "description": "I want to understand more about the frequent headaches I’ve been experiencing. They usually start in the afternoon and are accompanied by sensitivity to light and sound.",
+        "persona": "You are a 34-year-old marketing executive who works long hours at a computer. You drink multiple cups of coffee daily and often skip meals. You’ve noticed that your headaches intensify during stressful projects and sometimes interfere with your ability to attend meetings or social events. You worry it could be migraines or something more serious."
+    },
+    "22": {
+        "description": "I want to understand more about the numbness in my fingers and hands. It’s worse at night and sometimes wakes me up from sleep.",
+        "persona": "You are a 42-year-old accountant who spends most of your day typing on a keyboard. You have a history of carpal tunnel syndrome in your right hand and have been ignoring mild pain in your left hand. You’ve noticed tingling sensations increasing over the past few weeks and it has started to affect your ability to type efficiently at work."
+    },
+    "23": {
+        "description": "I want to understand more about the unexplained weight loss I’ve had over the past two months. I haven’t changed my diet or exercise habits.",
+        "persona": "You are a 50-year-old high school teacher with no significant medical history. You’ve recently experienced stress at work and at home, but you didn’t expect it to cause such a noticeable drop in weight. You are concerned that it might be an underlying health problem such as diabetes or thyroid issues, especially since your parents had metabolic disorders."
+    },
+    "24": {
+        "description": "I want to understand more about the persistent cough I’ve had for the past three weeks. It’s dry and worsens at night, sometimes causing difficulty sleeping.",
+        "persona": "You are a 27-year-old graduate student living in a city apartment. You recently renovated your kitchen and suspect exposure to dust or mold might have triggered the cough. You have no prior respiratory issues but are concerned about worsening symptoms and the potential impact on your studies and social life."
+    },
+    "25": {
+        "description": "I want to understand more about the swelling in my hands and fingers. It’s accompanied by stiffness and a mild burning sensation, especially in the morning.",
+        "persona": "You are a 46-year-old graphic designer who spends long hours using a stylus and keyboard. You have a family history of arthritis and have noticed subtle joint pain over the past few months. The stiffness affects your ability to work efficiently and perform daily tasks, which is causing you stress and anxiety."
+    },
+    "26": {
+        "description": "I want to understand more about the irregular heartbeat I feel at times. It comes suddenly and lasts for several minutes, making me anxious.",
+        "persona": "You are a 58-year-old small business owner with a history of high blood pressure. You have recently been under significant stress due to financial pressures and sleep very little. You worry that the irregular heartbeat could indicate a serious cardiac condition, especially since a close friend recently suffered a heart attack."
+    },
+    "27": {
+        "description": "I want to understand more about the ongoing digestive discomfort I experience after eating certain foods. It includes bloating, gas, and occasional diarrhea.",
+        "persona": "You are a 33-year-old software developer who often eats quick meals at your desk. You suspect that certain food intolerances may be the cause but aren’t sure which ones. Your symptoms have started to affect your social life as you avoid dining out with friends, and you are concerned it might be a chronic gastrointestinal condition."
+    },
+    "28": {
+        "description": "I want to understand more about the sudden episodes of dizziness and blurred vision. They happen randomly and last for a few minutes.",
+        "persona": "You are a 40-year-old real estate agent who frequently drives to show properties. You have a history of borderline high blood pressure and occasionally skip meals due to your hectic schedule. The symptoms have recently started affecting your ability to focus while driving, causing anxiety about potential accidents."
+    },
+    "29": {
+        "description": "I want to understand more about the persistent lower abdominal pain I’ve been experiencing. It worsens during menstruation and sometimes radiates to my lower back.",
+        "persona": "You are a 28-year-old marketing assistant with irregular work hours and frequent travel. You have a history of mild endometriosis but thought it was under control. Recently, the pain has become more severe and has started to interfere with your ability to perform daily activities and meet deadlines at work."
+    },
+    "30": {
+        "description": "I want to understand more about the frequent urination and excessive thirst I’ve been experiencing over the past few weeks.",
+        "persona": "You are a 52-year-old accountant with a family history of type 2 diabetes. You’ve noticed that your energy levels are decreasing and you frequently feel fatigued at work. You are worried that these symptoms might indicate the onset of diabetes and are anxious about managing your health while maintaining your demanding job."
+    },
+    "31": {
+        "description": "I want to understand more about the persistent rash on my arms and neck. It is red, itchy, and occasionally oozes a clear fluid.",
+        "persona": "You are a 26-year-old florist who works with plants and flowers daily. You have mild eczema as a teenager, but the rash has worsened recently after frequent handling of fertilizers and pesticides. The itching interferes with your sleep, and you’re concerned it may affect your ability to handle delicate floral arrangements at work."
+    },
+    "32": {
+        "description": "I want to understand more about the chronic lower back pain I’ve had for the past six months. It worsens when sitting for long periods.",
+        "persona": "You are a 39-year-old software engineer working remotely with long sedentary hours. You have tried stretching and occasional massages, but the pain persists. You worry that prolonged sitting and poor posture may have caused a spinal or muscular issue that could affect your long-term health."
+    },
+    "33": {
+        "description": "I want to understand more about the sudden loss of appetite and nausea I’ve experienced for the past week.",
+        "persona": "You are a 31-year-old chef working in a busy restaurant kitchen with irregular hours and high stress. You recently changed your diet and have been experimenting with exotic ingredients. The loss of appetite is affecting your energy levels and performance at work, and you are concerned it may signal an underlying digestive or metabolic issue."
+    },
+    "34": {
+        "description": "I want to understand more about the persistent fatigue I’ve been feeling despite getting enough sleep. I also experience occasional dizziness.",
+        "persona": "You are a 45-year-old high school principal with a demanding schedule and multiple responsibilities. You exercise irregularly and often skip meals due to work obligations. The fatigue has started affecting your decision-making and overall mood, and you worry it might indicate anemia, thyroid issues, or another chronic condition."
+    },
+    "35": {
+        "description": "I want to understand more about the recurring nosebleeds I’ve been experiencing. They happen mostly in the morning and sometimes are heavy.",
+        "persona": "You are a 37-year-old construction site supervisor exposed to dusty environments daily. You have mild seasonal allergies but never experienced frequent nosebleeds before. The bleeding sometimes disrupts your work schedule and you are concerned it could be linked to high blood pressure or a clotting disorder."
+    },
+    "36": {
+        "description": "I want to understand more about the sudden swelling in my ankles and feet, which is accompanied by mild pain.",
+        "persona": "You are a 55-year-old accountant who sits for long periods at work and recently returned from a long-haul flight. You have a history of high cholesterol and borderline hypertension. The swelling has made walking uncomfortable, and you worry about circulation problems or early signs of heart or kidney issues."
+    },
+    "37": {
+        "description": "I want to understand more about the persistent chest tightness I feel when climbing stairs or walking briskly.",
+        "persona": "You are a 48-year-old delivery driver who has recently noticed a decline in stamina. You have a family history of heart disease and have smoked occasionally in the past. The tightness has started to worry you as it affects your daily work and may indicate cardiovascular problems."
+    },
+    "38": {
+        "description": "I want to understand more about the sudden episodes of shortness of breath and wheezing, especially at night.",
+        "persona": "You are a 29-year-old fitness instructor who has always been healthy. Recently, new dust exposure in your apartment and occasional pollen allergies may have triggered these symptoms. The breathing issues have started interfering with your ability to teach high-intensity classes, and you are concerned it could be asthma or another respiratory condition."
+    },
+    "39": {
+        "description": "I want to understand more about the frequent heartburn and acid reflux I’ve been experiencing after meals.",
+        "persona": "You are a 41-year-old restaurant owner who often eats quickly between managing orders and staff. You have a history of mild gastritis but recently noticed more frequent discomfort after meals. You are worried that the condition might worsen or lead to ulcers, affecting your work and lifestyle."
+    },
+    "40": {
+        "description": "I want to understand more about the persistent tingling sensation in my legs and feet, which worsens at night.",
+        "persona": "You are a 53-year-old teacher who has recently started a sedentary lifestyle due to online teaching responsibilities. You have type 2 diabetes for 5 years and occasionally neglect proper foot care. The tingling has begun to impact your sleep quality and daily comfort, and you worry about peripheral neuropathy or other diabetes-related complications."
+    },
+    "41": {
+        "description": "I want to understand more about the persistent headaches I’ve been experiencing, especially in the mornings. They are throbbing and sometimes accompanied by light sensitivity.",
+        "persona": "You are a 34-year-old graphic designer working long hours on digital projects. You recently switched to a new monitor and often skip breaks to meet deadlines. The headaches are starting to affect your focus and productivity, and you are concerned about migraines or vision-related issues."
+    },
+    "42": {
+        "description": "I want to understand more about the sudden vision blurriness and occasional floaters in my eyes.",
+        "persona": "You are a 47-year-old accountant who works long hours reviewing financial reports. You have a family history of glaucoma and have worn glasses since your teens. The new visual disturbances are causing anxiety, as they interfere with both your professional tasks and reading at home."
+    },
+    "43": {
+        "description": "I want to understand more about the frequent urination and extreme thirst I’ve been experiencing for the past two weeks.",
+        "persona": "You are a 38-year-old school counselor with a demanding daily schedule and irregular meals. You have a family history of diabetes, and the symptoms are starting to interfere with your concentration and energy levels at work. You worry that this may indicate high blood sugar or early onset diabetes."
+    },
+    "44": {
+        "description": "I want to understand more about the persistent nausea and occasional vomiting after meals.",
+        "persona": "You are a 29-year-old restaurant server working long shifts in a busy environment. You have recently increased your caffeine intake and sometimes skip meals. The ongoing nausea affects your appetite and job performance, and you are concerned about possible gastritis or other digestive issues."
+    },
+    "45": {
+        "description": "I want to understand more about the unexplained weight loss I’ve experienced over the past two months.",
+        "persona": "You are a 42-year-old project manager with high-stress responsibilities. You have tried dieting and exercise recently, but the weight loss is beyond what you expected. You are worried this could indicate thyroid issues, diabetes, or other systemic health problems."
+    },
+    "46": {
+        "description": "I want to understand more about the persistent joint pain in my knees and wrists, which worsens in cold weather.",
+        "persona": "You are a 56-year-old retired mechanic who has spent decades performing physically demanding work. You have recently started gardening and light exercises to stay active. The joint pain is affecting your mobility and hobbies, and you are concerned about arthritis or other chronic joint conditions."
+    },
+    "47": {
+        "description": "I want to understand more about the irregular heartbeats and occasional palpitations I’ve been experiencing.",
+        "persona": "You are a 50-year-old corporate executive under high work stress, often skipping meals and not exercising regularly. You have a history of hypertension in your family. The palpitations are causing anxiety and affecting your confidence during meetings, and you are worried about potential cardiac arrhythmias."
+    },
+    "48": {
+        "description": "I want to understand more about the persistent dry cough that sometimes produces little phlegm.",
+        "persona": "You are a 32-year-old office worker who recently relocated to a city with higher pollution levels. You have mild seasonal allergies and are often exposed to air-conditioned environments. The cough is affecting your sleep and daily productivity, and you are concerned it could be early signs of bronchitis or another respiratory condition."
+    },
+    "49": {
+        "description": "I want to understand more about the sudden dizziness and episodes of fainting that occur after standing up quickly.",
+        "persona": "You are a 28-year-old fitness enthusiast who enjoys running and high-intensity workouts. You have recently changed your diet and reduced your sodium intake. The dizziness has begun affecting your training routine and daily activities, and you are worried about low blood pressure or inner ear problems."
+    },
+    "50": {
+        "description": "I want to understand more about the persistent skin dryness and cracking on my hands, especially after washing dishes or using hand sanitizer.",
+        "persona": "You are a 37-year-old nurse working long shifts in a hospital. You frequently sanitize your hands and use gloves, which has worsened the dryness. The cracks sometimes bleed and make routine tasks painful, and you are concerned about eczema or occupational dermatitis."
+    }
+}
