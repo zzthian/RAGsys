@@ -157,11 +157,13 @@ class Search(StateBase):
         history=None,
         current_focus=None,
         new=False,
+        current_focus_status_reason=None
     ):
         super().__init__(task)
         self.query = query
         self.history = history
         self.current_focus = current_focus
+        self.current_focus_status_reason = current_focus_status_reason
 
         self.new = new
         self.prompt_variables = {
@@ -170,6 +172,7 @@ class Search(StateBase):
             "current_focus": self.current_focus,
             "history": self.history,
             "examples": StateBase.examples,
+            "current_focus_status_reason": self.current_focus_status_reason,
         }
 
     def enter(self):
@@ -237,10 +240,14 @@ class Stop(StateBase):
         self.history = history
         self.current_focus = current_focus
 
+        focus_list_str = ""
+        for i in range(len(self.task.focus_list)):
+            focus_list_str += str(i) + ") " + self.task.focus_list[i]["question"] + "\n"
+
         self.prompt_variables = {
             "persona": StateBase.tasks[self.task.task_id]["persona"],
             "task_description": self.task.task_description,
-            "focus_list": self.task.focus_list,
+            "focus_list": focus_list_str,
             "current_focus": self.current_focus,
             "examples": StateBase.examples,
             "history": self.history,
@@ -258,6 +265,8 @@ class Stop(StateBase):
         results = agent.generate()
         curr_answered = False
 
+        current_focus_status = results["current_focus_status"]
+        current_focus_status_reason = results["current_focus_status_reason"]
         answered = results["answered"]
         unknown = results["unknown"]
         pending = results["pending"]
@@ -279,6 +288,8 @@ class Stop(StateBase):
         print()
         print("\n".join(f"{x} : {y}" for (x, y) in zip(pending, pending_reasons)))
         print()
+        print("Current focus status: " + results["current_focus_status"])
+        print("Current focus status reason: " + results["current_focus_status_reason"])
 
         updated_focus_list = [self.task.focus_list[i] for i in pending]
         self.task.focus_list = updated_focus_list
@@ -308,7 +319,7 @@ class Stop(StateBase):
             return Pivot(self.task, self.history)
         else:
             return Search(
-                self.task, history=self.history, current_focus=self.current_focus
+                self.task, history=self.history, current_focus=self.current_focus, current_focus_status_reason=current_focus_status_reason
             )
 
 class Clarify(StateBase):
@@ -362,16 +373,10 @@ class Clarify(StateBase):
         print(f"Executing clarification, step {self.task.step}")
         print()
 
-        clarify = random.random()
-        if clarify < Clarify.CLARIFY_PROBABILITY:
-            print("Clarify!")
-            return Clarify(task=self.task, current_focus=self.current_focus, history=self.history)
-        else:
-            print("Pivot!")
-            return Pivot(self.task, self.history)
+        return Pivot(self.task, self.history)
 
 class Rewrite(StateBase):
-    REWRITE_DEPTH_LIMIT = 2
+    REWRITE_DEPTH_LIMIT = 1
 
     def __init__(
         self,
@@ -409,10 +414,15 @@ class Rewrite(StateBase):
 
     def exec(self):
         if self.rewrite_depth == Rewrite.REWRITE_DEPTH_LIMIT:
-            # print("Hit rewrite limit!")
+            print("Hit rewrite limit!")
             # print("Final query: " + self.query)
             # print("====================================================================================================")
             # print("")
+            if self.clarify:
+                print("Clarify after hitting rewrite limit!")
+                return Clarify(task=self.task, query=self.query, current_focus=self.current_focus, history=self.history)
+            
+            print("Search after hit rewrite limit!")
             return Search(
                 self.task,
                 self.query,
@@ -429,6 +439,7 @@ class Rewrite(StateBase):
             self.rewrites_and_reasons.append(query_and_rewrite_reason)
             # print("Unaccepted query: " + self.query)
             # print(results["rewrite_reason"])
+            print("rewrite!")
             return Rewrite(
                 task=self.task,
                 history=self.history,
@@ -436,13 +447,16 @@ class Rewrite(StateBase):
                 rewrites_and_reasons=self.rewrites_and_reasons,
                 current_focus=self.current_focus,
                 rewrite_depth=self.rewrite_depth + 1,
+                clarify=self.clarify
             )
         elif self.clarify:
             # print("Accepted query: " + self.query)
             # print("====================================================================================================")
             # print("")
+            print("Pass!")
             return Clarify(task=self.task, query=self.query, current_focus=self.current_focus, history=self.history)
         else:
+            print("Pass!")
             return Search(
                 self.task,
                 self.query,

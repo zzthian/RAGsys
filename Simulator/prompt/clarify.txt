@@ -19,10 +19,10 @@ conversation so far:
 task:
 Considering your objective, do the following:
     - Produce a clarification or follow-up query that your persona might naturally ask based on the current focus
-    - The query should clarify or follow up on details or replies from earlier in the conversation that relate to the focus
-    - The query should sound like a continuation of the conversation and should not be a repitition of a previous clarification or follow up
-    - Vary the sentence structure and phrasing from earlier queries while maintaining the persona’s tone
-    - The query may ask for elaboration, comparison, or justification (e.g., “Could you explain more about…?”, “How does that compare with…?”, “Why is that the case?”)
+    - The query should clarify or follow up on details or replies from earlier in the conversation or the most recent query that relate to the current focus
+    - The query should sound like a continuation of the conversation and not a repitition of a previous clarification or follow up
+    - Vary sentence structure and phrasing from earlier queries while maintaining the persona’s tone
+    - The query must ask for elaboration, comparison, or justification (e.g., “Could you explain more about…?”, “How does that compare with…?”, “Why is that the case?”)
     - Look at the included {examples} for reference on how queries should be structured
 
 response format:

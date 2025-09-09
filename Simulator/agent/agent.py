@@ -62,6 +62,7 @@ class Agent:
         # print("=======================")
         # print("Response: \n" + result)
         try:
+            print(results)
             result_json = json.loads(result)
         except:
             result = Agent.normalize_json(result)

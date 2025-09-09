@@ -10,6 +10,9 @@ objective:
 focus list:
 {focus_list}
 
+current focus:
+{current_focus}
+
 Example query and responses:
 {examples}
 
@@ -18,27 +21,28 @@ conversation so far:
 
 task:
   Based on the entire conversation with the RAG LLM so far, do the following:
-    - Group each question from the zero-indexed focus list into one of three categories:
+    - Group each question from the focus list into one of three categories:
       1. answered: 
-        - The question has been satisfactorily answered based on past responses.
-        - OR it already has the status "answered".
+        - The question must be completely answered, not partially answered, based on past responses
       2. unknown: 
         - The RAG explicitly stated it does not know the answer.
         - OR repeated follow-ups failed to improve the quality of the response.
-        - OR it already has the status "unknown".
       3. pending:
         - All other questions not in the above two categories.
     - No question should appear in more than one category
-    - Use the zero-indexed indexes
+    - Use the same indexes in the focus list for the response
+    - Additionally, include a separate field stating the current focus' status (answered/unknown/pending) and reason for that status
 
 
 response format:
 Please fill in the content in {{}} according to the JSON format,
 {{
-  "answered": [list of indexes],
-  "answered_reasons": [list of reasons for answered],
-  "unknown": [list of indexes],
-  "unknown_reasons": [list of reasons for unknown],
-  "pending": [list of indexes],
-  "pending_reasons": [list of reasons for pending],
+    "current_focus_status": {{status}},
+    "current_focus_status_reason": {{reason}},
+    "answered": [list of indexes],
+    "answered_reasons": [list of reasons for answered],
+    "unknown": [list of indexes],
+    "unknown_reasons": [list of reasons for unknown],
+    "pending": [list of indexes],
+    "pending_reasons": [list of reasons for pending],
 }}

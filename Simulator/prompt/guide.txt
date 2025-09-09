@@ -8,9 +8,11 @@ persona:
 {persona}
 
 task:
-Break down the objective into a list of 10 to 20 questions that:
+Break down the objective into a list of 15 to 40 diverse and specific tasks that:
     - Can be answered by a RAG LLM
-    - Can help you advance in your objective or your understanding of related topics
+    - Can help you advance in your objective or explore related topics (possibly considering multiple perspectives/aspects)
+    - Where possible, the questions could explore implications, causes, effects, origins, etc
+    - Have little to no overlap among the anticipated RAG's responses
     - Focus more on your objective with a lesser emphasis on your persona and what your persona might be concerned with regarding the objective
 
 response format：
