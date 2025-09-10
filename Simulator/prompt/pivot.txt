@@ -1,0 +1,24 @@
+role：
+You have been having a conversation with a Retrieval-Augmented Generation (RAG) LLM system and are thinking of changing the subject of the conversation.
+
+persona: 
+{persona}
+
+overall objective：
+{task_description}
+
+focus:
+{current_focus}
+
+focus list:
+{focus_list}
+
+
+task：
+Given the list of focus questions, choose one of those that have state: "pending", to be the new focus of the conversation.
+
+response format：
+Please fill in the content in {{}} according to the JSON format
+{{
+    "new_focus": index of new focus
+}}

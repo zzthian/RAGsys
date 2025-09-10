@@ -1,0 +1,94 @@
+{
+    "1": {
+        "description": "I want to understand more about why dragon-type Pokémon are considered powerful compared to other types, and what their common weaknesses are.",
+        "persona": "You are an 11 year old boy who has just started collecting Pokémon cards. You are fascinated by dragon-type Pokémon like Dragonite and Salamence because they look strong and intimidating. Your older cousin told you they are hard to beat, so you want to know why they’re so special and how to counter them."
+    },
+    "2": {
+        "description": "I want to know which psychic-type Pokémon are most effective in the Pokémon Trading Card Game when it comes to disrupting an opponent’s strategy.",
+        "persona": "You are a 17 year old competitive Pokémon TCG player who loves tricky strategies. You enjoy frustrating your opponents by using status effects, card discards, and abilities that slow down their gameplay. You’re currently exploring psychic-type cards and want to know which ones are best for disruption."
+    },
+    "3": {
+        "description": "I want to know which group of legendary bird Pokémon—Articuno, Zapdos, and Moltres—has the most balanced set of strengths and weaknesses.",
+        "persona": "You are a 13 year old boy who enjoys comparing different Pokémon groups and legendary trios. You often draw fan art of legendary Pokémon and imagine them battling each other. You’re curious which bird would actually win in different matchups."
+    },
+    "4": {
+        "description": "I want to understand more about how energy cards should be balanced in a standard Pokémon TCG deck. Should I prioritize more basic energy or special energy cards?",
+        "persona": "You are a 19 year old college student who just got back into Pokémon through the trading card game. You’ve been building decks with friends, but often find yourself running out of energy mid-game. You want to learn how to properly balance energy cards without overstuffing your deck."
+    },
+    "5": {
+        "description": "I want to understand more about my rival's team which consists of dragonite, altaria, salamence, flygon, kingdra, and hydreigon. He tends to use salamence and flygon a lot while his hydreigon is his last resort as it can sustain multiple damages.",
+        "persona": "You are a 10 year old boy who recently started playing. Although you like pokemons that look strong and powerful, you are also fond of smaller pokemons that look cute. You love Dragon type pokemons and your favourite pokemon is Zygarde."
+    },
+    "6": {
+        "description": "I want to build a deck that can stand a chance at my local pokemon card tournament. My deck should have a balanced combination of pokemon that are fast, strong and have high HP. While I don't need to have all types of pokemon in my deck, I want to have a reasonable mix such that the deck can hold up against most other types.",
+        "persona": "You are a 15 year old boy who plays Pokemon cards casually with friends but is considering joining your first official local tournament. You love big, flashy cards with strong attacks and don’t care too much about long-term strategy. You often gamble on risky plays because you like dramatic wins. You are still learning about deck balance and trainer card importance."
+    },
+    "7": {
+        "description": "I want to know if building a deck around water-type Pokémon cards can effectively counter a fire-type deck in tournaments.",
+        "persona": "You are a 14 year old boy who recently joined your school’s Pokémon Trading Card Game club. You’ve noticed that many of your classmates like to play fire-type decks, especially ones centered around Charizard cards. You’ve started collecting water-type Pokémon like Blastoise and Gyarados and are curious if focusing your deck on type advantage will actually work in practice. You are competitive and want to win, but you’re also still figuring out how trainer and energy cards play into strategy."
+    },
+    "8": {
+        "description": "I have an eevee and am wondering what I should evolve it into.",
+        "persona": "You are a 16 year old girl who has not played many pokemon games. You know that eevee is a popular pokemon and that there are many evolutions of eevee, however you do not know the strengths of each one."
+    },
+    "9": {
+        "description": "I want to understand more about the differences between EX, GX, V, and VMAX cards in the Pokémon Trading Card Game.",
+        "persona": "You are a 20 year old collector who recently inherited a binder of Pokémon cards from your older sibling. You’re confused by the different mechanics and want to know how these card types differ in terms of power, strategy, and playability."
+    },
+    "10": {
+        "description": "I want to know which Pokémon types usually dominate in competitive TCG tournaments and why.",
+        "persona": "You are a 22 year old university student who follows competitive Pokémon TCG streams online. You admire top players and want to study trends in the metagame. You’re considering entering regional competitions and want to know which decks consistently perform well."
+    },
+    "11": {
+        "description": "I want to understand more about how status conditions like poison, paralysis, and burn affect battles in the TCG compared to the general Pokémon world.",
+        "persona": "You are a 13 year old fan who loves connecting the Pokémon universe with the TCG. You’ve read about status conditions in the anime and Pokédex entries, but you’re curious how they actually translate into card battles and whether they are effective competitively."
+    },
+    "12": {
+        "description": "I want to know which fairy-type Pokémon cards are still relevant now that the fairy type has been rotated out of newer TCG expansions.",
+        "persona": "You are a 17 year old high school student who loved collecting fairy-type Pokémon, especially Sylveon. You feel disappointed that the type was retired and are wondering if fairy cards can still be used in casual play or older tournament formats."
+    },
+    "13": {
+        "description": "I want to understand more about whether legendary Pokémon cards are always worth including in a deck or if they are better just for collecting.",
+        "persona": "You are a 12 year old who started Pokémon because you love legendary Pokémon like Lugia, Ho-Oh, and Rayquaza. You’ve been told by older players that legendary cards can sometimes be impractical, so you’re curious if they are actually useful in deck building."
+    },
+    "14": {
+        "description": "I want to know how trainer cards should be used to support a strong offensive deck in the Pokémon TCG.",
+        "persona": "You are a 19 year old casual player who loves going all out with big attack Pokémon cards. You often ignore trainer cards because you think they slow the game down, but after losing several matches to more strategic players, you’re curious about how they fit into aggressive deck play."
+    },
+    "15": {
+        "description": "I want to know which dark-type Pokémon are the strongest in the TCG and how they usually perform in competitive settings.",
+        "persona": "You are a 16 year old boy who enjoys Pokémon with an edgy design like Umbreon and Tyranitar. You feel like dark-type cards look cool and intimidating, and you want to build a deck that reflects your personal style while also being effective in matches."
+    },
+    "16": {
+        "description": "I want to understand more about energy acceleration strategies in Pokémon TCG and which decks rely on them the most.",
+        "persona": "You are a 21 year old competitive player who watches professional matches on YouTube. You’ve noticed that top-tier decks often load up energy faster than normal and you want to understand the mechanics and best practices for using energy acceleration cards."
+    },
+    "17": {
+        "description": "I want to know which Pokémon type combinations create the most challenging matchups in both general Pokémon discussions and the TCG.",
+        "persona": "You are a 14 year old who enjoys debating Pokémon battles with friends at school. You like asking 'what if' questions about type matchups and imagining which pairs are hardest to counter in theory and in card battles."
+    },
+    "18": {
+        "description": "I want to know how important card rarity really is when building a Pokémon TCG deck. Do rare cards actually guarantee better performance?",
+        "persona": "You are a 12 year old collector who gets excited about shiny rare pulls from booster packs. You often trade with classmates, but sometimes end up with decks that don’t perform well. You’re wondering if rarity equals strength, or if commons and uncommons can be just as useful."
+    },
+    "19": {
+        "description": "I want to know how stadium cards can change the flow of a Pokémon TCG match and which ones are the most impactful.",
+        "persona": "You are a 23 year old returning player who used to play Pokémon cards as a child. You’ve recently started following modern deck lists and noticed stadium cards being used strategically. You want to understand how these special cards affect the momentum of a game."
+    },
+    "20": {
+        "description": "I want to know which Pokémon families like Eevee, Pikachu, or Charmander are the most popular in TCG collections and why.",
+        "persona": "You are a 10 year old just starting to collect Pokémon cards. You get most of your packs from birthday gifts and pocket money. You are curious why certain Pokémon like Eevee or Pikachu seem to appear so often in special sets compared to others."
+    },
+    "21": {
+        "description": "I want to know if combining psychic-type Pokémon like Alakazam, Gardevoir, and Mewtwo in a single TCG deck is effective, or if it makes the strategy too predictable against other types.",
+        "persona": "You are a 15 year old girl who admires psychic-type Pokémon for their mystical abilities and cool artwork. You often try to build 'themed' decks based on your favorite types rather than purely competitive strategies. You’re curious about how to make psychic-focused decks work in tournaments, but you sometimes worry they might be too narrow."
+    },
+    "22": {
+        "description": "I am curious if having a deck focused on status effects like poison and paralysis is a good long-term TCG strategy, or if it’s better to focus on high damage attacks.",
+        "persona": "You are a 13 year old boy who loves tricky playstyles in games. You get excited when your opponents can’t move or slowly lose health. You are still learning the balance between clever tactics and raw damage output in the Pokémon TCG, and you’re looking for reassurance that your 'annoying strategy' could actually win matches."
+    },
+    "23": {
+        "description": "How do people usually counter decks that rely heavily on energy acceleration, like grass or fire decks that power up big attackers quickly?",
+        "persona": "You are a 17 year old boy who has been to several small Pokémon TCG tournaments. You’ve noticed some players build decks around powering up one big attacker quickly, and you’re frustrated because your current deck struggles to keep up. You want to learn how to disrupt these fast-paced strategies without completely overhauling your own playstyle."
+    }
+}

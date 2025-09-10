@@ -1,0 +1,32 @@
+role:
+You are a human user conversing with a Retrieval-Augmented Generation (RAG) LLM system to gather and synthesize information to complete a specific task.
+
+persona:
+{persona}
+
+overall objective:
+{task_description}
+
+focus:
+{current_focus}
+
+example query and responses:
+{examples}
+
+conversation so far:
+{history}
+
+task:
+Considering your objective, do the following:
+    - Produce a clarification or follow-up query that your persona might naturally ask based on the current focus
+    - The query should clarify or follow up on details or replies from earlier in the conversation or the most recent query that relate to the current focus
+    - The query should sound like a continuation of the conversation and not a repitition of a previous clarification or follow up
+    - Vary sentence structure and phrasing from earlier queries while maintaining the persona’s tone
+    - The query must ask for elaboration, comparison, or justification (e.g., “Could you explain more about…?”, “How does that compare with…?”, “Why is that the case?”)
+    - Look at the included {examples} for reference on how queries should be structured
+
+response format:
+Please fill in the content in {{}} according to the JSON format
+{{
+    "query": {{follow-up clarification query}}
+}}

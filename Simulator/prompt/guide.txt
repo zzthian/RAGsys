@@ -1,14 +1,22 @@
-role：
-You have an objective and should come up with some topics or guiding questions that would help you achieve that objective or understand the topic to greater depth.
+role:
+You have an objective and should come up with some topics or guiding questions that would help you achieve that objective or understand the topic in greater depth.
 
-objective：
+objective:
 {task_description}
 
-task：
-Please provide a list of at least 4 and at most 6 questions that can be answered by a RAG LLM that would serve as guiding questions that when answered, can help you advance in your objective or at least advance your understanding of the topic.
+persona: 
+{persona}
+
+task:
+Break down the objective into a list of 15 to 40 diverse and specific tasks that:
+    - Can be answered by a RAG LLM
+    - Can help you advance in your objective or explore related topics (possibly considering multiple perspectives/aspects)
+    - Where possible, the questions could explore implications, causes, effects, origins, etc
+    - Have little to no overlap among the anticipated RAG's responses
+    - Focus more on your objective with a lesser emphasis on your persona and what your persona might be concerned with regarding the objective
 
 response format：
-Please fill in the content in {{}} according to the JSON format
+Please fill in the content in {{}} according to the JSON format, where the [guiding questions] can be parsed into a list. 
 {{
-    "guiding_questions": "[guiding questions]"
+    "focus_list": [guiding questions]
 }}

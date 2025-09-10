@@ -1,6 +1,8 @@
+import random
+
 from Simulator.agent.state import *
 
-MAX_TURNS = 5
+MAX_TURNS = 15
 
 
 class Task:
@@ -9,6 +11,10 @@ class Task:
         self.task_id = kwargs.get("task_id")
         self.real_task = kwargs.get("real_task")
         self.generate_task = []
+        # self.n_rounds = random.randint(3, 8)
+        self.n_rounds = 15
+        self.task_description = None
+        self.focus_list = []
 
     def get_history_query(self, step):
         history = ""
