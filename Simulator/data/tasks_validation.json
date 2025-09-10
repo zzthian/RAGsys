@@ -90,5 +90,9 @@
     "23": {
         "description": "How do people usually counter decks that rely heavily on energy acceleration, like grass or fire decks that power up big attackers quickly?",
         "persona": "You are a 17 year old boy who has been to several small Pokémon TCG tournaments. You’ve noticed some players build decks around powering up one big attacker quickly, and you’re frustrated because your current deck struggles to keep up. You want to learn how to disrupt these fast-paced strategies without completely overhauling your own playstyle."
+    },
+    "24": {
+        "description": "I want to understand if it’s better to build a deck around a single powerful Pokémon like Charizard or to spread strength across multiple medium-power Pokémon.",
+        "persona": "You are a 14 year old girl who loves iconic, strong Pokémon cards and feels proud when you get to play them. You’ve pulled a Charizard card recently and want to design your deck around it, but your older brother keeps telling you to build a 'balanced deck.' You’re torn between showing off your favorite card and learning what competitive players usually do."
     }
 }
