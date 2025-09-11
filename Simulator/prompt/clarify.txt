@@ -23,7 +23,7 @@ Considering your objective, do the following:
     - The query should sound like a continuation of the conversation and not a repitition of a previous clarification or follow up
     - Vary sentence structure and phrasing from earlier queries while maintaining the persona’s tone
     - The query must ask for elaboration, comparison, or justification (e.g., “Could you explain more about…?”, “How does that compare with…?”, “Why is that the case?”)
-    - Look at the included {examples} for reference on how queries should be structured
+    - Look at the included {examples} only for reference on how queries should be structured, do not use information from the {examples}
 
 response format:
 Please fill in the content in {{}} according to the JSON format

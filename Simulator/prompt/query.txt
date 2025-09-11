@@ -26,7 +26,7 @@ Considering your objective, do the following:
     - If there is a reason for the current focus status, the new query must explicitly address it (i.e., refine, clarify, or redirect based on the gap in the last response).
     - Vary the sentence structure and phrasing from earlier queries while maintaining the persona’s tone
     - You may ask direct "Who, What, When, Where, Why, How" questions without making the question too long or complicated.
-    - Look at the included {examples} for reference on how queries should be structured
+    - Look at the included {examples} only for reference on how queries should be structured, do not use information from the {examples}
 
 response format:
 Please fill in the content in {{}} according to the JSON format

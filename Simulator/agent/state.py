@@ -130,13 +130,16 @@ class Guide(StateBase):
         pass
 
     def exec(self):
+        # start = time.time()
         agent = Agent(
             prompt=StateBase.read_prompt("guide"),
             **self.prompt_variables,
         )
+        # end = time.time()
+        # print(f"Guide agent took: {end - start:.6f} seconds")
         focus_qns = agent.generate()["focus_list"]
 
-        focus_list = map(lambda x: {"question": x, "status": "pending"}, focus_qns)
+        focus_list = map(lambda x: {"question": x}, focus_qns)
         self.task.focus_list = list(focus_list)
         self.task.current_focus_idx = 0
         print("In Guide")
@@ -376,7 +379,7 @@ class Clarify(StateBase):
         return Pivot(self.task, self.history)
 
 class Rewrite(StateBase):
-    REWRITE_DEPTH_LIMIT = 1
+    # REWRITE_DEPTH_LIMIT = 1
 
     def __init__(
         self,
@@ -402,67 +405,74 @@ class Rewrite(StateBase):
             "history": self.history,
             "current_focus": self.current_focus,
             "query": self.query,
-            "rewrites_and_reasons": (
-                "No previous rewrites"
-                if not self.rewrites_and_reasons
-                else self.rewrites_and_reasons
-            ),
         }
 
     def enter(self):
         pass
 
     def exec(self):
-        if self.rewrite_depth == Rewrite.REWRITE_DEPTH_LIMIT:
-            print("Hit rewrite limit!")
-            # print("Final query: " + self.query)
-            # print("====================================================================================================")
-            # print("")
-            if self.clarify:
-                print("Clarify after hitting rewrite limit!")
-                return Clarify(task=self.task, query=self.query, current_focus=self.current_focus, history=self.history)
+        # if self.rewrite_depth == Rewrite.REWRITE_DEPTH_LIMIT:
+        #     print("Hit rewrite limit!")
+        #     # print("Final query: " + self.query)
+        #     # print("====================================================================================================")
+        #     # print("")
+        #     if self.clarify:
+        #         print("Clarify after hitting rewrite limit!")
+        #         return Clarify(task=self.task, query=self.query, current_focus=self.current_focus, history=self.history)
             
-            print("Search after hit rewrite limit!")
-            return Search(
-                self.task,
-                self.query,
-                history=self.history,
-                current_focus=self.current_focus,
-            )
+        #     print("Search after hit rewrite limit!")
+        #     return Search(
+        #         self.task,
+        #         self.query,
+        #         history=self.history,
+        #         current_focus=self.current_focus,
+        #     )
 
         agent = Agent(prompt=StateBase.read_prompt("rewrite"), **self.prompt_variables)
         results = agent.generate()
 
         if "Rewrite" in results["action"]:
-            rewritten_query = results["rewritten_query"]
-            query_and_rewrite_reason = {self.query, results["rewrite_reason"]}
-            self.rewrites_and_reasons.append(query_and_rewrite_reason)
-            # print("Unaccepted query: " + self.query)
-            # print(results["rewrite_reason"])
-            print("rewrite!")
-            return Rewrite(
-                task=self.task,
-                history=self.history,
-                query=rewritten_query,
-                rewrites_and_reasons=self.rewrites_and_reasons,
-                current_focus=self.current_focus,
-                rewrite_depth=self.rewrite_depth + 1,
-                clarify=self.clarify
-            )
-        elif self.clarify:
-            # print("Accepted query: " + self.query)
-            # print("====================================================================================================")
-            # print("")
-            print("Pass!")
+            self.prompt_variables["query"] = results["rewritten_query"]
+            self.query = results["rewritten_query"]
+        huamn_agent = Agent(prompt=StateBase.read_prompt("human"), **self.prompt_variables)
+        human_results = agent.generate()
+        if "Rewrite" in human_results["action"]:
+            self.query = human_results["rewritten_query"]
+            print("Human-like rewrite reason: " + human_results["rewrite_reason"])
+        
+        if self.clarify:
             return Clarify(task=self.task, query=self.query, current_focus=self.current_focus, history=self.history)
         else:
-            print("Pass!")
-            return Search(
-                self.task,
-                self.query,
-                history=self.history,
-                current_focus=self.current_focus,
-            )
+            return Search(self.task, self.query, history=self.history, current_focus=self.current_focus)
+
+        # if "Rewrite" in results["action"]:
+        #     rewritten_query = results["rewritten_query"]
+        #     query_and_rewrite_reason = {self.query, results["rewrite_reason"]}
+        #     self.rewrites_and_reasons.append(query_and_rewrite_reason)
+        #     print("rewrite!")
+        #     return Rewrite(
+        #         task=self.task,
+        #         history=self.history,
+        #         query=rewritten_query,
+        #         rewrites_and_reasons=self.rewrites_and_reasons,
+        #         current_focus=self.current_focus,
+        #         rewrite_depth=self.rewrite_depth + 1,
+        #         clarify=self.clarify
+        #     )
+        # elif self.clarify:
+        #     # print("Accepted query: " + self.query)
+        #     # print("====================================================================================================")
+        #     # print("")
+        #     print("Pass!")
+        #     return Clarify(task=self.task, query=self.query, current_focus=self.current_focus, history=self.history)
+        # else:
+        #     print("Pass!")
+        #     return Search(
+        #         self.task,
+        #         self.query,
+        #         history=self.history,
+        #         current_focus=self.current_focus,
+        #     )
 
 
 class Pivot(StateBase):

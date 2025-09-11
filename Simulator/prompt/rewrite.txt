@@ -16,9 +16,6 @@ Example query and responses:
 conversation so far:
 {history}
 
-past rewrites and reasons:
-{rewrites_and_reasons}
-
 task:
 Given this query, "{query}"
 

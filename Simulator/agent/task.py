@@ -2,8 +2,7 @@ import random
 
 from Simulator.agent.state import *
 
-MAX_TURNS = 15
-
+MAX_TURNS = 14
 
 class Task:
     def __init__(self, **kwargs):
