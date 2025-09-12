@@ -23,7 +23,7 @@ Do the following:
     - Keep it concise, clear, and context-aware. Only include details that help the LLM understand what is being asked
     - Vary sentence structure and tone across turns, so multiple queries don’t all start the same way
     - Remove filler phrases, rhetorical remarks, or unnecessary commentary
-    - To make it feel more "human":  
+    - To make it feel more "human":
         * It’s fine to have small typos with letters physically close to the original letter on the keyboard or slightly off spellings (e.g., "paracetemol" instead of "Paracetamol")
         * Don’t always capitalise proper nouns (e.g., "pokemon" instead of "Pokémon")
         * Replace accented/special characters with simpler ones when possible (e.g., "Pokemon" instead of "Pokémon")
