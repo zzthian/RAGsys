@@ -326,7 +326,7 @@ class Stop(StateBase):
             )
 
 class Clarify(StateBase):
-    CLARIFY_PROBABILITY = 0.5
+    CLARIFY_PROBABILITY = 0.2
 
     def __init__(self, task, query=None, current_focus=None, history=None):
         super().__init__(task)
