@@ -14,6 +14,8 @@ Break down the objective into a list of 15 to 40 diverse and specific tasks that
     - Where possible, the questions could explore implications, causes, effects, origins, etc
     - Have little to no overlap among the anticipated RAG's responses
     - Focus more on your objective with a lesser emphasis on your persona and what your persona might be concerned with regarding the objective
+    - Adapt the **language and complexity** of the questions to match the user's persona:
+        * Avoid overly academic or technical phrasing if the user is not an expert
 
 response format：
 Please fill in the content in {{}} according to the JSON format, where the [guiding questions] can be parsed into a list. 

@@ -125,6 +125,7 @@ class Guide(StateBase):
             "persona": StateBase.tasks[self.task.task_id]["persona"],
             "task_description": self.task.task_description,
         }
+        print(self.task.task_description)
 
     def enter(self):
         pass
@@ -160,15 +161,18 @@ class Search(StateBase):
         history=None,
         current_focus=None,
         new=False,
-        current_focus_status_reason=None
+        current_focus_status_reason=None,
+        clarify=False,
+        curr_answered=False
     ):
         super().__init__(task)
         self.query = query
         self.history = history
         self.current_focus = current_focus
-        self.current_focus_status_reason = current_focus_status_reason
-
         self.new = new
+        self.current_focus_status_reason = current_focus_status_reason
+        self.clarify = clarify
+        self.curr_answered = curr_answered
         self.prompt_variables = {
             "persona": StateBase.tasks[self.task.task_id]["persona"],
             "task_description": self.task.task_description,
@@ -188,9 +192,14 @@ class Search(StateBase):
         return thought
 
     def exec(self):
+        if self.new:
+            StateBase.rag_system.clear_ask_history()
+            StateBase.rag_system.clear_conversation_history()
+
         if self.query is None:
+            prompt = "clarify" if self.clarify else "query"
             agent = Agent(
-                prompt=StateBase.read_prompt("query"),
+                prompt=StateBase.read_prompt(prompt),
                 **self.prompt_variables,
             )
             self.query = agent.generate()["query"]
@@ -199,11 +208,10 @@ class Search(StateBase):
                 history=self.history,
                 query=self.query,
                 current_focus=self.current_focus,
+                current_focus_status_reason=self.current_focus_status_reason,
+                clarify=self.clarify,
+                curr_answered=self.curr_answered
             )
-
-        if self.new:
-            StateBase.rag_system.clear_ask_history()
-            StateBase.rag_system.clear_conversation_history()
 
         response, similarity_list, retrieval = StateBase.rag_system.ask(
             self.query, n_retrieval=16, n_rerank=8, return_retrieval=True
@@ -229,157 +237,15 @@ class Search(StateBase):
                 "response": response,
             }
         )
-        for focus in self.task.focus_list:
-            print(json.dumps(focus, indent=4))
+        # for focus in self.task.focus_list:
+        #     print(json.dumps(focus, indent=4))
         print(f"Executing search, step {self.task.step}")
         print()
 
-        return Stop(self.task, history=self.history, current_focus=self.current_focus)
-
-
-class Stop(StateBase):
-    def __init__(self, task, current_focus=None, history=None):
-        super().__init__(task)
-        self.history = history
-        self.current_focus = current_focus
-
-        focus_list_str = ""
-        for i in range(len(self.task.focus_list)):
-            focus_list_str += str(i) + ") " + self.task.focus_list[i]["question"] + "\n"
-
-        self.prompt_variables = {
-            "persona": StateBase.tasks[self.task.task_id]["persona"],
-            "task_description": self.task.task_description,
-            "focus_list": focus_list_str,
-            "current_focus": self.current_focus,
-            "examples": StateBase.examples,
-            "history": self.history,
-        }
-
-    def enter(self):
-        pass
-
-    def exec(self):
-
-        if self.task.step == self.task.n_rounds:
-            return Finish(self.task)
-
-        agent = Agent(prompt=StateBase.read_prompt("stop"), **self.prompt_variables)
-        results = agent.generate()
-        curr_answered = False
-
-        current_focus_status = results["current_focus_status"]
-        current_focus_status_reason = results["current_focus_status_reason"]
-        answered = results["answered"]
-        unknown = results["unknown"]
-        pending = results["pending"]
-        answered_reasons = results["answered_reasons"]
-        unknown_reasons = results["unknown_reasons"]
-        pending_reasons = results["pending_reasons"]
-
-        if self.task.current_focus_idx not in pending:
-            curr_answered = True
-        print("In Stop")
-        print(f"Answered questions: {answered}")
-        print()
-        print("\n".join(f"{x} : {y}" for (x, y) in zip(answered, answered_reasons)))
-        print()
-        print(f"Unknown questions: {unknown}")
-        print()
-        print("\n".join(f"{x} : {y}" for (x, y) in zip(unknown, unknown_reasons)))
-        print(f"Pending questions: {pending}")
-        print()
-        print("\n".join(f"{x} : {y}" for (x, y) in zip(pending, pending_reasons)))
-        print()
-        print("Current focus status: " + results["current_focus_status"])
-        print("Current focus status reason: " + results["current_focus_status_reason"])
-
-        updated_focus_list = [self.task.focus_list[i] for i in pending]
-        self.task.focus_list = updated_focus_list
-
-        if len(pending) == 0:
-            # All boundary completed, can end convo
-            return Finish(self.task)
-
-        if curr_answered:
-            # Not all boundary answered, but current one is completely answered, pivot
-            # print("Pivoting as current focus question is answered")
-            # print()
-            clarify = random.random()
-            if clarify < Clarify.CLARIFY_PROBABILITY:
-                print("Clarify!")
-                return Clarify(task=self.task, current_focus=self.current_focus, history=self.history)
-            else:
-                print("Pivot!")
-                return Pivot(self.task, self.history)
-
-        # RNG either pivot or continue on same focus
-        pivot = random.random()
-
-        if pivot < Pivot.PIVOT_PROBABILITY:
-            print("RNG pivot")
-            print()
-            return Pivot(self.task, self.history)
-        else:
-            return Search(
-                self.task, history=self.history, current_focus=self.current_focus, current_focus_status_reason=current_focus_status_reason
-            )
-
-class Clarify(StateBase):
-    CLARIFY_PROBABILITY = 0.2
-
-    def __init__(self, task, query=None, current_focus=None, history=None):
-        super().__init__(task)
-        self.query = query
-        self.history = history
-        self.current_focus = current_focus
-        self.prompt_variables = {
-            "persona": StateBase.tasks[self.task.task_id]["persona"],
-            "task_description": self.task.task_description,
-            "current_focus": self.current_focus,
-            "examples": StateBase.examples,
-            "history": self.history,
-        }
-
-    def enter(self):
-        if self.query is not None:
-            self.task.step += 1
-    
-    def exec(self):
-        if self.query is None:
-            agent = Agent(prompt=StateBase.read_prompt("clarify"), **self.prompt_variables)
-            self.query = agent.generate()["query"]
-            return Rewrite(
-                task=self.task,
-                history=self.history,
-                query=self.query,
-                current_focus=self.current_focus,
-                clarify=True
-            )
-        response, similarity_list, retrieval = StateBase.rag_system.ask(
-            self.query, n_retrieval=16, n_rerank=8, return_retrieval=True
-        )
-
-        query_response = {"query": self.query, "response": response}
-        self.history.append(query_response)
-
-        self.task.generate_task.append(
-            {
-                "step": self.task.step,
-                "query": self.query,
-                "response": response,
-            }
-        )
-
-        for focus in self.task.focus_list:
-            print(json.dumps(focus, indent=4))
-        print(f"Executing clarification, step {self.task.step}")
-        print()
-
-        return Pivot(self.task, self.history)
+        return Stop(self.task, history=self.history, current_focus=self.current_focus, curr_answered=self.curr_answered)
 
 class Rewrite(StateBase):
-    # REWRITE_DEPTH_LIMIT = 1
+    REWRITE_DEPTH_LIMIT = 5
 
     def __init__(
         self,
@@ -389,7 +255,9 @@ class Rewrite(StateBase):
         rewrites_and_reasons=[],
         rewrite_depth=0,
         current_focus=None,
-        clarify=False
+        current_focus_status_reason=None,
+        clarify=False,
+        curr_answered=None,
     ):
         super().__init__(task)
         self.history = history
@@ -397,7 +265,9 @@ class Rewrite(StateBase):
         self.rewrites_and_reasons = rewrites_and_reasons
         self.rewrite_depth = rewrite_depth
         self.current_focus = current_focus
+        self.current_focus_status_reason = current_focus_status_reason
         self.clarify = clarify
+        self.curr_answered = curr_answered
         self.prompt_variables = {
             "persona": StateBase.tasks[self.task.task_id]["persona"],
             "task_description": self.task.task_description,
@@ -411,39 +281,44 @@ class Rewrite(StateBase):
         pass
 
     def exec(self):
-        # if self.rewrite_depth == Rewrite.REWRITE_DEPTH_LIMIT:
-        #     print("Hit rewrite limit!")
-        #     # print("Final query: " + self.query)
-        #     # print("====================================================================================================")
-        #     # print("")
-        #     if self.clarify:
-        #         print("Clarify after hitting rewrite limit!")
-        #         return Clarify(task=self.task, query=self.query, current_focus=self.current_focus, history=self.history)
-            
-        #     print("Search after hit rewrite limit!")
-        #     return Search(
-        #         self.task,
-        #         self.query,
-        #         history=self.history,
-        #         current_focus=self.current_focus,
-        #     )
+        print("Rewrite Depth " + str(self.rewrite_depth))
+        if self.rewrite_depth == Rewrite.REWRITE_DEPTH_LIMIT:
+            print("Hit rewrite limit!")
+            # print("Final query: " + self.query)
+            # print("====================================================================================================")
+            # print("")
+            return Search(self.task, query=self.query, history=self.history, current_focus=self.current_focus, current_focus_status_reason=self.current_focus_status_reason, clarify=self.clarify, curr_answered=self.curr_answered)
 
-        agent = Agent(prompt=StateBase.read_prompt("rewrite"), **self.prompt_variables)
-        results = agent.generate()
+        # agent = Agent(prompt=StateBase.read_prompt("rewrite"), **self.prompt_variables)
+        # results = agent.generate()
 
-        if "Rewrite" in results["action"]:
-            self.prompt_variables["query"] = results["rewritten_query"]
-            self.query = results["rewritten_query"]
-        huamn_agent = Agent(prompt=StateBase.read_prompt("human"), **self.prompt_variables)
-        human_results = agent.generate()
+        # if "Rewrite" in results["action"]:
+        #     self.rewrites_and_reasons.append({"query": self.query, "rewrite reason": results["rewrite_reason"]})
+        #     self.prompt_variables["query"] = results["rewritten_query"]
+        #     self.query = results["rewritten_query"]
+        human_agent = Agent(prompt=StateBase.read_prompt("human"), **self.prompt_variables)
+        human_results = human_agent.generate()
         if "Rewrite" in human_results["action"]:
+            self.rewrites_and_reasons.append({"query": self.query, "rewrite reason": human_results["rewrite_reason"]})
+            self.prompt_variables["query"] = human_results["rewritten_query"]
             self.query = human_results["rewritten_query"]
             print("Human-like rewrite reason: " + human_results["rewrite_reason"])
         
-        if self.clarify:
-            return Clarify(task=self.task, query=self.query, current_focus=self.current_focus, history=self.history)
+        eval_agent = Agent(prompt=StateBase.read_prompt("uni_eval"), llm="openai", **self.prompt_variables)
+        eval_results = eval_agent.generate()
+        print("Query: " + self.query)
+        if "Yes" in eval_results["choice"]:
+            print("UniEval failed at query " + eval_results["index"] + ": " + eval_results["reason"])
+            return Rewrite(self.task, query=self.query, rewrites_and_reasons=self.rewrites_and_reasons, rewrite_depth=self.rewrite_depth + 1, history=self.history, current_focus=self.current_focus, current_focus_status_reason=self.current_focus_status_reason, clarify=self.clarify, curr_answered=self.curr_answered)
         else:
-            return Search(self.task, self.query, history=self.history, current_focus=self.current_focus)
+            print("UniEval passed!")
+            return Search(self.task, query=self.query, history=self.history, current_focus=self.current_focus, current_focus_status_reason=self.current_focus_status_reason, clarify=self.clarify, curr_answered=self.curr_answered)
+        
+        # return Search(self.task, query=self.query, history=self.history, current_focus=self.current_focus, current_focus_status_reason=self.current_focus_status_reason, clarify=self.clarify, curr_answered=self.curr_answered)
+        # if self.clarify:
+        #     return Clarify(task=self.task, query=self.query, current_focus=self.current_focus, history=self.history)
+        # else:
+        #     return Search(self.task, self.query, history=self.history, current_focus=self.current_focus)
 
         # if "Rewrite" in results["action"]:
         #     rewritten_query = results["rewritten_query"]
@@ -474,27 +349,146 @@ class Rewrite(StateBase):
         #         current_focus=self.current_focus,
         #     )
 
-
-class Pivot(StateBase):
-    PIVOT_PROBABILITY = 0.2
-
-    def __init__(self, task, history=None):
+class Stop(StateBase):
+    def __init__(self, task, current_focus=None, history=None, curr_answered=None):
         super().__init__(task)
         self.history = history
+        self.current_focus = current_focus
+        focus_list_str = ""
+        for i in range(len(self.task.focus_list)):
+            focus_list_str += str(i) + ") " + self.task.focus_list[i]["question"] + "\n"
+        self.curr_answered = curr_answered
+        self.prompt_variables = {
+            "persona": StateBase.tasks[self.task.task_id]["persona"],
+            "task_description": self.task.task_description,
+            "focus_list": focus_list_str,
+            "current_focus": self.current_focus,
+            "examples": StateBase.examples,
+            "history": self.history,
+        }
 
     def enter(self):
         pass
 
     def exec(self):
+        if self.task.step == self.task.n_rounds:
+            return Finish(self.task)
+        
+        if self.curr_answered:
+            return Pivot(self.task, history=self.history, immediate_pivot=True)
 
-        new_focus_idx = random.randint(0, len(self.task.focus_list) - 1)
-        self.task.current_focus_idx = new_focus_idx
-        new_focus = self.task.focus_list[new_focus_idx]["question"]
-        print("new_focus:")
-        print(new_focus)
+        agent = Agent(prompt=StateBase.read_prompt("stop"), **self.prompt_variables)
+        results = agent.generate()
+        curr_answered = False
+
+        current_focus_status = results["current_focus_status"]
+        curr_focus_status_reason = results["current_focus_status_reason"]
+        answered = results["answered"]
+        unknown = results["unknown"]
+        pending = results["pending"]
+        answered_reasons = results["answered_reasons"]
+        unknown_reasons = results["unknown_reasons"]
+        pending_reasons = results["pending_reasons"]
+        
+        print("In Stop")
+        print(f"Answered questions: {answered}")
         print()
-        return Search(self.task, history=self.history, current_focus=new_focus)
+        print("\n".join(f"{x} : {y}" for (x, y) in zip(answered, answered_reasons)))
+        print()
+        print(f"Unknown questions: {unknown}")
+        print()
+        print("\n".join(f"{x} : {y}" for (x, y) in zip(unknown, unknown_reasons)))
+        print(f"Pending questions: {pending}")
+        print()
+        print("\n".join(f"{x} : {y}" for (x, y) in zip(pending, pending_reasons)))
+        print()
+        print("Current focus status: " + results["current_focus_status"])
+        print("Current focus status reason: " + results["current_focus_status_reason"])
 
+        updated_focus_list = [self.task.focus_list[i] for i in pending]
+        self.task.focus_list = updated_focus_list
+
+        if "unknown" in results["current_focus_status"]:
+            return Pivot(self.task, history=self.history, immediate_pivot=True)
+        elif "answered" in results["current_focus_status"]:
+            curr_answered = True
+
+        if len(self.task.focus_list) == 0:
+            # All boundary completed, can end convo
+            return Finish(self.task)
+
+        return Pivot(self.task, history=self.history, curr_answered=curr_answered, curr_focus=self.current_focus, curr_focus_status_reason=curr_focus_status_reason)
+        # if curr_answered:
+        #     # Not all boundary answered, but current one is completely answered, pivot
+        #     # print("Pivoting as current focus question is answered")
+        #     # print()
+        #     clarify = random.random()
+        #     if clarify < Clarify.CLARIFY_PROBABILITY:
+        #         print("Clarify!")
+        #         return Clarify(task=self.task, current_focus=self.current_focus, history=self.history)
+        #     else:
+        #         print("Pivot!")
+        #         return Pivot(self.task, self.history)
+
+        # # RNG either pivot or continue on same focus
+        # pivot = random.random()
+
+        # if pivot < Pivot.PIVOT_PROBABILITY:
+        #     print("RNG pivot")
+        #     print()
+        #     return Pivot(self.task, self.history)
+        # else:
+        #     return Search(
+        #         self.task, history=self.history, current_focus=self.current_focus, current_focus_status_reason=current_focus_status_reason
+        #     )
+
+class Pivot(StateBase):
+    CLARIFY_PROBABILITY = 0.2
+    PIVOT_PROBABILITY = 0.2
+
+    def __init__(self, task, history=None, curr_answered=False, curr_focus=None, curr_focus_status_reason=None, immediate_pivot=False):
+        super().__init__(task)
+        self.history = history
+        self.curr_answered = curr_answered
+        self.curr_focus = curr_focus
+        self.curr_focus_status_reason = curr_focus_status_reason
+        self.immediate_pivot = immediate_pivot
+
+    def enter(self):
+        pass
+
+    def exec(self):
+        new_focus_idx = random.randint(0, len(self.task.focus_list) - 1) if len(self.task.focus_list) > 1 else 0
+        new_focus = self.task.focus_list[new_focus_idx]["question"]
+        print("Pivot!!!")
+        if self.immediate_pivot:
+            print("Immediate pivot!")
+            print("new_focus:" + new_focus)
+            self.task.current_focus_idx = new_focus_idx
+            return Search(self.task, history=self.history, current_focus=new_focus)
+        elif self.curr_answered:
+            clarify = random.random()
+            if clarify < Pivot.CLARIFY_PROBABILITY:
+                print("Current focus answered, but extra clarification!")
+                return Search(self.task, history=self.history, current_focus=self.curr_focus, clarify=True, curr_answered=True)
+            else:
+                print("Current focus answered and pivot!")
+                self.task.current_focus_idx = new_focus_idx
+                return Search(self.task, history=self.history, current_focus=new_focus)
+        else:
+            pivot = random.random()
+            if pivot < Pivot.PIVOT_PROBABILITY:
+                print("Current focus unanswered but pivot!")
+                if new_focus_idx == self.task.current_focus_idx:
+                    print("Alas, I pivoted back to myself")
+                    return Search(self.task, history=self.history, current_focus=self.curr_focus, clarify=True, current_focus_status_reason=self.curr_focus_status_reason)
+                else:
+                    print("I pivoted away!")
+                    self.task.current_focus_idx = new_focus_idx
+                    return Search(self.task, history=self.history, current_focus=new_focus)
+            else:
+                print("Current focus unanswered and clarify!")
+                return Search(self.task, history=self.history, current_focus=self.curr_focus, clarify=True, current_focus_status_reason=self.curr_focus_status_reason)
 
 class Finish(StateBase):
     def __init__(self, task):

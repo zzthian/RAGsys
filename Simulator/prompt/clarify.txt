@@ -10,6 +10,9 @@ overall objective:
 focus:
 {current_focus}
 
+current focus status reason:
+{current_focus_status_reason}
+
 example query and responses:
 {examples}
 
@@ -19,6 +22,7 @@ conversation so far:
 task:
 Considering your objective, do the following:
     - Produce a clarification or follow-up query that your persona might naturally ask based on the current focus
+    - If there is a reason for the current focus status, the new query must explicitly address it (i.e., refine, clarify, or redirect based on the gap in the last response).
     - The query should clarify or follow up on details or replies from earlier in the conversation or the most recent query that relate to the current focus
     - The query should sound like a continuation of the conversation and not a repitition of a previous clarification or follow up
     - Vary sentence structure and phrasing from earlier queries while maintaining the persona’s tone

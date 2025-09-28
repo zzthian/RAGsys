@@ -10,9 +10,6 @@ overall objective:
 focus:
 {current_focus}
 
-current focus status reason:
-{current_focus_status_reason}
-
 example query and responses:
 {examples}
 
@@ -23,7 +20,6 @@ task:
 Considering your objective, do the following:
     - Produce a query that your persona might ask.
     - The query should be directed towards the focus and can make references to previous replies in the conversation related to it like in a continuous conversation
-    - If there is a reason for the current focus status, the new query must explicitly address it (i.e., refine, clarify, or redirect based on the gap in the last response).
     - Vary the sentence structure and phrasing from earlier queries while maintaining the persona’s tone
     - You may ask direct "Who, What, When, Where, Why, How" questions without making the question too long or complicated.
     - Look at the included {examples} only for reference on how queries should be structured, do not use information from the {examples}
