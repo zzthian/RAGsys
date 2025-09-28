@@ -18,8 +18,12 @@ ROOT_PATH = os.path.join(get_project_root(), "Simulator")
 DATA_PATH = os.path.join(ROOT_PATH, "data", "tasks.json")
 
 # --- openai ---
-API_KEY = os.getenv("API_KEY")
-API_BASE = "https://api.deepseek.com/v1"
+DEEPSEEK_API_KEY = os.getenv("API_KEY")
+DEEPSEEK_API_BASE = "https://api.deepseek.com/v1"
+
+OPENAI_API_KEY = os.getenv("OPENAI_KEY")
+OPENAI_API_BASE = 'https://api.openai.com/v1'
 
 TEMPERATURE = 0.7
-MODEL_NAME = "deepseek-chat"
+DEEPSEEK_MODEL = "deepseek-chat"
+OPENAI_MODEL = "gpt-5-mini"

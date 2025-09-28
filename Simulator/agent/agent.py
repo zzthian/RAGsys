@@ -6,12 +6,16 @@ import httpx
 
 
 class Agent:
-    def __init__(self, prompt, **kwargs):
+    def __init__(self, prompt, llm="deepseek", **kwargs):
         self.prompt = PromptTemplate.from_template(prompt).format(**kwargs)
+        self.llm = llm
+        self.api_base = DEEPSEEK_API_BASE if self.llm == "deepseek" else OPENAI_API_BASE
+        self.api_key = DEEPSEEK_API_KEY if self.llm == "deepseek" else OPENAI_API_KEY
+        self.model = DEEPSEEK_MODEL if self.llm == "deepseek" else OPENAI_MODEL
         self.client = OpenAI(
-            base_url=API_BASE,
-            api_key=API_KEY,
-            http_client=httpx.Client(base_url=API_BASE, follow_redirects=True),
+            base_url=self.api_base,
+            api_key=self.api_key,
+            http_client=httpx.Client(base_url=self.api_base, follow_redirects=True),
         )
 
     @staticmethod
@@ -47,22 +51,25 @@ class Agent:
         return result
 
     def generate(self):
-        result = (
-            self.client.chat.completions.create(
-                model=MODEL_NAME,
+        if self.llm == "deepseek":
+            response = self.client.chat.completions.create(
+                model=self.model,
                 messages=[{"role": "user", "content": self.prompt}],
                 temperature=TEMPERATURE,
                 n=1,
             )
-            .choices[0]
-            .message.content.strip()
-        )
+        else:
+            response = self.client.chat.completions.create(
+                model=self.model,
+                messages=[{"role": "user", "content": self.prompt}],
+                n=1,
+            )
 
-        # print("Prompt: \n" + self.prompt)
-        # print("=======================")
-        # print("Response: \n" + result)
+        # Now safely extract the text
+        result = response.choices[0].message.content.strip()
+
         try:
-            print(results)
+            print(result)
             result_json = json.loads(result)
         except:
             result = Agent.normalize_json(result)
@@ -77,3 +84,4 @@ class Agent:
             result_json = json.loads(result)
 
         return result_json
+
