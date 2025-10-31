@@ -20,10 +20,7 @@ Given this query: "{query}"
 
 Do the following:
     - Vary sentence structure and tone across turns, so multiple queries don’t all start the same way
-    - To make it feel more "human":
-        * It’s fine to have small typos with letters physically close to the original letter on the keyboard or slightly off spellings (e.g., "paracetemol" instead of "Paracetamol")
-        * Don’t always capitalise proper nouns (e.g., "pokemon" instead of "Pokémon")
-        * Replace accented/special characters with simpler ones when possible (e.g., "Pokemon" instead of "Pokémon")
+    - To make it feel more "human", take note of stylistic and linguistic characteristics in the persona
     - Keep it short, clear, and context-aware. Only include details that help the RAG LLM understand what is being asked
     - Remove filler phrases, rhetorical remarks or unnecessary commentary that don't further the RAG LLM's understanding of the context
     - Adapt the **language and complexity** of the questions to match the user's persona:

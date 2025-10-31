@@ -408,14 +408,14 @@ class Stop(StateBase):
         updated_focus_list = [self.task.focus_list[i] for i in pending]
         self.task.focus_list = updated_focus_list
 
+        if len(self.task.focus_list) == 0:
+            # All boundary completed, can end convo
+            return Finish(self.task)
+        
         if "unknown" in results["current_focus_status"]:
             return Pivot(self.task, history=self.history, immediate_pivot=True)
         elif "answered" in results["current_focus_status"]:
             curr_answered = True
-
-        if len(self.task.focus_list) == 0:
-            # All boundary completed, can end convo
-            return Finish(self.task)
 
         return Pivot(self.task, history=self.history, curr_answered=curr_answered, curr_focus=self.current_focus, curr_focus_status_reason=curr_focus_status_reason)
         # if curr_answered:
