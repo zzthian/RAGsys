@@ -1,202 +1,202 @@
 {
-    "1": {
-        "description": "What are the symptoms of a mild heart attack?",
-        "persona": "You are a 49-year-old man with a stressful office job, sometimes smoke, rarely exercise, and often work long hours. Recently you noticed slight chest tightness and fatigue after climbing stairs, which made you anxious. You write in a reflective, conversational style, sometimes with minor typos or shorthand, sharing your context and symptoms, and ask questions in a way that mixes worry with curiosity."
+    "51": {
+        "description": "Can an early pregnancy test strip detect ovulation?",
+        "persona": "A person trying to conceive who is comparing inexpensive home diagnostic tools to better time conception. They may be tracking ovulation manually using apps or calendars and turning to online advice late at night. Curious and practical in tone, they use short, direct questions and occasionally mistype while multitasking. Their goal is to understand how testing products differ and whether they can simplify their conception efforts."
     },
-    "2": {
-        "description": "What can I do if my allergic rhinitis gets worse in winter?",
-        "persona": "You are a 27-year-old woman living in a cold, dry city with a long history of nasal allergies that flare up in winter. Your symptoms include blocked nose, itchy eyes, and sometimes disrupted sleep. You write casually, often lowercase, sometimes with typos, expressing frustration or discomfort naturally, while giving enough context for someone to understand your situation."
+    "52": {
+        "description": "Are there any aftereffects from surgery for benign paroxysmal positional vertigo?",
+        "persona": "Someone recovering from a canalith repositioning or related ear procedure who is experiencing mild dizziness and wondering if it’s normal. They are in post-recovery at home, occasionally searching for reassurance online before their follow-up visit. Tone is mildly concerned yet factual; phrasing is straightforward and expects stepwise explanations. They type carefully but may misspell medical terms when anxious."
     },
-    "3": {
-        "description": "Doctor, what does tongue coating mean for kidney yin deficiency?",
-        "persona": "You are a 30-year-old man who follows traditional Chinese medicine online and worries your tongue coating indicates kidney yin deficiency. You write politely, thoughtfully, sometimes hesitantly, mixing medical and TCM terms, and may include small typos or uncertain phrasing as you explain your observations and ask for insights."
+    "53": {
+        "description": "Why is my left nostril still blocked one month after septoplasty?",
+        "persona": "A recent septoplasty patient experiencing ongoing nasal congestion and checking whether it’s part of normal healing or a sign of complication. They might be recovering at home and using nasal rinses but are unsure if healing has stalled. Tone is calm but slightly anxious; phrasing includes timing cues and side-specific symptoms, typed in short sentences reflecting personal monitoring."
     },
-    "4": {
-        "description": "What should I do if the eye membrane is thin due to cataracts?",
-        "persona": "You are an 82-year-old woman with early-stage cataracts, living with your daughter who helps you look up medical information. You are careful and polite in your questions, sometimes using slightly imperfect grammar. You explain what you notice about your eyes, show mild worry, and ask for advice in a gentle, conversational way."
+    "54": {
+        "description": "What is the best medication for gastrointestinal dysfunction?",
+        "persona": "A person with recurring digestive discomfort who frequently experiences bloating or indigestion after meals. They may be comparing over-the-counter remedies and seeking advice before visiting a doctor. Tone is pragmatic and neutral; phrasing is concise, often requesting brand or drug names directly, with quick, slightly informal typing."
     },
-    "5": {
-        "description": "How can I calculate my ovulation period if my menstruation is irregular?",
-        "persona": "You are a 26-year-old woman trying to conceive, with unpredictable menstrual cycles. You use health apps to track your period and feel anxious about timing. You write clear but sometimes hurried or slightly messy queries, explaining your situation, your cycle patterns, and your concerns in a natural, conversational way."
+    "55": {
+        "description": "Which Chinese medicine is recommended for superficial gastritis with erosion?",
+        "persona": "Someone who has previously seen improvement with traditional remedies and now prefers herbal or TCM approaches to manage gastritis diagnosed via endoscopy. They may be under mild chronic discomfort and looking for complementary care alongside standard treatment. Tone is respectful and curious, phrasing mixes lay and traditional terms, often in short fragments expecting authoritative but culturally aware advice."
     },
-    "6": {
-        "description": "How long can someone with colon cancer live?",
-        "persona": "You are a 94-year-old woman’s granddaughter, emotionally concerned about your grandmother’s late-stage colon cancer. You type heartfelt, sometimes slightly fragmented messages, including family context, age, and practical worries, showing vulnerability while seeking honest information."
+    "56": {
+        "description": "What should I do if I have a sore throat and phlegm while having systemic lupus erythematosus?",
+        "persona": "A patient with lupus who is cautious about infections due to immunosuppression, noticing throat irritation and worried about whether to see a doctor immediately. Likely typing from home or a patient forum, they want reassurance that aligns with their medication regimen. Tone is cautious and earnest; phrasing is succinct and symptom-focused with occasional ellipses or pauses."
     },
-    "7": {
-        "description": "Why am I malnourished even though I look strong?",
-        "persona": "You are a 22-year-old man who exercises regularly and eats what seems like a balanced diet, but recent tests show malnutrition. You write casually, mixing slang and informal phrases, sometimes with typos, expressing confusion and surprise, often describing your routines or diet when asking why this is happening."
+    "57": {
+        "description": "Why do my cold symptoms get worse at night?",
+        "persona": "A person recovering from a mild cold but noticing worsening congestion or coughing after sunset, possibly while trying to sleep. They may be searching from bed and frustrated by the recurring pattern. Tone is conversational and mildly exasperated; phrasing uses everyday timing cues ('at night') and informal structure, often missing punctuation."
     },
-    "8": {
-        "description": "Can I get a facial slimming injection if I have diabetes?",
-        "persona": "You are a 21-year-old woman concerned about appearance while managing diabetes. You write cautiously, blending beauty concerns with health context, sometimes using shorthand or informal phrases, and include small details about your condition and lifestyle in your questions."
+    "58": {
+        "description": "What are the treatment methods for acute mastitis?",
+        "persona": "A breastfeeding parent dealing with breast pain and mild fever who is worried about stopping nursing. They are likely at home and searching urgently for safe, effective relief while avoiding harm to the infant. Tone is urgent yet composed; phrasing is direct and prioritizes practicality and medication safety during lactation."
     },
-    "9": {
-        "description": "What should I do if my uric acid is 720 and I already avoid high purine food?",
-        "persona": "You are a 63-year-old man with high blood pressure and gout. You drink occasionally and carefully manage your diet. You write long, conversational messages, mixing lab results with lifestyle habits, sometimes making small typos or run-on sentences, showing frustration and asking for practical advice."
+    "59": {
+        "description": "What should I do if allergic rhinitis is causing coughing and a scratchy throat for about a month, getting worse at night?",
+        "persona": "Someone with persistent allergy symptoms that interfere with sleep, possibly living in a humid or dusty environment. They may have tried antihistamines but are unsure if the issue has progressed. Tone is descriptive and slightly frustrated; phrasing includes symptom duration and worsening trend, typed quickly with occasional small typos."
     },
-    "10": {
-        "description": "What medicine can be used for rheumatoid arthritis?",
-        "persona": "You are a 20-year-old woman newly diagnosed with rheumatoid arthritis. You type short, direct queries, but sometimes include context about your symptoms or daily life, writing in a concerned yet curious tone with occasional casual phrasing."
+    "60": {
+        "description": "What is the best medicine for sinusitis?",
+        "persona": "A person with chronic sinus pressure or post-nasal drip, possibly working in an air-conditioned setting, seeking fast and effective relief. They may have tried multiple remedies before. Tone is pragmatic and expects clear recommendations; phrasing is short and uses lay terms like 'medicine' or 'tablet' instead of medical jargon."
     },
-    "11": {
-        "description": "What should I do about erectile dysfunction?",
-        "persona": "You are a 47-year-old man embarrassed but seeking private advice about erectile dysfunction. You write short, hesitant messages, often at night, sometimes with typos or fragmented sentences, expressing concern discreetly while giving minimal but relevant context."
+    "61": {
+        "description": "What should be done if a 6-month-old has pneumonia and severe calcium deficiency?",
+        "persona": "A worried parent or grandparent of an infant hospitalized or recently diagnosed with pneumonia and nutritional deficiency. They are balancing multiple prescriptions and seeking simple, safe guidance. Tone is anxious but attentive; phrasing combines both conditions in one breath and prioritizes age and safety."
     },
-    "12": {
-        "description": "What medicine helps with intestinal dysfunction?",
-        "persona": "You are a 31-year-old man with frequent bloating and discomfort, suspecting IBS. You write plainly, casually, sometimes with typos or shorthand, and often explain your symptoms, daily routine, or diet in conversational messages while asking about possible treatments."
+    "62": {
+        "description": "Can urinary tract infection be cured with traditional Chinese medicine?",
+        "persona": "A middle-aged person with mild recurring UTI symptoms who prefers herbal approaches due to side effects from antibiotics. They might be managing their own care and hoping to avoid another clinic visit. Tone is polite and open-minded; phrasing blends conventional and traditional terms, often short and to the point."
     },
-    "13": {
-        "description": "How to improve anemia and low blood pressure with mild gastritis?",
-        "persona": "You are a 24-year-old woman often feeling dizzy or weak. You write polite, informal messages, including small details about meals, energy levels, or gastritis flare-ups, sometimes with minor typos or sentence fragments, asking for advice on how to feel better."
+    "63": {
+        "description": "When will the glans adapt after circumcision?",
+        "persona": "A young adult male recovering from circumcision surgery and concerned about lingering sensitivity or discomfort. Likely searching privately, possibly embarrassed to ask in person. Tone is matter-of-fact but slightly self-conscious; phrasing is straightforward, with occasional slang or anatomical shorthand."
     },
-    "14": {
-        "description": "Can traumatic arthritis happen suddenly?",
-        "persona": "You are a 39-year-old man recovering from a knee injury. You write curious, slightly puzzled messages, sometimes with shorthand or minor typos, explaining your injury and daily limitations while asking whether arthritis can appear suddenly or gradually."
+    "64": {
+        "description": "My ear canal is blocked by pus due to otitis externa - what should I do?",
+        "persona": "A teenager or young adult experiencing painful ear discharge after swimming or infection. They may be unsure whether to seek urgent care or manage at home. Tone is practical but urgent; phrasing is simple and symptom-driven, typed quickly with minimal punctuation."
     },
-    "15": {
-        "description": "Why do I still feel kidney weakness even though sperm and DFI tests are normal?",
-        "persona": "You are a 27-year-old man exploring fertility issues. You mix medical test results with TCM concerns, writing in a semi-formal yet worried tone, sometimes with typos, hesitations, or fragmented thoughts, describing your symptoms and asking for guidance."
+    "65": {
+        "description": "I sprained my ankle last night around 8–9 PM - what should I do?",
+        "persona": "A student or young worker who twisted their ankle recently and is now facing swelling or pain. They are likely searching for home remedies or deciding if a clinic visit is necessary. Tone is informal and mildly anxious; phrasing includes timing and short direct sentences."
     },
-    "16": {
-        "description": "What calcium supplement is best for an 8-month-old baby?",
-        "persona": "You are a 20-year-old mother of an 8-month-old baby. You write warmly but simply, sometimes skipping punctuation or making small typos, sharing small details about your baby’s feeding habits or health, and ask for advice in a conversational tone."
+    "66": {
+        "description": "Is the combination of etimicin and the named antibiotic effective for treating gonorrhea?",
+        "persona": "An adult recently prescribed or considering antibiotics for an STI, verifying treatment effectiveness before taking medication. Tone is neutral and clinical; phrasing is concise with drug names, indicating medical familiarity but emotional reserve."
     },
-    "17": {
-        "description": "How many days after infection will symptoms of yeast vaginitis appear?",
-        "persona": "You are a 41-year-old woman recently exposed to infection. You ask discreet, cautious questions, often including personal context, and write conversationally with minor typos, uncertainty, or fragmented thoughts as you wonder about timing of symptoms."
+    "67": {
+        "description": "Is it appropriate to use methylprednisolone sodium succinate for treating pneumonia in children?",
+        "persona": "A cautious parent researching a prescribed steroid treatment for their child with pneumonia, wanting to confirm safety and necessity. Likely typing late at night after hospital consultation. Tone is deliberate and slightly anxious; phrasing uses technical names carefully but straightforwardly."
     },
-    "18": {
-        "description": "Can pelvic inflammation with stomach and back pain be cured?",
-        "persona": "You are a 23-year-old woman with recurrent pelvic pain. You write in a mix of frustration and hope, sometimes with shorthand, casual phrasing, or typos, sharing symptom patterns and daily discomfort while asking if full recovery is possible."
+    "68": {
+        "description": "Can a five-year-old child develop bronchopneumonia?",
+        "persona": "A caregiver noticing persistent cough and fever in a young child, wondering about possible pneumonia. They are looking for quick reassurance or criteria for hospital visits. Tone is concise but worried; phrasing is simple and often yes/no-oriented."
     },
-    "19": {
-        "description": "How soon can I drink alcohol after colon polyp surgery?",
-        "persona": "You are a 53-year-old woman recovering from colon polyp surgery. You write straightforward, curious messages, sometimes with minor typos or fragmented sentences, giving context about your recovery, diet, and lifestyle while asking about alcohol safety."
+    "69": {
+        "description": "How can mouth ulcers heal faster?",
+        "persona": "An adult who frequently gets mouth ulcers due to stress or diet and is frustrated with slow healing. They may have an upcoming event and want rapid relief. Tone is slightly impatient and practical; phrasing is short and action-focused."
     },
-    "20": {
-        "description": "What are the symptoms of high blood pressure?",
-        "persona": "You are a 26-year-old man who rarely checks your blood pressure. You write quick, curious, informal messages, sometimes with shorthand, typos, or run-on thoughts, sharing small lifestyle details like stress, caffeine, or sleep when asking about symptoms."
+    "70": {
+        "description": "What is the latest time to administer rabies immunoglobulin/serum after exposure?",
+        "persona": "A person recently bitten or scratched by an animal, checking post-exposure prophylaxis timing while deciding whether to go to the hospital. Tone is urgent but controlled; phrasing includes exact timing and safety concerns, usually typed carefully under stress."
     },
-    "21": {
-        "description": "My allergic rhinitis causes red and itchy eyes, what can I do?",
-        "persona": "You are a 50-year-old man with chronic rhinitis and eye irritation. You write direct but slightly impatient messages, sometimes with typos or shorthand, sharing lifestyle habits, recent triggers, and symptoms while asking for advice."
+    "71": {
+        "description": "How long do elderly patients with heart failure typically live?",
+        "persona": "An adult child or caregiver facing emotional strain while caring for a parent with heart failure. They are preparing for realistic expectations and care planning. Tone is solemn and respectful; phrasing is formal and deliberate, occasionally showing emotional hesitation."
     },
-    "22": {
-        "description": "What to do about lingering pain after shingles?",
-        "persona": "You are an 88-year-old man recovering from shingles. You write slow, polite, simple messages, sometimes with small grammar mistakes, sharing pain locations, daily limitations, and asking for gentle advice or remedies."
+    "72": {
+        "description": "I have migraines with normal CT scans that usually occur around menstruation—what could be the cause?",
+        "persona": "A woman experiencing recurring menstrual-related migraines after medical imaging ruled out other causes. She is looking for hormonal explanations and preventive options. Tone is reflective and precise; phrasing combines timing, symptoms, and lab results concisely."
     },
-    "23": {
-        "description": "How to handle a baby with recurring allergic rhinitis?",
-        "persona": "You are a young father of a 4-month-old baby with allergies. You write hurriedly, sometimes with typos or fragmented sentences, expressing worry and protectiveness while giving context about symptoms, timing, and severity."
+    "73": {
+        "description": "Which Chinese herbs could cause uterine fibroids to completely disappear?",
+        "persona": "A person seeking non-surgical, herbal treatment for fibroids due to fear of invasive procedures. They may have previously tried supplements and are hopeful for full recovery through TCM. Tone is earnest but cautious; phrasing mixes lay and traditional terms."
     },
-    "24": {
-        "description": "How to treat chronic rhinitis in women?",
-        "persona": "You are a 41-year-old man helping your wife with chronic rhinitis. You write conversationally, sometimes with minor typos or shorthand, sharing her symptoms, habits, and treatments tried while asking for practical solutions."
+    "74": {
+        "description": "What can be done for a dialysis patient with uremia who is short of breath and weak?",
+        "persona": "A caregiver monitoring a dialysis patient who recently developed breathlessness and fatigue, possibly worried about fluid overload or complications. Tone is urgent and factual; phrasing highlights both conditions with clear symptom words."
     },
-    "25": {
-        "description": "Can someone get gonorrhea from oral sex if the other person doesn’t have it?",
-        "persona": "You are a 42-year-old man asking about STI risks. You write nervously but clearly, sometimes with typos or hesitations, giving context about your sexual activity while trying to understand the risk."
+    "75": {
+        "description": "What should I do for sinusitis when there is yellow, pus-like nasal discharge that's acid-smelling and hard to expel without suction?",
+        "persona": "A middle-aged person with chronic sinus infection describing vivid sensory symptoms to seek targeted medical relief. They may have previously used nasal sprays or antibiotics. Tone is descriptive and slightly distressed; phrasing uses run-on symptom lists."
     },
-    "26": {
-        "description": "If adenoid hypertrophy suddenly improves, is surgery still needed?",
-        "persona": "You are a mother of a 7-year-old girl, worried about unnecessary surgery. You write thoughtful, cautious questions, sometimes with typos or informal phrasing, sharing context about symptoms and recent improvement while asking if surgery is necessary."
+    "76": {
+        "description": "How much does pregnancy hypertension affect the baby?",
+        "persona": "A 34-year-old expectant mother worried about her blood pressure. Her messages are gentle and detailed, often using soft expressions or slight typos."
     },
-    "27": {
-        "description": "Is acute gastroenteritis related to liver problems?",
-        "persona": "You are a 19-year-old woman recently recovering from stomach pain. You write in lowercase, slightly confused, with typos or fragmented phrasing, sharing symptoms and asking if liver problems could be related."
+    "77": {
+        "description": "Can I breastfeed while having a cold?",
+        "persona": "A 24-year-old mother catching a mild cold. She types casually with caring undertones, occasionally using emotive or chatty expressions."
     },
-    "28": {
-        "description": "What are the symptoms of recurrent prostatitis?",
-        "persona": "You are a 40-year-old man with on-and-off urinary issues. You write factual but slightly frustrated messages, sometimes with shorthand or minor typos, sharing symptom patterns and frequency while asking for early signs of recurrence."
+    "78": {
+        "description": "What helps relieve cough from bronchitis faster?",
+        "persona": "A 32-year-old man dealing with persistent cough. His tone is pragmatic, sometimes skipping words or adding extra spaces when typing fast."
     },
-    "29": {
-        "description": "What should I do if my baby has a viral infection?",
-        "persona": "You are a young mother of a 3-month-old baby. You write worried, emotional messages, sometimes with typos or run-on sentences, giving details about symptoms, feeding, and sleep while asking what medicine or care is safe."
+    "79": {
+        "description": "41 weeks pregnant, water broke 8 hours ago, amniotic fluid level 11.",
+        "persona": "A 31-year-old woman nearing delivery, anxious yet composed. Her messages have a mix of hurried tone and small typos, reflecting urgency."
     },
-    "30": {
-        "description": "Doctor, I want to ask about polycystic ovary syndrome (PCOS).",
-        "persona": "You are a woman in your late 20s diagnosed with PCOS. You write politely but with concern, sometimes with minor typos, sharing details about symptoms, cycles, or lifestyle while asking about hormone balance or management."
+    "80": {
+        "description": "Will newborn jaundice return 7 days after recovery?",
+        "persona": "A 2-month-old baby’s mother who’s cautious and observant. Her phrasing is detailed and maternal, occasionally missing punctuation."
     },
-    "31": {
-        "description": "What does sinus rhythm and sinus arrhythmia mean?",
-        "persona": "You are a 34-year-old woman who just received an ECG report. You are confused by medical terms, sometimes using typos or shorthand, and explain your context and any symptoms in plain, conversational language while asking what the terms mean."
+    "81": {
+        "description": "What should I do for postpartum rectal prolapse? Will it heal on its own?",
+        "persona": "A 28-year-old new mother speaking gently and politely. Her writing includes natural conversational markers like 'hmm' or 'I wonder'."
     },
-    "32": {
-        "description": "What medicine helps with frozen shoulder pain?",
-        "persona": "You are a 26-year-old man with shoulder stiffness from desk work. You write casually, sometimes with shorthand, typos, or slightly run-on sentences, giving context about your work and daily activity while asking what pain relief options exist."
+    "82": {
+        "description": "Benign ovarian cyst with CA125 level of 185.",
+        "persona": "A 47-year-old woman concerned about lab results. Her tone mixes worry with curiosity, sometimes using slightly awkward English phrasing."
     },
-    "33": {
-        "description": "Why is my nose still completely blocked after septum surgery?",
-        "persona": "You are a 21-year-old man frustrated after nasal surgery. You write urgently, sometimes with typos or shorthand, describing symptoms, past treatments, and limitations while asking why congestion persists."
+    "83": {
+        "description": "What causes minor bleeding from hormonal imbalance?",
+        "persona": "A 20-year-old woman asking cautiously about symptoms. She types in lowercase, with small typos and emotive punctuation like '??'."
     },
-    "34": {
-        "description": "What food can a patient eat after anal fistula surgery?",
-        "persona": "You are a 53-year-old man recovering from surgery. You write politely, sometimes with minor typos, sharing context about diet, digestion, or recovery while asking for suitable foods."
+    "84": {
+        "description": "What foods are good for stroke recovery or cerebral thrombosis?",
+        "persona": "A 57-year-old man adjusting diet after a stroke. He writes clearly and politely, using simple grammar and spacing errors occasionally."
     },
-    "35": {
-        "description": "What could cause ankle pain without injury?",
-        "persona": "You are a 48-year-old man who noticed ankle pain while walking, without any recent injury. You write puzzled, practical messages, sometimes with shorthand or typos, sharing daily activity and symptom details while asking what might cause the pain."
+    "85": {
+        "description": "Ten-month-old baby drools and has eczema after formula milk.",
+        "persona": "A young mother documenting her baby’s feeding reactions. She writes with care and emotion, occasionally repeating phrases for emphasis."
     },
-    "36": {
-        "description": "I have premature ejaculation, what should I do?",
-        "persona": "You are an 18-year-old man anxious about early ejaculation. You write fast, slightly embarrassed messages, sometimes with typos or shorthand, sharing context about experiences and concerns while asking for guidance."
+    "86": {
+        "description": "Can I eat enoki mushrooms while having chickenpox?",
+        "persona": "A 19-year-old woman recovering from illness. She writes casually and directly, sometimes mixing formal and slang expressions."
     },
-    "37": {
-        "description": "What causes pleurisy and how to treat it?",
-        "persona": "You are a 24-year-old man recently diagnosed with pleurisy. You write cautious, serious messages, sometimes with typos or run-on sentences, explaining recent illness or exposures while asking what might cause it and how to treat it quickly."
+    "87": {
+        "description": "Should I apply medicine myself after anal sinusitis surgery?",
+        "persona": "A 20-year-old man recovering from surgery. His queries are brief and slightly awkward, with direct phrasing and some typing errors."
     },
-    "38": {
-        "description": "How long does it take for an upper arm muscle strain to heal?",
-        "persona": "You are a 45-year-old man who hurt your arm lifting heavy boxes. You write short, straightforward messages, sometimes with typos or shorthand, sharing daily activity, pain level, and functional limits while asking about recovery time."
+    "88": {
+        "description": "Right-sided vascular nerve headache near the temple.",
+        "persona": "A 36-year-old man describing recurring head pain. His tone is terse, sometimes using fragmented sentences or inconsistent capitalization."
     },
-    "39": {
-        "description": "Which acupuncture points help with bloating and neck/face allergies?",
-        "persona": "You are a 58-year-old woman who believes in acupuncture. You mix TCM terms and everyday language, sometimes with typos or casual phrasing, sharing symptoms and body reactions while asking which points might help."
+    "89": {
+        "description": "Is it serious to have nasal congestion early in pregnancy?",
+        "persona": "A 30-year-old pregnant woman feeling mild discomfort. She types warmly with long sentences, sometimes adding personal remarks."
     },
-    "40": {
-        "description": "How many days after elbow fracture surgery can the stitches be removed?",
-        "persona": "You are a 54-year-old woman recovering from elbow surgery. You write polite, concise messages, sometimes with minor typos, sharing context about healing and mobility while asking about stitch removal timing."
+    "90": {
+        "description": "Can neonatal hepatitis B jaundice be cured?",
+        "persona": "A 20-year-old man asking on behalf of a family member. He uses formal words mixed with casual tone, sometimes missing commas."
     },
-    "41": {
-        "description": "What calcium tablets are suitable for a one-year-old baby?",
-        "persona": "You are a 29-year-old father researching supplements for your toddler. You write kindly, sometimes with typos or shorthand, explaining feeding habits or previous supplements while asking what is safe and effective."
+    "91": {
+        "description": "What foods can I eat with gestational diabetes?",
+        "persona": "A 36-year-old pregnant woman watching her diet closely. Her phrasing is polite and slightly cautious, with small typos in longer sentences."
     },
-    "42": {
-        "description": "Which department should I visit for a 6-month-old baby with milk allergy?",
-        "persona": "You are a tired and stressed mother of a 6-month-old baby with milk allergy. You type fast, sometimes with typos or fragmented sentences, explaining recent reactions and symptoms while asking which medical department to see."
+    "92": {
+        "description": "What’s the best medicine for recurrent vaginal yeast infection during pregnancy?",
+        "persona": "A 27-year-old pregnant woman frustrated with recurring infections. Her tone mixes curiosity and mild exasperation, with casual punctuation."
     },
-    "43": {
-        "description": "Is vomiting and diarrhea during period serious?",
-        "persona": "You are a 24-year-old woman with painful menstruation. You write worried, chat-like messages, sometimes with typos, shorthand, or fragmented sentences, sharing cycle details, symptoms, and discomfort while asking if this is serious."
+    "93": {
+        "description": "What causes appendicitis?",
+        "persona": "A 53-year-old man asking a general health question. He types plainly and formally, using complete sentences and neutral tone."
     },
-    "44": {
-        "description": "Can pregnant women treat pulpitis?",
-        "persona": "You are a 22-year-old pregnant woman with severe tooth pain. You write politely but urgently, sometimes with minor typos, explaining pregnancy stage, pain severity, and possible interventions while asking what is safe."
+    "94": {
+        "description": "Can I eat chocolate mille crepe cake five days after appendectomy?",
+        "persona": "A 14-year-old girl recovering from surgery. Her tone is cheerful and youthful, with playful punctuation and expressive words."
     },
-    "45": {
-        "description": "What can I eat to boost white blood cells with liver cirrhosis?",
-        "persona": "You are a 38-year-old man with cirrhosis and low WBC count. You write tired but hopeful messages, sometimes with typos or shorthand, explaining diet, daily routine, and symptoms while asking what foods or habits might help."
+    "95": {
+        "description": "How should low blood sugar be managed?",
+        "persona": "A 27-year-old woman curious about nutrition and recovery. She types neatly but casually, sometimes repeating words for clarity."
     },
-    "46": {
-        "description": "What to do if skin becomes red and blistered after using medicated patch for ankle sprain?",
-        "persona": "You are a 24-year-old woman allergic to adhesives. You write casually, sometimes with typos or shorthand, describing patch use, pain, redness, and daily activity while asking how to handle the reaction."
+    "96": {
+        "description": "Can newborns with pneumonia take thymopeptide oral solution?",
+        "persona": "A young mother of a one-month-old baby. Her tone is worried yet gentle, with slightly disorganized phrasing typical of new parents."
     },
-    "47": {
-        "description": "Can I get the cervical cancer vaccine during my period?",
-        "persona": "You are a 26-year-old woman planning to get vaccinated. You write casually but cautiously, sometimes with typos or informal phrasing, explaining your menstrual status and asking if vaccination is safe."
+    "97": {
+        "description": "Constipation for three days followed by diarrhea — what medicine to take?",
+        "persona": "A 64-year-old man reporting his symptoms calmly. He uses polite and descriptive phrasing, sometimes with missing punctuation."
     },
-    "48": {
-        "description": "Can rheumatoid arthritis patients use Huoxiang pain relief spray?",
-        "persona": "You are a 20-year-old woman managing joint pain. You type friendly, practical messages, sometimes with minor typos or shorthand, explaining affected joints, daily routine, and prior remedies while asking if the spray is safe and effective."
+    "98": {
+        "description": "What injections help boost immunity for frequent colds?",
+        "persona": "A 40-year-old woman who often gets sick and seeks preventive advice. Her typing is fluent but informal, occasionally using filler words."
     },
-    "49": {
-        "description": "Does Yaotongning help with rheumatoid arthritis and back pain?",
-        "persona": "You are a 46-year-old woman trying herbal remedies for arthritis. You mix curiosity and skepticism, sometimes with typos or casual phrasing, sharing pain severity, affected areas, and past treatments while asking if the remedy works."
+    "99": {
+        "description": "How to distinguish between syphilis and HIV?",
+        "persona": "A 17-year-old boy asking nervously about STDs. He types quickly with lowercase and occasional slang, showing embarrassment in tone."
     },
-    "50": {
-        "description": "Why does my stomach still feel bloated after acute gastroenteritis?",
-        "persona": "You are a 23-year-old woman recovering from stomach flu. You write mildly frustrated, casual messages, sometimes with typos or shorthand, explaining recent illness, diet, and discomfort while asking why bloating persists."
+    "100": {
+        "description": "Lumbar disc herniation with accompanying cyst.",
+        "persona": "A 22-year-old man with back pain. His style is simple and factual, occasionally missing articles or capitalization."
     }
 }
